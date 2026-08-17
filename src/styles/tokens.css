@@ -1,0 +1,114 @@
+:root {
+  /* Primitive: color */
+  --primitive-white: #ffffff;
+  --primitive-stone-50: #f5f6f4;
+  --primitive-stone-100: #edf0f1;
+  --primitive-slate-200: #d7dde2;
+  --primitive-slate-500: #56616d;
+  --primitive-ink-900: #101418;
+  --primitive-ink-950: #0c1015;
+  --primitive-cobalt-600: #0b57d0;
+  --primitive-cobalt-700: #0847ae;
+  --primitive-violet-600: #7c3aed;
+  --primitive-red-700: #b42318;
+  --primitive-teal-600: #087f8c;
+  --primitive-amber-600: #b56708;
+
+  /* Primitive: spacing, type, shape, depth, motion */
+  --primitive-space-1: 0.25rem;
+  --primitive-space-2: 0.5rem;
+  --primitive-space-3: 0.75rem;
+  --primitive-space-4: 1rem;
+  --primitive-space-6: 1.5rem;
+  --primitive-space-8: 2rem;
+  --primitive-space-12: 3rem;
+  --primitive-space-16: 4rem;
+  --primitive-space-24: 6rem;
+  --primitive-space-36: 9rem;
+  --primitive-radius-sm: 0.5rem;
+  --primitive-radius-md: 0.875rem;
+  --primitive-radius-lg: 1.5rem;
+  --primitive-shadow-soft: 0 1rem 4rem rgb(16 20 24 / 0.09);
+  --primitive-duration-fast: 120ms;
+  --primitive-duration-standard: 240ms;
+  --primitive-duration-slow: 360ms;
+  --primitive-ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --primitive-ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Semantic: typography */
+  --font-sans:
+    "Public Sans Variable", "Public Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --text-display: clamp(3rem, 9vw, 7.25rem);
+  --text-h1: clamp(2.5rem, 6vw, 5.5rem);
+  --text-h2: clamp(2rem, 4vw, 3.75rem);
+  --text-h3: clamp(1.35rem, 2vw, 1.75rem);
+  --text-body-lg: clamp(1.125rem, 1.5vw, 1.35rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --leading-display: 0.94;
+  --leading-heading: 1.08;
+  --leading-body: 1.65;
+
+  /* Semantic: layout */
+  --gutter: clamp(1rem, 4vw, 4rem);
+  --container-wide: 80rem;
+  --container-reading: 46rem;
+  --section-space: clamp(4.5rem, 10vw, 9rem);
+  --header-offset: 5.25rem;
+
+  /* Semantic: color and material */
+  --color-canvas: var(--primitive-stone-50);
+  --color-surface: var(--primitive-white);
+  --color-surface-subtle: var(--primitive-stone-100);
+  --color-ink: var(--primitive-ink-900);
+  --color-ink-muted: var(--primitive-slate-500);
+  --color-border: var(--primitive-slate-200);
+  --color-action: var(--primitive-cobalt-600);
+  --color-action-hover: var(--primitive-cobalt-700);
+  --color-focus: var(--primitive-violet-600);
+  --color-danger: var(--primitive-red-700);
+  --color-dark-canvas: var(--primitive-ink-950);
+  --color-dark-ink: var(--primitive-stone-50);
+  --material-header: rgb(245 246 244 / 0.84);
+  --material-header-solid: var(--primitive-stone-50);
+
+  /* Semantic: project accents */
+  --accent-fintech: var(--primitive-teal-600);
+  --accent-commerce: var(--primitive-amber-600);
+  --accent-social-impact: var(--primitive-cobalt-600);
+
+  /* Semantic: layers */
+  --layer-base: 0;
+  --layer-content: 10;
+  --layer-sticky: 40;
+  --layer-overlay: 100;
+
+  /* Component */
+  --button-height: 3rem;
+  --button-radius: var(--primitive-radius-sm);
+  --button-padding-inline: var(--primitive-space-6);
+  --button-transition:
+    color var(--primitive-duration-fast) var(--primitive-ease-out),
+    background-color var(--primitive-duration-fast) var(--primitive-ease-out),
+    border-color var(--primitive-duration-fast) var(--primitive-ease-out),
+    transform var(--primitive-duration-fast) var(--primitive-ease-out);
+  --panel-radius: var(--primitive-radius-lg);
+  --panel-border: 1px solid var(--color-border);
+  --focus-ring: 0 0 0 0.2rem var(--color-canvas), 0 0 0 0.4rem var(--color-focus);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --color-canvas: var(--color-canvas);
+  --color-surface: var(--color-surface);
+  --color-ink: var(--color-ink);
+  --color-muted-ink: var(--color-ink-muted);
+  --color-action: var(--color-action);
+  --breakpoint-sm: 30rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 90rem;
+}

@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "generatedBy": "scripts/build-assets.mjs",
+  "policy": {
+    "sourceAssetsImmutable": true,
+    "normalizedAssetsOptional": true,
+    "projectOutputPattern": "public/projects/<slug>/"
+  },
+  "assets": [
+    {
+      "id": "wasem-portrait",
+      "sourcePath": "portrait.jpg",
+      "publicPath": "public/images/wasem-aljundy-portrait.webp",
+      "role": "portrait",
+      "width": 960,
+      "height": 960,
+      "format": "webp",
+      "bytes": 111950,
+      "altIntent": "Portrait of Wasem Aljundy"
+    },
+    {
+      "id": "wasem-resume-pdf",
+      "sourcePath": "Wasem Aljundy CV.pdf",
+      "publicPath": "public/resume/wasem-aljundy-cv.pdf",
+      "role": "resume-download",
+      "format": "pdf",
+      "bytes": 436656,
+      "altIntent": "Canonical downloadable CV"
+    }
+  ]
+}

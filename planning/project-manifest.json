@@ -1,0 +1,616 @@
+{
+  "version": "1.2",
+  "owner": {
+    "name": "Wasem Aljundy",
+    "positioning": "Senior Flutter Engineer / Senior Mobile Engineer",
+    "cvTitle": "Senior Mobile Engineer | Flutter & Android",
+    "location": "Gaza, Palestine",
+    "contact": {
+      "email": "wasemaljundy22@gmail.com",
+      "phone": "+972 59 246 3727",
+      "linkedin": "https://www.linkedin.com/in/wasem-aljundy-983ab73a6/",
+      "github": "https://github.com/WasemAljundy",
+      "portfolio": "https://linktr.ee/wasem.aljundy",
+      "whatsapp": "https://wa.me/972592463727"
+    },
+    "cvClaims": {
+      "mobileExperience": "4+ years",
+      "productionApps": "20+",
+      "freelanceProjects": "25+"
+    },
+    "ownershipDefault": "Current manifest records full-build ownership unless explicitly changed by Wasem; project-specific publication copy must still cite CV, public product evidence, or direct confirmation."
+  },
+  "contactStrategy": {
+    "primaryActions": ["View Work", "View Resume", "Contact Me"],
+    "primaryProfessionalLinks": ["email", "linkedin", "github"],
+    "resume": "Accessible HTML resume is the preferred browsing experience; the canonical PDF remains directly downloadable.",
+    "whatsapp": "Secondary labeled contact action only; do not promote the raw phone number as a primary CTA.",
+    "location": "Use naturally in About, Resume, or contact context rather than as hero-level prominence."
+  },
+  "portfolioStrategy": {
+    "featuredOrder": ["jood", "eureeca", "taseese", "aura-fit", "eisal", "gader"],
+    "homepagePrimaryCount": 6,
+    "principle": "Show depth before volume. Featured work demonstrates product ownership, architecture, production delivery and domain breadth; the rest supports credibility without diluting the first impression."
+  },
+  "projects": [
+    {
+      "name": "Jood",
+      "slug": "jood",
+      "tier": "featured",
+      "status": "live",
+      "domain": ["Food & Drink", "Offers", "Booking"],
+      "ownership": "full-build",
+      "platforms": ["iOS", "Android"],
+      "caseStudy": true,
+      "summary": "A production mobile platform for discovering service and food offers through structured browsing, offer details, ordering/booking flows, payments, QR interactions, and account management.",
+      "proofPoints": [
+        "Production mobile product",
+        "End-to-end Flutter ownership",
+        "Cross-platform release",
+        "Rich transactional user flows"
+      ],
+      "links": {
+        "googlePlay": "https://play.google.com/store/apps/details?id=com.jood.offers",
+        "appStore": "https://apps.apple.com/us/app/jood-food-offers/id6759092077"
+      },
+      "assetSource": "source-assets/MyWorks/Jood App Images",
+      "assetCount": 10,
+      "recommendedAssets": [
+        "source-assets/MyWorks/Jood App Images/appstore_marketing_browse_clean2_1242x2688.png",
+        "source-assets/MyWorks/Jood App Images/appstore_marketing_details_1242x2688.png",
+        "source-assets/MyWorks/Jood App Images/appstore_marketing_datetime_1242x2688.png",
+        "source-assets/MyWorks/Jood App Images/appstore_marketing_payment_1242x2688.png",
+        "source-assets/MyWorks/Jood App Images/appstore_marketing_orders_1242x2688.png",
+        "source-assets/MyWorks/Jood App Images/appstore_marketing_qr_1242x2688.png"
+      ]
+    },
+    {
+      "name": "Eureeca",
+      "slug": "eureeca",
+      "tier": "featured",
+      "status": "live",
+      "domain": ["FinTech", "Private Markets", "Investment"],
+      "ownership": "team-build",
+      "ownershipEvidence": {
+        "confirmation": "Wasem confirmed Eureeca was a collaborative production project developed as part of a team.",
+        "cvEvidence": "CV describes resolving Eureeca bugs and performance issues while at Logicteca Solutions.",
+        "publicationRule": "Present meaningful engineering contribution without implying sole development or complete independent ownership."
+      },
+      "platforms": ["Android", "iOS"],
+      "caseStudy": true,
+      "summary": "A regulated investment experience for discovering and evaluating private equity deals and selected IPO opportunities, with portfolio tracking and rich deal information.",
+      "proofPoints": [
+        "Collaborative production engineering",
+        "CV-supported Flutter bug and performance contributions",
+        "FinTech domain",
+        "Production release",
+        "High-trust financial UX"
+      ],
+      "links": {
+        "googlePlay": "https://play.google.com/store/apps/details?id=com.eureeca.app&hl=ar"
+      },
+      "assetSource": "Store listing",
+      "assetCount": 0,
+      "recommendedAssets": [
+        "Use official store screenshots and icon; preserve original aspect ratios."
+      ]
+    },
+    {
+      "name": "Taseese – تأسيس",
+      "slug": "taseese",
+      "tier": "featured",
+      "status": "live",
+      "domain": ["EdTech", "Learning", "Assessments"],
+      "ownership": "full-build",
+      "platforms": ["iOS", "iPadOS"],
+      "caseStudy": true,
+      "summary": "An education platform organized around learning stages, classes, subjects, nested learning sections, quizzes, and learner performance progression.",
+      "proofPoints": [
+        "Full-build ownership confirmed by Wasem",
+        "Structured educational content",
+        "Assessment flows",
+        "Long-lived production app"
+      ],
+      "links": {
+        "appStore": "https://apps.apple.com/us/app/taseese-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3/id6477544252"
+      },
+      "assetSource": "Store listing",
+      "assetCount": 0,
+      "recommendedAssets": ["Use official App Store screenshots and icon."]
+    },
+    {
+      "name": "Aura Fit",
+      "slug": "aura-fit",
+      "tier": "featured",
+      "status": "private-client",
+      "domain": ["AI", "Fitness", "HealthTech"],
+      "ownership": "full-build",
+      "platforms": ["iOS", "Android"],
+      "caseStudy": true,
+      "summary": "An AI-assisted fitness product with personalized onboarding, workout and meal planning, calorie intelligence, health-data integration, and progress tracking.",
+      "proofPoints": [
+        "AI/ML product experience",
+        "Google Fit / Apple Health integration",
+        "Complex onboarding and personalization",
+        "Large polished visual asset set"
+      ],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/AuraFit",
+      "assetCount": 44,
+      "recommendedAssets": [
+        "source-assets/MyWorks/AuraFit/AuraFit App - Mockup/1.png",
+        "source-assets/MyWorks/AuraFit/AuraFit App - Mockup/2.png",
+        "source-assets/MyWorks/AuraFit/AuraFit App - Mockup/3.png",
+        "source-assets/MyWorks/AuraFit/AuraFit App - Mockup/4.png",
+        "source-assets/MyWorks/AuraFit/AuraFit App - Mockup/5.png",
+        "source-assets/MyWorks/AuraFit/AuraFit.png"
+      ]
+    },
+    {
+      "name": "Eisal",
+      "slug": "eisal",
+      "tier": "featured",
+      "status": "private-client",
+      "domain": ["Business", "Digital Receipts", "Invoice Management"],
+      "ownership": "full-build",
+      "platforms": ["iOS", "Android"],
+      "caseStudy": true,
+      "summary": "A business-focused mobile product for organizing digital receipts, invoices and warranties with multilingual experiences, themes, notifications and structured document workflows.",
+      "proofPoints": [
+        "Business workflow depth",
+        "Light/dark UI system",
+        "Localization-ready product",
+        "Document and warranty management"
+      ],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/Eisal",
+      "assetCount": 29,
+      "recommendedAssets": [
+        "source-assets/MyWorks/Eisal/Eisal App - Mockup/1.png",
+        "source-assets/MyWorks/Eisal/Eisal App - Mockup/2.png",
+        "source-assets/MyWorks/Eisal/Eisal App - Mockup/3.png",
+        "source-assets/MyWorks/Eisal/Home_DarkMode.png",
+        "source-assets/MyWorks/Eisal/Invoices_DarkMode.png"
+      ]
+    },
+    {
+      "name": "Gader – جدير",
+      "slug": "gader",
+      "tier": "featured",
+      "status": "live",
+      "domain": ["Consultation", "Communication", "Social Impact"],
+      "ownership": "full-build",
+      "platforms": ["Android"],
+      "caseStudy": true,
+      "summary": "A consultation platform connecting beneficiaries with volunteer experts, supporting expert selection, consultation requests, messaging, voice calls and video calls.",
+      "proofPoints": [
+        "Full-build ownership confirmed by Wasem",
+        "Real-time communication workflows",
+        "Voice/video consultation",
+        "Social-impact product"
+      ],
+      "links": {
+        "googlePlay": "https://play.google.com/store/apps/details?id=sa.com.gader"
+      },
+      "assetSource": "Store listing",
+      "assetCount": 0,
+      "recommendedAssets": ["Use official Google Play screenshots and icon."]
+    },
+    {
+      "name": "Aid for Palestine",
+      "slug": "aid-for-palestine",
+      "tier": "case-study",
+      "status": "private-client",
+      "domain": ["Humanitarian Aid", "Fundraising", "Beneficiary Management", "Payments"],
+      "ownership": "full-build",
+      "platforms": ["iOS", "Android"],
+      "caseStudy": true,
+      "deepCaseStudyPositioning": true,
+      "homepageFeatured": false,
+      "visibility": "demo-approved",
+      "clientPrivacy": "private-client-demo",
+      "summary": "A humanitarian aid platform supporting beneficiary stories, donor journeys, donations, identity verification, wallet and withdrawal flows, bank-account management, QR-based fundraising, messaging, updates, and technical support.",
+      "technologies": ["Flutter", "REST API", "Real-Time Chat", "Fundraising"],
+      "proofPoints": [
+        "Humanitarian and social-impact domain",
+        "Donation and withdrawal workflows",
+        "Identity verification and beneficiary onboarding",
+        "Wallet, bank-account and QR fundraising experiences",
+        "Messaging, story updates and technical support flows"
+      ],
+      "links": {},
+      "assetSource": "source-assets/AFP",
+      "assetCount": 21,
+      "recommendedAssets": [
+        "Curate intentionally from all 21 supplied demo/test screenshots; create renamed and optimized production derivatives under public/projects/aid-for-palestine/."
+      ],
+      "privacy": {
+        "publication": "curated-demo-derivatives",
+        "audit": "planning/afp-privacy-audit.md",
+        "demoDataConfirmed": true,
+        "rules": [
+          "Treat supplied screenshot content as intentional portfolio demo/test data.",
+          "Keep source-assets immutable and publish only selected, renamed, resized, and optimized derivatives.",
+          "Never publish genuine secrets, credentials, signing material, source archives, APK, ZIP, or PSD artifacts."
+        ]
+      }
+    },
+    {
+      "name": "Naseeb",
+      "slug": "naseeb",
+      "tier": "case-study",
+      "status": "live",
+      "domain": ["Social", "Matchmaking", "Real-time Messaging"],
+      "ownership": "full-build",
+      "platforms": ["Android"],
+      "caseStudy": true,
+      "summary": "A privacy-conscious matchmaking experience with onboarding, profile discovery, compatibility preferences, recommendations, likes/matches and direct messaging.",
+      "proofPoints": [
+        "Distinct visual identity",
+        "Real-time social flows",
+        "Profile and preference complexity",
+        "Rich local screenshot coverage"
+      ],
+      "links": {
+        "googlePlay": "https://play.google.com/store/apps/details?id=com.nasseb.app.nasseb"
+      },
+      "assetSource": "source-assets/MyWorks/Naseeb",
+      "assetCount": 31,
+      "recommendedAssets": [
+        "source-assets/MyWorks/Naseeb/Naseeb App - Mockup/1.png",
+        "source-assets/MyWorks/Naseeb/Naseeb App - Mockup/2.png",
+        "source-assets/MyWorks/Naseeb/Naseeb App - Mockup/3.png",
+        "source-assets/MyWorks/Naseeb/Screenshot_20260108_152404.png",
+        "source-assets/MyWorks/Naseeb/Screenshot_20260108_152545.png",
+        "source-assets/MyWorks/Naseeb/Screenshot_20260108_152703.png"
+      ]
+    },
+    {
+      "name": "Haraj Aden",
+      "slug": "haraj-aden",
+      "tier": "case-study",
+      "status": "private-client",
+      "domain": ["Marketplace", "Classified Ads", "Messaging"],
+      "ownership": "full-build",
+      "platforms": ["iOS", "Android"],
+      "caseStudy": true,
+      "summary": "A classified marketplace supporting multi-role access, paid promotion plans, search/filtering, listings, buyer-seller interactions and in-app messaging.",
+      "proofPoints": [
+        "3-role product architecture",
+        "Paid promotions",
+        "Large-list performance",
+        "Stakeholder-led iterations"
+      ],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/Haraj Aden",
+      "assetCount": 7,
+      "recommendedAssets": [
+        "source-assets/MyWorks/Haraj Aden/Haraj Aden - Mockup.png",
+        "source-assets/MyWorks/Haraj Aden/1.png",
+        "source-assets/MyWorks/Haraj Aden/2.png",
+        "source-assets/MyWorks/Haraj Aden/3.png",
+        "source-assets/MyWorks/Haraj Aden/4.png"
+      ]
+    },
+    {
+      "name": "Sezon Store",
+      "slug": "sezon-store",
+      "tier": "case-study",
+      "status": "private-client",
+      "domain": ["E-commerce", "Multi-vendor", "Payments"],
+      "ownership": "full-build",
+      "ownershipEvidence": {
+        "confirmation": "Wasem confirmed Sezon Store was built completely by him as an end-to-end individual mobile application build.",
+        "cvEvidence": "The CV records Sezon Store work during the Logicteca period.",
+        "publicationRule": "Full-build wording is approved; describe only responsibilities supported by the project material."
+      },
+      "platforms": ["Android"],
+      "caseStudy": true,
+      "summary": "A multi-vendor commerce application covering catalog discovery, product creation, checkout, shipping and multiple payment methods.",
+      "proofPoints": [
+        "End-to-end individual mobile application build",
+        "Multi-vendor workflows",
+        "Stripe/payment experience",
+        "Catalog and checkout flows",
+        "Firebase-backed product"
+      ],
+      "links": {
+        "github": "https://github.com/WasemAljundy/Sezon-App"
+      },
+      "assetSource": "source-assets/MyWorks/Sezon Store",
+      "assetCount": 18,
+      "recommendedAssets": [
+        "source-assets/MyWorks/Sezon Store/Sezon Store - Mockup/1.png",
+        "source-assets/MyWorks/Sezon Store/Sezon Store - Mockup/2.png",
+        "source-assets/MyWorks/Sezon Store/1.png",
+        "source-assets/MyWorks/Sezon Store/2.png",
+        "source-assets/MyWorks/Sezon Store/3.png"
+      ]
+    },
+    {
+      "name": "Talabati – طلباتي",
+      "slug": "talabati",
+      "tier": "selected",
+      "status": "live",
+      "domain": ["B2B Commerce", "Wholesale", "Retail"],
+      "ownership": "full-build",
+      "platforms": ["iOS"],
+      "caseStudy": false,
+      "summary": "A B2B commerce application connecting wholesalers with retail stores so businesses can browse products, purchase inventory and access supplier offers and discounts.",
+      "proofPoints": [
+        "Full-build ownership confirmed by Wasem",
+        "B2B commerce domain",
+        "Production release"
+      ],
+      "links": {
+        "appStore": "https://apps.apple.com/ar/app/%D8%B7%D9%84%D8%A8%D8%A7%D8%AA%D9%8A-talabati/id1623085625"
+      },
+      "assetSource": "Store listing",
+      "assetCount": 0,
+      "recommendedAssets": ["Use official App Store screenshots and icon."]
+    },
+    {
+      "name": "Famous Steam",
+      "slug": "famous-steam",
+      "tier": "selected",
+      "status": "live",
+      "domain": ["Services", "Booking", "Payments"],
+      "ownership": "full-build",
+      "platforms": ["iOS"],
+      "caseStudy": false,
+      "summary": "An on-demand steam car-wash and home-cleaning app with location tagging, vehicle management, scheduling, booking updates, payments and transaction history.",
+      "proofPoints": [
+        "Full-build ownership confirmed by Wasem",
+        "Location-based service booking",
+        "Payments and booking lifecycle",
+        "Production release"
+      ],
+      "links": {
+        "appStore": "https://apps.apple.com/sa/app/famous-steam/id6443940216?l=ar"
+      },
+      "assetSource": "Store listing",
+      "assetCount": 0,
+      "recommendedAssets": ["Use official App Store screenshots and icon."]
+    },
+    {
+      "name": "Pureness – بيورنس",
+      "slug": "pureness",
+      "tier": "selected",
+      "status": "live",
+      "domain": ["Car Care", "On-demand Services"],
+      "ownership": "full-build",
+      "platforms": ["iOS"],
+      "caseStudy": false,
+      "summary": "A production car-care service application focused on booking vehicle washing services and managing the customer service journey.",
+      "proofPoints": [
+        "Full-build ownership confirmed by Wasem",
+        "Production App Store release",
+        "Service-booking domain"
+      ],
+      "links": {
+        "appStore": "https://apps.apple.com/sa/app/%D8%A8%D9%8A%D9%88%D8%B1%D9%86%D8%B3-%D9%84%D8%BA%D8%B3%D9%8A%D9%84-%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA-pureness/id6751246354"
+      },
+      "assetSource": "Store listing",
+      "assetCount": 0,
+      "recommendedAssets": [
+        "Re-verify current App Store listing before implementation; use official screenshots only if current listing resolves."
+      ]
+    },
+    {
+      "name": "Yalla Call",
+      "slug": "yalla-call",
+      "tier": "selected",
+      "status": "private-client",
+      "domain": ["Telecom", "Recharge", "Digital Services"],
+      "ownership": "full-build",
+      "platforms": ["iOS", "Android"],
+      "caseStudy": false,
+      "summary": "A telecom recharge and digital-services mobile product designed around multiple providers, service categories and payment integrations.",
+      "proofPoints": ["Telecom domain", "Payment/service integrations", "Large local asset set"],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/Yalla Call",
+      "assetCount": 21,
+      "recommendedAssets": [
+        "source-assets/MyWorks/Yalla Call/Yalla Call Preview.png",
+        "source-assets/MyWorks/Yalla Call/1.png",
+        "source-assets/MyWorks/Yalla Call/2.png",
+        "source-assets/MyWorks/Yalla Call/3.png"
+      ]
+    },
+    {
+      "name": "Otlob Ecosystem – مشروع اطلب",
+      "slug": "otlob-ecosystem",
+      "tier": "selected",
+      "status": "private-client",
+      "domain": ["Food Delivery", "Multi-app Ecosystem", "Admin Dashboard"],
+      "ownership": "full-build",
+      "platforms": ["Customer App", "Driver App", "Web Admin"],
+      "caseStudy": true,
+      "summary": "A multi-surface delivery ecosystem spanning customer ordering, driver fulfillment and administrative/restaurant operations.",
+      "proofPoints": [
+        "Customer + Driver + Admin surfaces",
+        "Order lifecycle",
+        "Payments and delivery operations",
+        "Strong system-level case-study potential"
+      ],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/مشروع اطلب",
+      "assetCount": 52,
+      "recommendedAssets": [
+        "source-assets/MyWorks/مشروع اطلب/تطبيق اطلب المستخدم/Home.png",
+        "source-assets/MyWorks/مشروع اطلب/تطبيق اطلب المستخدم/Checkout.png",
+        "source-assets/MyWorks/مشروع اطلب/تطبيق اطلب السائق/Home.png",
+        "source-assets/MyWorks/مشروع اطلب/تطبيق اطلب السائق/Order-Details.png",
+        "source-assets/MyWorks/مشروع اطلب/لوحة التحكم/الرئيسية-لمدير-النظام.png"
+      ]
+    },
+    {
+      "name": "Service Mate",
+      "slug": "service-mate",
+      "tier": "archive",
+      "status": "portfolio-only",
+      "domain": ["Services", "Reservations"],
+      "ownership": "full-build",
+      "platforms": ["Android"],
+      "caseStudy": false,
+      "summary": "A service discovery and appointment-booking app with categories, service details, schedules, favorites, orders and support content.",
+      "proofPoints": ["Complete booking flow", "Clear local visual assets"],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/Service Mate",
+      "assetCount": 22,
+      "recommendedAssets": [
+        "source-assets/MyWorks/Service Mate/Service Mate - Mockup/1.png",
+        "source-assets/MyWorks/Service Mate/Service Mate - Mockup/2.png",
+        "source-assets/MyWorks/Service Mate/Service Mate - Mockup/3.png"
+      ]
+    },
+    {
+      "name": "Betweener",
+      "slug": "betweener",
+      "tier": "archive",
+      "status": "portfolio-only",
+      "domain": ["Mobile App"],
+      "ownership": "full-build",
+      "platforms": ["Mobile"],
+      "caseStudy": false,
+      "summary": "Supporting portfolio project retained for the extended work archive.",
+      "proofPoints": [],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/Betweener",
+      "assetCount": 18,
+      "recommendedAssets": [
+        "source-assets/MyWorks/Betweener/Betweener - Mockup/1.png",
+        "source-assets/MyWorks/Betweener/Betweener - Mockup/2.png"
+      ]
+    },
+    {
+      "name": "Chat Pulse",
+      "slug": "chat-pulse",
+      "tier": "archive",
+      "status": "portfolio-only",
+      "domain": ["Chat", "Communication"],
+      "ownership": "full-build",
+      "platforms": ["Mobile"],
+      "caseStudy": false,
+      "summary": "Supporting communication-focused project retained for the extended work archive.",
+      "proofPoints": [],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/Chat Pulse",
+      "assetCount": 13,
+      "recommendedAssets": [
+        "source-assets/MyWorks/Chat Pulse/Chat Pulse - Mockup/1.png",
+        "source-assets/MyWorks/Chat Pulse/Chat Pulse - Mockup/2.png"
+      ]
+    },
+    {
+      "name": "Learn Sphere",
+      "slug": "learn-sphere",
+      "tier": "archive",
+      "status": "portfolio-only",
+      "domain": ["Education"],
+      "ownership": "full-build",
+      "platforms": ["Mobile"],
+      "caseStudy": false,
+      "summary": "Supporting education-focused project retained for the extended work archive.",
+      "proofPoints": [],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/Learn Sphere",
+      "assetCount": 9,
+      "recommendedAssets": [
+        "source-assets/MyWorks/Learn Sphere/Learn Sphere - Mockup/1.png",
+        "source-assets/MyWorks/Learn Sphere/Learn Sphere - Mockup/2.png"
+      ]
+    },
+    {
+      "name": "Watchly",
+      "slug": "watchly",
+      "tier": "archive",
+      "status": "portfolio-only",
+      "domain": ["Mobile App"],
+      "ownership": "full-build",
+      "platforms": ["Mobile"],
+      "caseStudy": false,
+      "summary": "Supporting mobile project retained for the extended work archive.",
+      "proofPoints": [],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/Watchly",
+      "assetCount": 10,
+      "recommendedAssets": ["source-assets/MyWorks/Watchly/Watchly - Mockup.png"]
+    },
+    {
+      "name": "Mysterious Questions",
+      "slug": "mysterious-questions",
+      "tier": "archive",
+      "status": "portfolio-only",
+      "domain": ["Game", "Social"],
+      "ownership": "full-build",
+      "platforms": ["Mobile"],
+      "caseStudy": false,
+      "summary": "Supporting interactive mobile project retained for the extended work archive.",
+      "proofPoints": [],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/Mysterious Questions",
+      "assetCount": 10,
+      "recommendedAssets": [
+        "source-assets/MyWorks/Mysterious Questions/Mysterious Question - Mockup.png"
+      ]
+    },
+    {
+      "name": "Secret Number",
+      "slug": "secret-number",
+      "tier": "archive",
+      "status": "portfolio-only",
+      "domain": ["Game"],
+      "ownership": "full-build",
+      "platforms": ["Mobile"],
+      "caseStudy": false,
+      "summary": "Supporting game-style mobile project retained for the extended work archive.",
+      "proofPoints": [],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/Secret Number",
+      "assetCount": 10,
+      "recommendedAssets": ["source-assets/MyWorks/Secret Number/Secret Number - Mockup.png"]
+    },
+    {
+      "name": "Waslak – واصلك",
+      "slug": "waslak",
+      "tier": "archive",
+      "status": "portfolio-only",
+      "domain": ["Delivery", "Location", "Orders"],
+      "ownership": "full-build",
+      "platforms": ["Mobile"],
+      "caseStudy": false,
+      "summary": "A delivery-oriented mobile flow with location selection, order creation, tracking, chat, balance, ratings and reporting.",
+      "proofPoints": ["Location and order lifecycle", "Tracking and chat flows"],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/تطبيق واصلك",
+      "assetCount": 16,
+      "recommendedAssets": [
+        "source-assets/MyWorks/تطبيق واصلك/Home-2.png",
+        "source-assets/MyWorks/تطبيق واصلك/Create-order.png",
+        "source-assets/MyWorks/تطبيق واصلك/Trake-my-order.png",
+        "source-assets/MyWorks/تطبيق واصلك/Chat.png"
+      ]
+    },
+    {
+      "name": "Sanayie – صنايعي",
+      "slug": "sanayie",
+      "tier": "archive",
+      "status": "portfolio-only",
+      "domain": ["Services", "Marketplace"],
+      "ownership": "full-build",
+      "platforms": ["Mobile"],
+      "caseStudy": false,
+      "summary": "Supporting service-marketplace mobile project retained for the extended work archive.",
+      "proofPoints": [],
+      "links": {},
+      "assetSource": "source-assets/MyWorks/تطبيق صنايعي",
+      "assetCount": 17,
+      "recommendedAssets": [
+        "source-assets/MyWorks/تطبيق صنايعي/1.png",
+        "source-assets/MyWorks/تطبيق صنايعي/2.jpeg",
+        "source-assets/MyWorks/تطبيق صنايعي/3.jpeg"
+      ]
+    }
+  ]
+}

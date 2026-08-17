@@ -1,0 +1,31 @@
+# dependencies
+/node_modules
+/.npm-cache
+
+# Next.js output
+/.next
+/out
+
+# test output
+/playwright-report
+/.playwright-browsers
+/test-results
+/coverage
+
+# local configuration
+.env*
+!.env.example
+
+# platform and editor files
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+
+# immutable/private source material and optional staging
+/source-assets/
+/normalized-assets/
+/tmp/
+
+# logs
+*.log
+npm-debug.log*

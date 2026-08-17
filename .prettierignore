@@ -1,0 +1,11 @@
+.next/
+.agents/
+.npm-cache/
+node_modules/
+playwright-report/
+test-results/
+source-assets/
+normalized-assets/
+public/**/*.pdf
+public/**/*.webp
+package-lock.json
