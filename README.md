@@ -2,6 +2,8 @@
 
 Production-oriented foundation for Wasem Aljundy's engineering portfolio. The site uses Next.js App Router, strict TypeScript, Tailwind CSS, server-rendered content, and a validated canonical project manifest.
 
+Production: [wasem-portfolio.vercel.app](https://wasem-portfolio.vercel.app)
+
 ## Requirements
 
 - Node.js 24.19.0 (pinned in `.node-version` and `.nvmrc`)
@@ -22,8 +24,9 @@ Vercel detects Next.js and `package-lock.json` without custom build settings. Th
 
 ```bash
 vercel link
-vercel deploy
-vercel deploy --prod
+vercel deploy --target=preview
+# Validate the immutable preview URL, then:
+vercel promote <validated-preview-url>
 ```
 
 `NEXT_PUBLIC_SITE_URL` is the only optional project variable. When it is blank on Vercel, canonical URLs, sitemap entries, structured-data URLs, and social images use Vercel's stable `VERCEL_PROJECT_PRODUCTION_URL`. Preview deployments remain non-indexable.
@@ -44,7 +47,7 @@ npm run test:browser
 npm run measure:performance
 ```
 
-`npm run verify` runs the non-browser quality sequence. Set `PLAYWRIGHT_BASE_URL` and `PERFORMANCE_ORIGIN` to run browser and performance checks against a deployment.
+`npm run verify` runs the non-browser quality sequence. Set `PLAYWRIGHT_BASE_URL` and `PERFORMANCE_ORIGIN` to run browser and performance checks against a deployment. Protected previews also accept `VERCEL_AUTOMATION_BYPASS_SECRET` from the environment; never commit its value.
 
 ## Architecture
 
@@ -62,7 +65,7 @@ Server Components are the default. The homepage and Jood case study add no Clien
 
 ## Asset policy
 
-`source-assets/` is immutable. `normalized-assets/` is optional staging. Production pages use only intentionally selected, renamed, resized, and optimized derivatives under `public/`. Supplied screenshots contain demo/test data and do not require automatic PII redaction; genuine secrets and development archives remain prohibited. See `docs/asset-pipeline.md`.
+`source-assets/` is immutable. `normalized-assets/` is optional staging. Production pages use only intentionally selected, renamed, resized, and optimized derivatives under `public/`. `.vercelignore` prevents canonical originals and local tooling output from entering CLI deployment uploads. Supplied screenshots contain demo/test data and do not require automatic PII redaction; genuine secrets and development archives remain prohibited. See `docs/asset-pipeline.md`.
 
 ## Content updates
 
@@ -75,4 +78,4 @@ Use `docs/launch-checklist.md` for release and domain verification.
 
 ## Milestone boundary
 
-This repository contains the approved homepage, six featured product chapters, the flagship Jood case study, and Milestone 3 launch preparation. Additional case studies, analytics, CMS work, and speculative features remain outside the current scope.
+This repository contains the approved homepage, six featured product chapters, the flagship Jood case study, and the completed Milestone 3 production launch. Additional case studies, analytics, CMS work, and speculative features remain outside the current scope.
