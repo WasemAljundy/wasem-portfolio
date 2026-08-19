@@ -2,6 +2,7 @@ import { chromium } from "@playwright/test";
 
 const origin = process.env.PERFORMANCE_ORIGIN ?? "http://127.0.0.1:3000";
 const samples = Number.parseInt(process.env.PERFORMANCE_SAMPLES ?? "3", 10);
+const protectionBypass = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
 const viewports = [
   { label: "mobile", width: 375, height: 812 },
   { label: "desktop", width: 1440, height: 900 },
@@ -18,7 +19,17 @@ try {
   for (const viewport of viewports) {
     const results = [];
     for (let sample = 0; sample < samples; sample += 1) {
-      const context = await browser.newContext({ viewport });
+      const context = await browser.newContext({
+        viewport,
+        ...(protectionBypass
+          ? {
+              extraHTTPHeaders: {
+                "x-vercel-protection-bypass": protectionBypass,
+                "x-vercel-set-bypass-cookie": "true",
+              },
+            }
+          : {}),
+      });
       const page = await context.newPage();
       await page.addInitScript(() => {
         window.__portfolioMetrics = { cls: 0, lcp: 0 };

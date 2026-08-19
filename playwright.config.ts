@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const deployedBaseUrl = process.env.PLAYWRIGHT_BASE_URL;
+const protectionBypass = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
 
 export default defineConfig({
   testDir: "./tests/browser",
@@ -10,6 +11,12 @@ export default defineConfig({
   reporter: process.env.CI ? "github" : "list",
   use: {
     baseURL: deployedBaseUrl ?? "http://127.0.0.1:3000",
+    extraHTTPHeaders: protectionBypass
+      ? {
+          "x-vercel-protection-bypass": protectionBypass,
+          "x-vercel-set-bypass-cookie": "true",
+        }
+      : undefined,
     trace: "on-first-retry",
   },
   projects: [
