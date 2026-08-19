@@ -1,9 +1,11 @@
 # Wasem Portfolio Project Manifest v1.1
 
 ## Positioning
+
 Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product ownership from architecture through release.
 
 ## CV-verified owner facts
+
 - CV title: Senior Mobile Engineer | Flutter & Android
 - Location: Gaza, Palestine
 - Experience claims: 4+ years in mobile engineering; 20+ production applications; 25+ freelance Flutter/native Android projects
@@ -16,6 +18,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Source: `Wasem Aljundy CV.pdf`, visually inspected across all three pages on 2026-08-16
 
 ## Featured order
+
 1. Jood
 2. Eureeca
 3. Taseese – تأسيس
@@ -26,11 +29,13 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 ## Project inventory
 
 ### Jood
+
 - Tier: `featured`
 - Status: `live`
 - Ownership: `full-build`
 - Domains: Food & Drink, Offers, Booking
 - Platforms: iOS, Android
+- Technologies: Flutter, Dart, Firebase, REST API
 - Case study: Yes
 - Summary: A production mobile platform for discovering service and food offers through structured browsing, offer details, ordering/booking flows, payments, QR interactions, and account management.
 - Asset source: `source-assets/MyWorks/Jood App Images` (10 source files; all visual candidates)
@@ -44,8 +49,10 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/Jood App Images/appstore_marketing_payment_1242x2688.png`
   - `source-assets/MyWorks/Jood App Images/appstore_marketing_orders_1242x2688.png`
   - `source-assets/MyWorks/Jood App Images/appstore_marketing_qr_1242x2688.png`
+- Production derivatives: `public/projects/jood/browse-offers.webp`, `public/projects/jood/secure-payment.webp`, `public/projects/jood/offer-details.webp`, `public/projects/jood/booking-time.webp`, `public/projects/jood/order-history.webp`, `public/projects/jood/booking-qr.webp`, `public/projects/jood/smart-sorting.webp`
 
 ### Eureeca
+
 - Tier: `featured`
 - Status: `live`
 - Ownership: `team-build` — Wasem confirmed this was a collaborative production project. Present his meaningful engineering contribution without implying sole development or a complete independent build.
@@ -58,8 +65,10 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - googlePlay: https://play.google.com/store/apps/details?id=com.eureeca.app&hl=ar
 - Recommended visual assets:
   - `Use official store screenshots and icon; preserve original aspect ratios.`
+- Production derivatives: `public/projects/eureeca/private-deals.webp`, `public/projects/eureeca/regulated-onboarding.webp`
 
 ### Taseese – تأسيس
+
 - Tier: `featured`
 - Status: `live`
 - Ownership: `full-build`
@@ -72,8 +81,10 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - appStore: https://apps.apple.com/us/app/taseese-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3/id6477544252
 - Recommended visual assets:
   - `Use official App Store screenshots and icon.`
+- Production derivatives: `public/projects/taseese/subject-hierarchy.webp`, `public/projects/taseese/assessment-progress.webp`
 
 ### Aura Fit
+
 - Tier: `featured`
 - Status: `private-client`
 - Ownership: `full-build`
@@ -90,8 +101,10 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/AuraFit/AuraFit App - Mockup/4.png`
   - `source-assets/MyWorks/AuraFit/AuraFit App - Mockup/5.png`
   - `source-assets/MyWorks/AuraFit/AuraFit.png`
+- Production derivatives: `public/projects/aura-fit/daily-dashboard.webp`, `public/projects/aura-fit/food-analysis.webp`, `public/projects/aura-fit/workout-library.webp`
 
 ### Eisal
+
 - Tier: `featured`
 - Status: `private-client`
 - Ownership: `full-build`
@@ -107,8 +120,10 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/Eisal/Eisal App - Mockup/3.png`
   - `source-assets/MyWorks/Eisal/Home_DarkMode.png`
   - `source-assets/MyWorks/Eisal/Invoices_DarkMode.png`
+- Production derivatives: `public/projects/eisal/invoice-workflow.webp`, `public/projects/eisal/dark-mode-insights.webp`
 
 ### Gader – جدير
+
 - Tier: `featured`
 - Status: `live`
 - Ownership: `full-build`
@@ -121,8 +136,10 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - googlePlay: https://play.google.com/store/apps/details?id=sa.com.gader
 - Recommended visual assets:
   - `Use official Google Play screenshots and icon.`
+- Production derivatives: `public/projects/gader/consultation-categories.webp`, `public/projects/gader/expert-profile.webp`
 
 ### Aid for Palestine (AFP)
+
 - Tier: `case-study`
 - Status: `private-client`
 - Ownership: `full-build`
@@ -136,6 +153,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Notes: Keep as a deep case study and strong social-impact proof point below the six-project featured set. Supplied screenshot content is approved as demo/test data and may participate normally in curation. `source-assets/AFP/` remains immutable; genuine secrets and development archives remain prohibited from `public/`.
 
 ### Naseeb
+
 - Tier: `case-study`
 - Status: `live`
 - Ownership: `full-build`
@@ -155,6 +173,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/Naseeb/Screenshot_20260108_152703.png`
 
 ### Haraj Aden
+
 - Tier: `case-study`
 - Status: `private-client`
 - Ownership: `full-build`
@@ -172,6 +191,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/Haraj Aden/4.png`
 
 ### Sezon Store
+
 - Tier: `case-study`
 - Status: `private-client`
 - Ownership: `full-build` — Wasem confirmed he built the complete mobile application end to end. Architecture, implementation, integrations, testing, and delivery may be described where supported by the project material.
@@ -190,6 +210,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/Sezon Store/3.png`
 
 ### Talabati – طلباتي
+
 - Tier: `selected`
 - Status: `live`
 - Ownership: `full-build`
@@ -204,6 +225,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `Use official App Store screenshots and icon.`
 
 ### Famous Steam
+
 - Tier: `selected`
 - Status: `live`
 - Ownership: `full-build`
@@ -218,6 +240,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `Use official App Store screenshots and icon.`
 
 ### Pureness – بيورنس
+
 - Tier: `selected`
 - Status: `live`
 - Ownership: `full-build`
@@ -232,6 +255,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `Re-verify current App Store listing before implementation; use official screenshots only if current listing resolves.`
 
 ### Yalla Call
+
 - Tier: `selected`
 - Status: `private-client`
 - Ownership: `full-build`
@@ -248,6 +272,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/Yalla Call/3.png`
 
 ### Otlob Ecosystem – مشروع اطلب
+
 - Tier: `selected`
 - Status: `private-client`
 - Ownership: `full-build`
@@ -265,6 +290,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/مشروع اطلب/لوحة التحكم/الرئيسية-لمدير-النظام.png`
 
 ### Service Mate
+
 - Tier: `archive`
 - Status: `portfolio-only`
 - Ownership: `full-build`
@@ -280,6 +306,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/Service Mate/Service Mate - Mockup/3.png`
 
 ### Betweener
+
 - Tier: `archive`
 - Status: `portfolio-only`
 - Ownership: `full-build`
@@ -288,12 +315,13 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Case study: No
 - Summary: Supporting portfolio project retained for the extended work archive.
 - Asset source: `source-assets/MyWorks/Betweener` (18 source files; all visual candidates)
-- Proof points: 
+- Proof points:
 - Recommended visual assets:
   - `source-assets/MyWorks/Betweener/Betweener - Mockup/1.png`
   - `source-assets/MyWorks/Betweener/Betweener - Mockup/2.png`
 
 ### Chat Pulse
+
 - Tier: `archive`
 - Status: `portfolio-only`
 - Ownership: `full-build`
@@ -302,12 +330,13 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Case study: No
 - Summary: Supporting communication-focused project retained for the extended work archive.
 - Asset source: `source-assets/MyWorks/Chat Pulse` (13 source files; all visual candidates)
-- Proof points: 
+- Proof points:
 - Recommended visual assets:
   - `source-assets/MyWorks/Chat Pulse/Chat Pulse - Mockup/1.png`
   - `source-assets/MyWorks/Chat Pulse/Chat Pulse - Mockup/2.png`
 
 ### Learn Sphere
+
 - Tier: `archive`
 - Status: `portfolio-only`
 - Ownership: `full-build`
@@ -316,12 +345,13 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Case study: No
 - Summary: Supporting education-focused project retained for the extended work archive.
 - Asset source: `source-assets/MyWorks/Learn Sphere` (9 source files; all visual candidates)
-- Proof points: 
+- Proof points:
 - Recommended visual assets:
   - `source-assets/MyWorks/Learn Sphere/Learn Sphere - Mockup/1.png`
   - `source-assets/MyWorks/Learn Sphere/Learn Sphere - Mockup/2.png`
 
 ### Watchly
+
 - Tier: `archive`
 - Status: `portfolio-only`
 - Ownership: `full-build`
@@ -330,11 +360,12 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Case study: No
 - Summary: Supporting mobile project retained for the extended work archive.
 - Asset source: `source-assets/MyWorks/Watchly` (10 source files; all visual candidates)
-- Proof points: 
+- Proof points:
 - Recommended visual assets:
   - `source-assets/MyWorks/Watchly/Watchly - Mockup.png`
 
 ### Mysterious Questions
+
 - Tier: `archive`
 - Status: `portfolio-only`
 - Ownership: `full-build`
@@ -343,11 +374,12 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Case study: No
 - Summary: Supporting interactive mobile project retained for the extended work archive.
 - Asset source: `source-assets/MyWorks/Mysterious Questions` (10 source files; all visual candidates)
-- Proof points: 
+- Proof points:
 - Recommended visual assets:
   - `source-assets/MyWorks/Mysterious Questions/Mysterious Question - Mockup.png`
 
 ### Secret Number
+
 - Tier: `archive`
 - Status: `portfolio-only`
 - Ownership: `full-build`
@@ -356,11 +388,12 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Case study: No
 - Summary: Supporting game-style mobile project retained for the extended work archive.
 - Asset source: `source-assets/MyWorks/Secret Number` (10 source files; all visual candidates)
-- Proof points: 
+- Proof points:
 - Recommended visual assets:
   - `source-assets/MyWorks/Secret Number/Secret Number - Mockup.png`
 
 ### Waslak – واصلك
+
 - Tier: `archive`
 - Status: `portfolio-only`
 - Ownership: `full-build`
@@ -377,6 +410,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/تطبيق واصلك/Chat.png`
 
 ### Sanayie – صنايعي
+
 - Tier: `archive`
 - Status: `portfolio-only`
 - Ownership: `full-build`
@@ -385,7 +419,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Case study: No
 - Summary: Supporting service-marketplace mobile project retained for the extended work archive.
 - Asset source: `source-assets/MyWorks/تطبيق صنايعي` (17 source files; all visual candidates)
-- Proof points: 
+- Proof points:
 - Recommended visual assets:
   - `source-assets/MyWorks/تطبيق صنايعي/1.png`
   - `source-assets/MyWorks/تطبيق صنايعي/2.jpeg`

@@ -1,11 +1,21 @@
 import { createElement } from "react";
 import { ImageResponse } from "next/og";
 
+import { getProject } from "@/content/projects";
 import { siteConfig } from "@/config/site";
 
 const size = { width: 1200, height: 630 };
 
-export function GET() {
+export function GET(request: Request) {
+  const projectSlug = new URL(request.url).searchParams.get("project");
+  const candidate = projectSlug ? getProject(projectSlug) : undefined;
+  const project =
+    candidate?.caseStudyEligible && candidate.visibility !== "withheld" ? candidate : undefined;
+  const title = project?.title ?? siteConfig.name;
+  const subtitle = project
+    ? `${siteConfig.name} · Flutter engineering case study`
+    : siteConfig.role;
+
   return new ImageResponse(
     createElement(
       "div",
@@ -25,7 +35,7 @@ export function GET() {
       createElement(
         "div",
         { style: { color: "#0b57d0", fontSize: 28, fontWeight: 700 } },
-        "MOBILE ENGINEERING",
+        project ? "PRODUCT PROOF · ENGINEERED" : "MOBILE ENGINEERING",
       ),
       createElement(
         "div",
@@ -33,9 +43,9 @@ export function GET() {
         createElement(
           "div",
           { style: { fontSize: 86, fontWeight: 700, letterSpacing: "-4px" } },
-          siteConfig.name,
+          title,
         ),
-        createElement("div", { style: { color: "#56616d", fontSize: 38 } }, siteConfig.role),
+        createElement("div", { style: { color: "#56616d", fontSize: 38 } }, subtitle),
       ),
     ),
     size,

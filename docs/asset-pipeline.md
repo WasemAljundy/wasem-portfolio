@@ -6,7 +6,7 @@ The immutable originals in `source-assets/` are never referenced by production p
 
 `source-assets/` → intentional selection → optional normalization/crop → resize for rendered use → WebP/AVIF where appropriate → semantic filename → `public/projects/<slug>/`
 
-The portrait and canonical CV are handled by `npm run assets:build`. Future project entries should be added to that explicit allow-list or an equivalent reviewed project-specific builder. The process records output geometry and avoids unnecessary duplicate exports.
+The portrait, canonical CV, and homepage project media are handled by `npm run assets:build`. Project entries belong to its explicit allow-list or an equivalent reviewed project-specific builder. Official-store downloads are optional build inputs: when the staging files are unavailable, the builder verifies the already reviewed production derivatives rather than reaching over the network. The process records output geometry, byte size, provenance intent, and avoids unnecessary duplicate exports.
 
 ## Rules
 
@@ -19,4 +19,4 @@ The portrait and canonical CV are handled by `npm run assets:build`. Future proj
 - Never publish `.apk`, `.ipa`, `.zip`, `.rar`, `.psd`, source archives, credentials, private keys, signing material, `.env` files, or unexpected genuine secrets.
 - Run `npm run audit:public` before release.
 
-Complete screenshot selection and project galleries remain Milestone 2+ work.
+Milestone 2B curates the homepage set only. Broader case-study galleries remain later work and require the same explicit review.

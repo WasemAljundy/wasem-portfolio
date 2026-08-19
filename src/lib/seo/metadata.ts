@@ -6,11 +6,17 @@ type MetadataInput = {
   title?: string;
   description: string;
   pathname: string;
+  socialImagePath?: string;
 };
 
-export function createMetadata({ title, description, pathname }: MetadataInput): Metadata {
+export function createMetadata({
+  title,
+  description,
+  pathname,
+  socialImagePath = "/api/og",
+}: MetadataInput): Metadata {
   const canonical = absoluteUrl(pathname);
-  const socialImage = absoluteUrl("/api/og");
+  const socialImage = absoluteUrl(socialImagePath);
 
   return {
     ...(title ? { title } : {}),

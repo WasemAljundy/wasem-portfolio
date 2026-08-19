@@ -16,6 +16,7 @@ export function ProjectLinks({ links }: { links: readonly ProjectLink[] }) {
             target="_blank"
           >
             <span>{link.label}</span>
+            <span className="sr-only"> (opens in a new tab)</span>
             <Icon name={link.type === "github" ? "github" : "external"} />
           </a>
         </li>

@@ -41,6 +41,7 @@
       "domain": ["Food & Drink", "Offers", "Booking"],
       "ownership": "full-build",
       "platforms": ["iOS", "Android"],
+      "technologies": ["Flutter", "Dart", "Firebase", "REST API"],
       "caseStudy": true,
       "summary": "A production mobile platform for discovering service and food offers through structured browsing, offer details, ordering/booking flows, payments, QR interactions, and account management.",
       "proofPoints": [
@@ -62,6 +63,15 @@
         "source-assets/MyWorks/Jood App Images/appstore_marketing_payment_1242x2688.png",
         "source-assets/MyWorks/Jood App Images/appstore_marketing_orders_1242x2688.png",
         "source-assets/MyWorks/Jood App Images/appstore_marketing_qr_1242x2688.png"
+      ],
+      "productionAssets": [
+        "/projects/jood/browse-offers.webp",
+        "/projects/jood/secure-payment.webp",
+        "/projects/jood/offer-details.webp",
+        "/projects/jood/booking-time.webp",
+        "/projects/jood/order-history.webp",
+        "/projects/jood/booking-qr.webp",
+        "/projects/jood/smart-sorting.webp"
       ]
     },
     {
@@ -93,6 +103,10 @@
       "assetCount": 0,
       "recommendedAssets": [
         "Use official store screenshots and icon; preserve original aspect ratios."
+      ],
+      "productionAssets": [
+        "/projects/eureeca/private-deals.webp",
+        "/projects/eureeca/regulated-onboarding.webp"
       ]
     },
     {
@@ -116,7 +130,11 @@
       },
       "assetSource": "Store listing",
       "assetCount": 0,
-      "recommendedAssets": ["Use official App Store screenshots and icon."]
+      "recommendedAssets": ["Use official App Store screenshots and icon."],
+      "productionAssets": [
+        "/projects/taseese/subject-hierarchy.webp",
+        "/projects/taseese/assessment-progress.webp"
+      ]
     },
     {
       "name": "Aura Fit",
@@ -144,6 +162,11 @@
         "source-assets/MyWorks/AuraFit/AuraFit App - Mockup/4.png",
         "source-assets/MyWorks/AuraFit/AuraFit App - Mockup/5.png",
         "source-assets/MyWorks/AuraFit/AuraFit.png"
+      ],
+      "productionAssets": [
+        "/projects/aura-fit/daily-dashboard.webp",
+        "/projects/aura-fit/food-analysis.webp",
+        "/projects/aura-fit/workout-library.webp"
       ]
     },
     {
@@ -171,6 +194,10 @@
         "source-assets/MyWorks/Eisal/Eisal App - Mockup/3.png",
         "source-assets/MyWorks/Eisal/Home_DarkMode.png",
         "source-assets/MyWorks/Eisal/Invoices_DarkMode.png"
+      ],
+      "productionAssets": [
+        "/projects/eisal/invoice-workflow.webp",
+        "/projects/eisal/dark-mode-insights.webp"
       ]
     },
     {
@@ -194,7 +221,11 @@
       },
       "assetSource": "Store listing",
       "assetCount": 0,
-      "recommendedAssets": ["Use official Google Play screenshots and icon."]
+      "recommendedAssets": ["Use official Google Play screenshots and icon."],
+      "productionAssets": [
+        "/projects/gader/consultation-categories.webp",
+        "/projects/gader/expert-profile.webp"
+      ]
     },
     {
       "name": "Aid for Palestine",

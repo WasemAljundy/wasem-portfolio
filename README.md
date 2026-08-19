@@ -4,7 +4,7 @@ Production-oriented foundation for Wasem Aljundy's engineering portfolio. The si
 
 ## Requirements
 
-- Node.js 20.19 or newer (Node 24 LTS recommended)
+- Node.js 24.19.0 (pinned in `.node-version` and `.nvmrc`)
 - npm 10 or newer
 
 ## Local development
@@ -35,14 +35,14 @@ npm run test:browser
 - `src/app/`: routes, global layout, metadata routes, robots, sitemap, and social image.
 - `src/components/`: small shared UI and global layout primitives.
 - `src/features/`: project- and resume-specific compositions.
-- `src/content/`: typed content boundary; `planning/project-manifest.json` remains factual truth.
+- `src/content/`: typed project and case-study content boundaries; `planning/project-manifest.json` remains factual truth.
 - `src/config/`: centralized owner, navigation, contact, resume, and optional domain configuration.
 - `src/lib/seo/`: metadata and truthful structured-data helpers.
 - `src/styles/`: primitive → semantic → component design tokens.
 - `scripts/`: allow-listed production asset build and public secret/archive audit.
 - `tests/`: unit/content validation and Playwright browser journeys.
 
-Server Components are the default. Milestone 1 has no Client Components, CMS, analytics vendor, contact form, animation library, or global state.
+Server Components are the default. The homepage and Jood case study add no Client Components, CMS, analytics vendor, contact form, animation library, or global state. See `docs/case-study-authoring.md` for the incremental deep-story workflow.
 
 ## Asset policy
 
@@ -50,4 +50,4 @@ Server Components are the default. Milestone 1 has no Client Components, CMS, an
 
 ## Milestone boundary
 
-This repository currently contains the engineering/design-system foundation, semantic shell, accessible resume, typed work index, and factual project-summary routes. The final homepage narrative, complete case studies, full screenshot curation, and advanced motion are intentionally deferred to Milestone 2 and later.
+This repository now contains the Milestone 2B homepage narrative, six featured product chapters, and the Milestone 2C flagship Jood case study. Additional deep case studies, any optional advanced motion, and release work remain outside this milestone.

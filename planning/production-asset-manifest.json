@@ -1,10 +1,11 @@
 {
-  "version": 1,
+  "version": 2,
   "generatedBy": "scripts/build-assets.mjs",
   "policy": {
     "sourceAssetsImmutable": true,
     "normalizedAssetsOptional": true,
-    "projectOutputPattern": "public/projects/<slug>/"
+    "projectOutputPattern": "public/projects/<slug>/",
+    "privateSourceDirectoriesPublished": false
   },
   "assets": [
     {
@@ -26,6 +27,222 @@
       "format": "pdf",
       "bytes": 436656,
       "altIntent": "Canonical downloadable CV"
+    },
+    {
+      "id": "jood-browse",
+      "project": "jood",
+      "sourcePath": "source-assets/MyWorks/Jood App Images/appstore_marketing_browse_clean2_1242x2688.png",
+      "publicPath": "public/projects/jood/browse-offers.webp",
+      "role": "dominant-product-visual",
+      "width": 920,
+      "height": 1991,
+      "format": "webp",
+      "bytes": 88116,
+      "altIntent": "Jood offer discovery and restaurant browsing flow"
+    },
+    {
+      "id": "jood-payment",
+      "project": "jood",
+      "sourcePath": "source-assets/MyWorks/Jood App Images/appstore_marketing_payment_1242x2688.png",
+      "publicPath": "public/projects/jood/secure-payment.webp",
+      "role": "supporting-product-visual",
+      "width": 760,
+      "height": 1645,
+      "format": "webp",
+      "bytes": 28296,
+      "altIntent": "Jood booking payment confirmation flow"
+    },
+    {
+      "id": "jood-details",
+      "project": "jood",
+      "sourcePath": "source-assets/MyWorks/Jood App Images/appstore_marketing_details_1242x2688.png",
+      "publicPath": "public/projects/jood/offer-details.webp",
+      "role": "case-study-flow-visual",
+      "width": 820,
+      "height": 1775,
+      "format": "webp",
+      "bytes": 56040,
+      "altIntent": "Jood restaurant details and availability flow"
+    },
+    {
+      "id": "jood-datetime",
+      "project": "jood",
+      "sourcePath": "source-assets/MyWorks/Jood App Images/appstore_marketing_datetime_1242x2688.png",
+      "publicPath": "public/projects/jood/booking-time.webp",
+      "role": "case-study-flow-visual",
+      "width": 760,
+      "height": 1645,
+      "format": "webp",
+      "bytes": 27072,
+      "altIntent": "Jood booking date and time selection flow"
+    },
+    {
+      "id": "jood-orders",
+      "project": "jood",
+      "sourcePath": "source-assets/MyWorks/Jood App Images/appstore_marketing_orders_1242x2688.png",
+      "publicPath": "public/projects/jood/order-history.webp",
+      "role": "case-study-flow-visual",
+      "width": 760,
+      "height": 1645,
+      "format": "webp",
+      "bytes": 41766,
+      "altIntent": "Jood paid booking history and QR access"
+    },
+    {
+      "id": "jood-qr",
+      "project": "jood",
+      "sourcePath": "source-assets/MyWorks/Jood App Images/appstore_marketing_qr_1242x2688.png",
+      "publicPath": "public/projects/jood/booking-qr.webp",
+      "role": "case-study-gallery-visual",
+      "width": 760,
+      "height": 1645,
+      "format": "webp",
+      "bytes": 27990,
+      "altIntent": "Jood booking QR retrieval from an existing order"
+    },
+    {
+      "id": "jood-sorting",
+      "project": "jood",
+      "sourcePath": "source-assets/MyWorks/Jood App Images/appstore_marketing_sort_1242x2688.png",
+      "publicPath": "public/projects/jood/smart-sorting.webp",
+      "role": "case-study-gallery-visual",
+      "width": 760,
+      "height": 1645,
+      "format": "webp",
+      "bytes": 39698,
+      "altIntent": "Jood offer sorting by price discount and rating"
+    },
+    {
+      "id": "eureeca-deals",
+      "project": "eureeca",
+      "sourcePath": "Google Play official store screenshot",
+      "publicPath": "public/projects/eureeca/private-deals.webp",
+      "role": "dominant-product-visual",
+      "width": 900,
+      "height": 1600,
+      "format": "webp",
+      "bytes": 89542,
+      "altIntent": "Eureeca private deal and IPO discovery screen"
+    },
+    {
+      "id": "eureeca-compliance",
+      "project": "eureeca",
+      "sourcePath": "Google Play official store screenshot",
+      "publicPath": "public/projects/eureeca/regulated-onboarding.webp",
+      "role": "supporting-product-visual",
+      "width": 760,
+      "height": 1351,
+      "format": "webp",
+      "bytes": 52954,
+      "altIntent": "Eureeca regulated investor verification journey"
+    },
+    {
+      "id": "taseese-subjects",
+      "project": "taseese",
+      "sourcePath": "Apple App Store official screenshot",
+      "publicPath": "public/projects/taseese/subject-hierarchy.webp",
+      "role": "dominant-product-visual",
+      "width": 760,
+      "height": 1647,
+      "format": "webp",
+      "bytes": 44576,
+      "altIntent": "Taseese learning dashboard organized by school subjects"
+    },
+    {
+      "id": "taseese-assessments",
+      "project": "taseese",
+      "sourcePath": "Apple App Store official screenshot",
+      "publicPath": "public/projects/taseese/assessment-progress.webp",
+      "role": "supporting-product-visual",
+      "width": 680,
+      "height": 1474,
+      "format": "webp",
+      "bytes": 33762,
+      "altIntent": "Taseese learner assessment and progress reports"
+    },
+    {
+      "id": "aura-fit-dashboard",
+      "project": "aura-fit",
+      "sourcePath": "source-assets/MyWorks/AuraFit/27.png",
+      "publicPath": "public/projects/aura-fit/daily-dashboard.webp",
+      "role": "dominant-product-visual",
+      "width": 760,
+      "height": 1647,
+      "format": "webp",
+      "bytes": 28538,
+      "altIntent": "Aura Fit daily activity and nutrition dashboard"
+    },
+    {
+      "id": "aura-fit-food-analysis",
+      "project": "aura-fit",
+      "sourcePath": "source-assets/MyWorks/AuraFit/25.png",
+      "publicPath": "public/projects/aura-fit/food-analysis.webp",
+      "role": "supporting-product-visual",
+      "width": 680,
+      "height": 1473,
+      "format": "webp",
+      "bytes": 20016,
+      "altIntent": "Aura Fit food analysis with calorie and macro estimates"
+    },
+    {
+      "id": "aura-fit-workout",
+      "project": "aura-fit",
+      "sourcePath": "source-assets/MyWorks/AuraFit/18.png",
+      "publicPath": "public/projects/aura-fit/workout-library.webp",
+      "role": "supporting-product-visual",
+      "width": 680,
+      "height": 1473,
+      "format": "webp",
+      "bytes": 79978,
+      "altIntent": "Aura Fit workout library and exercise selection"
+    },
+    {
+      "id": "eisal-invoices",
+      "project": "eisal",
+      "sourcePath": "source-assets/MyWorks/Eisal/12.png",
+      "publicPath": "public/projects/eisal/invoice-workflow.webp",
+      "role": "dominant-product-visual",
+      "width": 760,
+      "height": 1647,
+      "format": "webp",
+      "bytes": 43372,
+      "altIntent": "Eisal multilingual invoice organization workflow"
+    },
+    {
+      "id": "eisal-dark-mode",
+      "project": "eisal",
+      "sourcePath": "source-assets/MyWorks/Eisal/Home_DarkMode.png",
+      "publicPath": "public/projects/eisal/dark-mode-insights.webp",
+      "role": "supporting-product-visual",
+      "width": 680,
+      "height": 1473,
+      "format": "webp",
+      "bytes": 31796,
+      "altIntent": "Eisal dark theme system and receipt insights interface"
+    },
+    {
+      "id": "gader-categories",
+      "project": "gader",
+      "sourcePath": "Google Play official store screenshot",
+      "publicPath": "public/projects/gader/consultation-categories.webp",
+      "role": "dominant-product-visual",
+      "width": 760,
+      "height": 1351,
+      "format": "webp",
+      "bytes": 58112,
+      "altIntent": "Gader volunteer consultation categories"
+    },
+    {
+      "id": "gader-expert",
+      "project": "gader",
+      "sourcePath": "Google Play official store screenshot",
+      "publicPath": "public/projects/gader/expert-profile.webp",
+      "role": "supporting-product-visual",
+      "width": 680,
+      "height": 1209,
+      "format": "webp",
+      "bytes": 31892,
+      "altIntent": "Gader volunteer expert profile and consultation selection"
     }
   ]
 }
