@@ -1,0 +1,19 @@
+# Immutable/private originals and local curation
+source-assets/
+normalized-assets/
+portrait.jpg
+Wasem Aljundy CV.pdf
+
+# Local configuration and tool state
+.env*
+.agents/
+.codex/
+.npm-cache/
+.playwright-browsers/
+
+# Generated validation and temporary output
+coverage/
+playwright-report/
+test-results/
+tmp/
+*.log
