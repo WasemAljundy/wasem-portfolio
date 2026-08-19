@@ -5,6 +5,7 @@
 # Next.js output
 /.next
 /out
+/.vercel
 
 # test output
 /playwright-report

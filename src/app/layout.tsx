@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     default: siteConfig.title,
     template: `%s — ${siteConfig.name}`,
   },
+  robots: siteConfig.isPreviewDeployment ? { index: false, follow: false } : undefined,
   ...createMetadata({ description: siteConfig.description, pathname: "/" }),
 };
 

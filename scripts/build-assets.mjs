@@ -238,7 +238,7 @@ for (const definition of projectAssetDefinitions) {
       .resize({ width: definition.width, withoutEnlargement: true })
       .webp({ quality: 82, effort: 5 })
       .toFile(output);
-  } else if (!definition.optionalStaging || !(await isFile(output))) {
+  } else if (!(await isFile(output))) {
     throw new Error(
       `${definition.sourcePath} is unavailable and ${relative(output)} has no committed fallback.`,
     );

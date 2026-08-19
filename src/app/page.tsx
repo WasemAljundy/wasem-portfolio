@@ -164,9 +164,10 @@ export default function HomePage() {
             <Link href="/work">View the full project index</Link>
           </header>
           <ol className={styles.projectIndex}>
-            {moreWork.map((project, index) => (
-              <li key={project.slug}>
-                <Link href={`/work/${project.slug}` as Route}>
+            {moreWork.map((project, index) => {
+              const externalDestination = project.links[0]?.href;
+              const rowContent = (
+                <>
                   <span className={styles.projectIndexNumber}>
                     {String(index + 7).padStart(2, "0")}
                   </span>
@@ -176,9 +177,23 @@ export default function HomePage() {
                     {getStatusLabel(project.status)}
                   </span>
                   <span aria-hidden="true">↗</span>
-                </Link>
-              </li>
-            ))}
+                </>
+              );
+
+              return (
+                <li key={project.slug}>
+                  {project.caseStudyEligible ? (
+                    <Link href={`/work/${project.slug}` as Route}>{rowContent}</Link>
+                  ) : externalDestination ? (
+                    <a href={externalDestination} rel="noreferrer" target="_blank">
+                      {rowContent}
+                    </a>
+                  ) : (
+                    <span>{project.title}</span>
+                  )}
+                </li>
+              );
+            })}
           </ol>
         </div>
       </section>

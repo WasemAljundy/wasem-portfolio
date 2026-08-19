@@ -1,6 +1,6 @@
 import { portfolioManifest } from "@/content/projects";
 
-function parseSiteUrl(value: string | undefined): string | undefined {
+export function parseSiteUrl(value: string | undefined): string | undefined {
   if (!value?.trim()) return undefined;
   const url = new URL(value);
   if (!/^https?:$/.test(url.protocol)) {
@@ -9,7 +9,32 @@ function parseSiteUrl(value: string | undefined): string | undefined {
   return url.origin;
 }
 
+export function resolveSiteUrl({
+  configuredUrl,
+  vercelProductionHost,
+}: {
+  configuredUrl?: string;
+  vercelProductionHost?: string;
+}) {
+  const configured = parseSiteUrl(configuredUrl);
+  if (configured) return configured;
+  return parseSiteUrl(
+    vercelProductionHost?.trim() ? `https://${vercelProductionHost.trim()}` : undefined,
+  );
+}
+
 const owner = portfolioManifest.owner;
+const deploymentEnvironment = process.env.VERCEL_ENV;
+const siteUrl = resolveSiteUrl({
+  configuredUrl: process.env.NEXT_PUBLIC_SITE_URL,
+  vercelProductionHost: process.env.VERCEL_PROJECT_PRODUCTION_URL,
+});
+
+if (process.env.VERCEL && deploymentEnvironment === "production" && !siteUrl) {
+  throw new Error(
+    "Production deployment requires NEXT_PUBLIC_SITE_URL or VERCEL_PROJECT_PRODUCTION_URL.",
+  );
+}
 
 export const siteConfig = {
   name: owner.name,
@@ -18,7 +43,9 @@ export const siteConfig = {
   description:
     "Senior Flutter Engineer building reliable cross-platform mobile products, scalable architecture, and polished user experiences.",
   location: owner.location,
-  siteUrl: parseSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
+  siteUrl,
+  deploymentEnvironment,
+  isPreviewDeployment: deploymentEnvironment === "preview",
   email: owner.contact.email,
   social: {
     linkedin: owner.contact.linkedin,

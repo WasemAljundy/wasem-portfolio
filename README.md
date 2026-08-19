@@ -14,7 +14,21 @@ npm install
 npm run dev
 ```
 
-The pre-development asset step creates an optimized portrait and copies the canonical CV to its stable public download path. Set `NEXT_PUBLIC_SITE_URL` only after the production domain is confirmed; leaving it blank intentionally omits domain-dependent canonicals and sitemap entries.
+The pre-development asset step creates an optimized portrait, copies the canonical CV, and rebuilds project derivatives when private source material is available. A clean deployment without `source-assets/` verifies and uses the committed production derivatives.
+
+## Deployment
+
+Vercel detects Next.js and `package-lock.json` without custom build settings. The supported runtime is Node 24.x. Deploy with:
+
+```bash
+vercel link
+vercel deploy
+vercel deploy --prod
+```
+
+`NEXT_PUBLIC_SITE_URL` is the only optional project variable. When it is blank on Vercel, canonical URLs, sitemap entries, structured-data URLs, and social images use Vercel's stable `VERCEL_PROJECT_PRODUCTION_URL`. Preview deployments remain non-indexable.
+
+To move to a custom domain, add the domain in Vercel, verify DNS/HTTPS, set `NEXT_PUBLIC_SITE_URL` to that confirmed HTTPS origin for Production, redeploy, and recheck canonical, sitemap, robots, and social-image URLs. Never commit `.env.local` or `.vercel/`.
 
 ## Quality commands
 
@@ -24,11 +38,13 @@ npm run lint
 npm run typecheck
 npm run test
 npm run build
+npm run audit:repository
 npm run audit:public
 npm run test:browser
+npm run measure:performance
 ```
 
-`npm run verify` runs the non-browser quality sequence. Browser tests cover the critical navigation, resume download, external-link safety, accessibility, reduced motion, focus, and representative responsive widths.
+`npm run verify` runs the non-browser quality sequence. Set `PLAYWRIGHT_BASE_URL` and `PERFORMANCE_ORIGIN` to run browser and performance checks against a deployment.
 
 ## Architecture
 
@@ -48,6 +64,15 @@ Server Components are the default. The homepage and Jood case study add no Clien
 
 `source-assets/` is immutable. `normalized-assets/` is optional staging. Production pages use only intentionally selected, renamed, resized, and optimized derivatives under `public/`. Supplied screenshots contain demo/test data and do not require automatic PII redaction; genuine secrets and development archives remain prohibited. See `docs/asset-pipeline.md`.
 
+## Content updates
+
+- Projects, statuses, ownership, and store links: edit `planning/project-manifest.json`, then update its Markdown companion.
+- Deep case studies: follow `docs/case-study-authoring.md`.
+- Portrait and résumé: replace the canonical root sources and run `npm run assets:build`.
+- Project imagery: keep originals private, add an explicit derivative recipe, and commit only approved outputs below `public/projects/<slug>/`.
+
+Use `docs/launch-checklist.md` for release and domain verification.
+
 ## Milestone boundary
 
-This repository now contains the Milestone 2B homepage narrative, six featured product chapters, and the Milestone 2C flagship Jood case study. Additional deep case studies, any optional advanced motion, and release work remain outside this milestone.
+This repository contains the approved homepage, six featured product chapters, the flagship Jood case study, and Milestone 3 launch preparation. Additional case studies, analytics, CMS work, and speculative features remain outside the current scope.

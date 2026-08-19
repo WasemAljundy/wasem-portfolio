@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=20.19.0"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "next dev",
@@ -17,8 +17,9 @@
     "test:browser": "playwright test",
     "assets:build": "node scripts/build-assets.mjs",
     "audit:public": "node scripts/audit-public.mjs",
+    "audit:repository": "node scripts/audit-repository.mjs",
     "measure:performance": "node scripts/measure-performance.mjs",
-    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build && npm run audit:public",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run audit:repository && npm run build && npm run audit:public",
     "predev": "npm run assets:build",
     "prebuild": "npm run assets:build"
   },
