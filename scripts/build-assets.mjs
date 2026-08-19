@@ -206,23 +206,32 @@ async function isFile(filePath) {
   }
 }
 
-for (const source of [paths.portraitSource, paths.resumeSource]) {
-  if (!(await isFile(source))) {
-    throw new Error(`${relative(source)} is not a file.`);
-  }
-}
-
 await mkdir(path.dirname(paths.portraitOutput), { recursive: true });
 await mkdir(path.dirname(paths.resumeOutput), { recursive: true });
 
-const portrait = await sharp(paths.portraitSource)
-  .rotate()
-  .resize(960, 960, { fit: "cover", position: "centre", withoutEnlargement: true })
-  .webp({ quality: 84, effort: 5 })
-  .toFile(paths.portraitOutput);
+if (await isFile(paths.portraitSource)) {
+  await sharp(paths.portraitSource)
+    .rotate()
+    .resize(960, 960, { fit: "cover", position: "centre", withoutEnlargement: true })
+    .webp({ quality: 84, effort: 5 })
+    .toFile(paths.portraitOutput);
+} else if (!(await isFile(paths.portraitOutput))) {
+  throw new Error(
+    `${relative(paths.portraitSource)} is unavailable and ${relative(paths.portraitOutput)} has no committed fallback.`,
+  );
+}
 
-await copyFile(paths.resumeSource, paths.resumeOutput);
-const resume = await stat(paths.resumeOutput);
+if (await isFile(paths.resumeSource)) {
+  await copyFile(paths.resumeSource, paths.resumeOutput);
+} else if (!(await isFile(paths.resumeOutput))) {
+  throw new Error(
+    `${relative(paths.resumeSource)} is unavailable and ${relative(paths.resumeOutput)} has no committed fallback.`,
+  );
+}
+
+const portrait = await sharp(paths.portraitOutput).metadata();
+const portraitStat = await stat(paths.portraitOutput);
+const resumeStat = await stat(paths.resumeOutput);
 
 const projectAssets = [];
 for (const definition of projectAssetDefinitions) {
@@ -278,7 +287,7 @@ const manifest = {
       width: portrait.width,
       height: portrait.height,
       format: portrait.format,
-      bytes: portrait.size,
+      bytes: portraitStat.size,
       altIntent: "Portrait of Wasem Aljundy",
     },
     {
@@ -287,7 +296,7 @@ const manifest = {
       publicPath: relative(paths.resumeOutput),
       role: "resume-download",
       format: "pdf",
-      bytes: resume.size,
+      bytes: resumeStat.size,
       altIntent: "Canonical downloadable CV",
     },
     ...projectAssets,
