@@ -2,6 +2,7 @@ import type { CaseStudyContent } from "./schema";
 
 export const joodCaseStudy = {
   projectSlug: "jood",
+  presentation: "jood",
   seo: {
     title: "Jood Flutter Case Study",
     description:

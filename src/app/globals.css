@@ -234,6 +234,61 @@ svg {
   transition: var(--button-transition);
 }
 
+.button-link::after {
+  content: "↗";
+  color: currentColor;
+  font-size: 0.9em;
+  transition: transform var(--primitive-duration-fast) var(--primitive-ease-out);
+}
+
+.button-link[download]::after {
+  content: "↓";
+}
+
+.button-link:hover::after,
+.button-link:focus-visible::after {
+  transform: translate(0.12rem, -0.12rem);
+}
+
+.button-link[download]:hover::after,
+.button-link[download]:focus-visible::after {
+  transform: translateY(0.12rem);
+}
+
+.contextual-cursor {
+  position: fixed;
+  z-index: calc(var(--layer-overlay) + 1);
+  inset: 0 auto auto 0;
+  min-width: 3.5rem;
+  min-height: 2rem;
+  display: none;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 0.32);
+  border-radius: 999px;
+  background: rgb(12 16 21 / 0.86);
+  color: white;
+  padding: 0.35rem 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-8rem, -8rem, 0);
+  transition: opacity var(--primitive-duration-fast) var(--primitive-ease-out);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .contextual-cursor {
+    display: grid;
+  }
+
+  .contextual-cursor[data-active="true"] {
+    opacity: 1;
+  }
+}
+
 .button-link[data-variant="primary"] {
   background: var(--color-action);
   color: var(--primitive-white);
@@ -577,6 +632,11 @@ svg {
   .button-link:active,
   .nav-link:active,
   .social-link:active {
+    transform: none;
+  }
+
+  .button-link:hover::after,
+  .button-link:focus-visible::after {
     transform: none;
   }
 }

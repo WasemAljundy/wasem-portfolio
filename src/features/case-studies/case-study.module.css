@@ -211,6 +211,34 @@
   font-weight: 720;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .heroCopy,
+  .heroMedia,
+  .heroFacts {
+    animation: case-hero-settle 620ms var(--primitive-ease-out) both;
+  }
+
+  .heroMedia {
+    animation-delay: 80ms;
+  }
+
+  .heroFacts {
+    animation-delay: 150ms;
+  }
+}
+
+@keyframes case-hero-settle {
+  from {
+    opacity: 0;
+    transform: translateY(0.45rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .snapshot,
 .narrative,
 .ownership,
@@ -838,6 +866,166 @@
 
 .nextActions > a:not(:global(.button-link)):hover {
   color: #ffffff;
+}
+
+/* The shell stays shared; project materials and rhythm establish distinct stories. */
+:global([data-case-study="sezon"]) .hero {
+  --case-accent: #d9f26a;
+  background:
+    radial-gradient(circle at 78% 18%, rgb(217 242 106 / 0.14), transparent 26rem), #172116;
+}
+
+:global([data-case-study="sezon"]) .heroMedia {
+  border-color: rgb(217 242 106 / 0.2);
+  background: linear-gradient(145deg, #263321, #172116 58%, #394625);
+}
+
+:global([data-case-study="sezon"]) .productFlow {
+  --case-accent: #d9f26a;
+  background: #1b2418;
+}
+
+:global([data-case-study="sezon"]) .flowStepCopy > span,
+:global([data-case-study="sezon"]) .flowHeading > p:first-child {
+  color: #d9f26a;
+}
+
+:global([data-case-study="sezon"]) .flowStep figure {
+  border-color: rgb(217 242 106 / 0.2);
+  background: linear-gradient(145deg, #35412c, #151c13);
+}
+
+:global([data-case-study="sezon"]) .release {
+  --case-accent: #d9f26a;
+  background: #34451e;
+}
+
+:global([data-case-study="eureeca"]) .hero {
+  --case-accent: #86b7ff;
+  background:
+    radial-gradient(circle at 84% 16%, rgb(95 148 255 / 0.16), transparent 30rem), #071527;
+}
+
+:global([data-case-study="eureeca"]) .hero h1 {
+  font-size: clamp(4.5rem, 9vw, 8.5rem);
+}
+
+:global([data-case-study="eureeca"]) .heroMedia {
+  min-height: clamp(36rem, 54vw, 51rem);
+  border-color: rgb(134 183 255 / 0.22);
+  background: linear-gradient(145deg, #102b4f, #091a30 58%, #173c64);
+}
+
+:global([data-case-study="eureeca"]) .snapshot {
+  background: #edf3fa;
+}
+
+:global([data-case-study="eureeca"]) .release {
+  --case-accent: #b7d3ff;
+  background: #123a69;
+}
+
+:global([data-case-study="aura"]) .hero {
+  --case-accent: #b2a7ff;
+  background:
+    radial-gradient(circle at 82% 18%, rgb(178 167 255 / 0.16), transparent 29rem), #17161d;
+}
+
+:global([data-case-study="aura"]) .heroMedia {
+  border-color: rgb(178 167 255 / 0.22);
+  background: linear-gradient(145deg, #302e3a, #1c1a22 58%, #353052);
+}
+
+:global([data-case-study="aura"]) .productFlow {
+  --case-accent: #b2a7ff;
+  background: #1b1922;
+}
+
+:global([data-case-study="aura"]) .flowStepCopy > span,
+:global([data-case-study="aura"]) .flowHeading > p:first-child {
+  color: #b2a7ff;
+}
+
+:global([data-case-study="aura"]) .flowStep figure {
+  border-color: rgb(178 167 255 / 0.22);
+  background: linear-gradient(145deg, #34313e, #17151c);
+}
+
+:global([data-case-study="aura"]) .release {
+  --case-accent: #d5ceff;
+  background: #413b73;
+}
+
+:global([data-case-study="afp"]) .hero {
+  --case-accent: #9fe2a4;
+  background:
+    radial-gradient(circle at 82% 18%, rgb(159 226 164 / 0.15), transparent 28rem), #102218;
+}
+
+:global([data-case-study="afp"]) .hero h1 {
+  font-size: clamp(4rem, 8vw, 7.5rem);
+}
+
+:global([data-case-study="afp"]) .heroMedia {
+  border-color: rgb(159 226 164 / 0.22);
+  background: linear-gradient(145deg, #21382a, #13251b 58%, #315438);
+}
+
+:global([data-case-study="afp"]) .productFlow {
+  --case-accent: #9fe2a4;
+  background: #15271b;
+}
+
+:global([data-case-study="afp"]) .flowStepCopy > span,
+:global([data-case-study="afp"]) .flowHeading > p:first-child {
+  color: #9fe2a4;
+}
+
+:global([data-case-study="afp"]) .flowStep figure {
+  border-color: rgb(159 226 164 / 0.22);
+  background: linear-gradient(145deg, #294331, #102016);
+}
+
+:global([data-case-study="afp"]) .resilience {
+  --case-accent: #285f35;
+  background: #eef5eb;
+}
+
+:global([data-case-study="afp"]) .release {
+  --case-accent: #bdeec1;
+  background: #285f35;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .snapshotInner,
+    .narrativeInner,
+    .sectionHeading,
+    .approachInner,
+    .flowHeading,
+    .flowStep,
+    .resilienceInner,
+    .technologyInner,
+    .galleryHeading,
+    .galleryGrid,
+    .releaseInner,
+    .outcomeInner,
+    .nextProjectInner {
+      animation: case-section-arrival linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 22%;
+    }
+  }
+}
+
+@keyframes case-section-arrival {
+  from {
+    transform: translateY(0.45rem);
+  }
+
+  to {
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 63.99rem) {

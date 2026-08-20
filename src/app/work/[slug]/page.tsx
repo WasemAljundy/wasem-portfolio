@@ -35,8 +35,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const caseStudy = getCaseStudy(slug);
   if (!caseStudy) return <ProjectOverview project={project} />;
 
-  const nextProject = getProject(caseStudy.nextProjectSlug);
-  if (!nextProject) throw new Error(`Case study ${slug} references a missing next project.`);
+  const nextProject = caseStudy.nextProjectSlug ? getProject(caseStudy.nextProjectSlug) : undefined;
+  if (caseStudy.nextProjectSlug && !nextProject) {
+    throw new Error(`Case study ${slug} references a missing next project.`);
+  }
 
   return <CaseStudyPage content={caseStudy} nextProject={nextProject} project={project} />;
 }

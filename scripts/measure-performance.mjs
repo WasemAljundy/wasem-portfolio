@@ -1,19 +1,35 @@
 import { chromium } from "@playwright/test";
+import { existsSync } from "node:fs";
+import { resolve } from "node:path";
 
-const origin = process.env.PERFORMANCE_ORIGIN ?? "http://127.0.0.1:3000";
-const samples = Number.parseInt(process.env.PERFORMANCE_SAMPLES ?? "3", 10);
+const origin = process.argv[2] ?? process.env.PERFORMANCE_ORIGIN ?? "http://127.0.0.1:3000";
+const routePath = process.argv[3] ?? process.env.PERFORMANCE_PATH ?? "/work/jood";
+const samples = Number.parseInt(process.argv[4] ?? process.env.PERFORMANCE_SAMPLES ?? "3", 10);
+const requestedViewport = process.argv[5] ?? process.env.PERFORMANCE_VIEWPORT;
 const protectionBypass = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
-const viewports = [
+const configuredViewports = [
   { label: "mobile", width: 375, height: 812 },
   { label: "desktop", width: 1440, height: 900 },
 ];
+const viewports = requestedViewport
+  ? configuredViewports.filter(({ label }) => label === requestedViewport)
+  : configuredViewports;
+
+if (viewports.length === 0) {
+  throw new Error(`Unknown viewport \"${requestedViewport}\". Use mobile or desktop.`);
+}
 
 function median(values) {
   const sorted = [...values].sort((left, right) => left - right);
   return sorted[Math.floor(sorted.length / 2)];
 }
 
-const browser = await chromium.launch();
+const localChromium = resolve(
+  ".playwright-browsers/chromium_headless_shell-1234/chrome-headless-shell-win64/chrome-headless-shell.exe",
+);
+const browser = await chromium.launch(
+  existsSync(localChromium) ? { executablePath: localChromium } : undefined,
+);
 
 try {
   for (const viewport of viewports) {
@@ -42,7 +58,7 @@ try {
           }
         }).observe({ type: "layout-shift", buffered: true });
       });
-      await page.goto(`${origin}/work/jood`, { waitUntil: "networkidle" });
+      await page.goto(`${origin}${routePath}`, { waitUntil: "networkidle" });
       await page.waitForTimeout(1_000);
       results.push(
         await page.evaluate(() => {
@@ -67,6 +83,7 @@ try {
 
     console.log(
       JSON.stringify({
+        routePath,
         viewport,
         samples,
         median: {

@@ -101,7 +101,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/AuraFit/AuraFit App - Mockup/4.png`
   - `source-assets/MyWorks/AuraFit/AuraFit App - Mockup/5.png`
   - `source-assets/MyWorks/AuraFit/AuraFit.png`
-- Production derivatives: `public/projects/aura-fit/daily-dashboard.webp`, `public/projects/aura-fit/food-analysis.webp`, `public/projects/aura-fit/workout-library.webp`
+- Production derivatives: `public/projects/aura-fit/daily-dashboard.webp`, `public/projects/aura-fit/food-analysis.webp`, `public/projects/aura-fit/workout-library.webp`, `public/projects/aura-fit/training-types.webp`, `public/projects/aura-fit/exercise-detail.webp`, `public/projects/aura-fit/workout-complete.webp`
 
 ### Eisal
 
@@ -150,6 +150,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Asset source: `source-assets/AFP` (21 original PNG files; byte-identical renamed staging copies exist under `normalized-assets/AFP`)
 - Proof points: End-to-end Flutter product ownership; Humanitarian and social-impact domain; Donation and withdrawal workflows; Identity verification and beneficiary onboarding; Wallet, bank-account and QR fundraising experiences; Messaging, story updates and technical support flows
 - Recommended visual assets: curate intentionally from the 21 supplied demo/test screenshots and create renamed, resized, compressed production derivatives under `public/projects/aid-for-palestine/`.
+- Production derivatives: `public/projects/aid-for-palestine/fundraiser-discovery.webp`, `public/projects/aid-for-palestine/story-creation.webp`, `public/projects/aid-for-palestine/story-detail.webp`, `public/projects/aid-for-palestine/identity-verification.webp`, `public/projects/aid-for-palestine/beneficiary-wallet.webp`, `public/projects/aid-for-palestine/withdrawal-review.webp`, `public/projects/aid-for-palestine/support-messages.webp`
 - Notes: Keep as a deep case study and strong social-impact proof point below the six-project featured set. Supplied screenshot content is approved as demo/test data and may participate normally in curation. `source-assets/AFP/` remains immutable; genuine secrets and development archives remain prohibited from `public/`.
 
 ### Naseeb
@@ -208,6 +209,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
   - `source-assets/MyWorks/Sezon Store/1.png`
   - `source-assets/MyWorks/Sezon Store/2.png`
   - `source-assets/MyWorks/Sezon Store/3.png`
+- Production derivatives: `public/projects/sezon-store/catalog-discovery.webp`, `public/projects/sezon-store/product-detail.webp`, `public/projects/sezon-store/checkout-summary.webp`, `public/projects/sezon-store/payment-methods.webp`, `public/projects/sezon-store/order-management.webp`, `public/projects/sezon-store/product-creation.webp`
 
 ### Talabati – طلباتي
 

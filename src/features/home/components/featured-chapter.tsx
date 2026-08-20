@@ -15,6 +15,7 @@ export function FeaturedChapter({ project }: { project: Project }) {
       className={`${styles.chapter} ${styles[`chapter_${presentation.tone}`]}`}
       id={project.slug}
       aria-labelledby={`${project.slug}-title`}
+      data-motion-section
     >
       <div className={`${styles.chapterInner} container`}>
         <header className={styles.chapterHeader}>
@@ -53,7 +54,13 @@ export function FeaturedChapter({ project }: { project: Project }) {
         ) : null}
 
         <div className={styles.chapterBody}>
-          <div className={styles.chapterMedia} data-count={presentation.visuals.length}>
+          <Link
+            aria-label={`Read the ${project.title} case study`}
+            className={styles.chapterMedia}
+            data-count={presentation.visuals.length}
+            data-cursor-label="Read case study"
+            href={`/work/${project.slug}` as Route}
+          >
             {presentation.visuals.map((visual, index) => (
               <figure className={styles.projectVisual} data-visual={index + 1} key={visual.src}>
                 <Image
@@ -70,7 +77,7 @@ export function FeaturedChapter({ project }: { project: Project }) {
                 />
               </figure>
             ))}
-          </div>
+          </Link>
 
           <aside
             className={styles.engineeringProof}
@@ -83,7 +90,11 @@ export function FeaturedChapter({ project }: { project: Project }) {
         </div>
 
         <footer className={styles.chapterActions}>
-          <Link className={styles.caseStudyLink} href={`/work/${project.slug}` as Route}>
+          <Link
+            className={styles.caseStudyLink}
+            data-cursor-label="Read"
+            href={`/work/${project.slug}` as Route}
+          >
             {presentation.caseStudyLabel}
             <span aria-hidden="true">↗</span>
           </Link>

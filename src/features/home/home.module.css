@@ -162,6 +162,54 @@
   backdrop-filter: blur(0.75rem);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .heroName,
+  .heroRole,
+  .hero h1,
+  .heroSupport,
+  .heroActions,
+  .heroPortrait,
+  .proofRail {
+    animation: hero-settle 620ms var(--primitive-ease-out) both;
+  }
+
+  .heroRole {
+    animation-delay: 60ms;
+  }
+
+  .hero h1 {
+    animation-delay: 110ms;
+  }
+
+  .heroSupport {
+    animation-delay: 170ms;
+  }
+
+  .heroActions {
+    animation-delay: 220ms;
+  }
+
+  .heroPortrait {
+    animation-delay: 100ms;
+  }
+
+  .proofRail {
+    animation-delay: 260ms;
+  }
+}
+
+@keyframes hero-settle {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .proofRail {
   min-height: 5.25rem;
   display: grid;
@@ -342,7 +390,9 @@
   overflow: hidden;
   border: 1px solid var(--chapter-border);
   border-radius: clamp(1rem, 2vw, 2rem);
+  color: inherit;
   padding: clamp(1.25rem, 4vw, 4rem);
+  text-decoration: none;
 }
 
 .projectVisual {
@@ -960,7 +1010,9 @@
 .projectIndex a {
   min-height: 5.75rem;
   display: grid;
-  grid-template-columns: 3.5rem minmax(12rem, 1fr) minmax(8rem, 0.4fr) minmax(7rem, 0.3fr) auto;
+  grid-template-columns:
+    3.5rem minmax(11rem, 1fr) minmax(7rem, 0.35fr) minmax(6rem, 0.28fr)
+    minmax(7rem, 0.28fr) minmax(8.5rem, auto);
   gap: 1rem;
   align-items: center;
   border-radius: 0.25rem;
@@ -979,6 +1031,7 @@
 
 .projectIndexNumber,
 .projectIndexDomain,
+.projectIndexOwnership,
 .projectIndexStatus {
   color: var(--color-ink-muted);
   font-family: var(--font-mono);
@@ -995,15 +1048,45 @@
   text-transform: uppercase;
 }
 
-.projectIndex a > span:last-child {
+.projectIndexAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  color: var(--color-action);
+  font-size: 0.78rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.projectIndexAction > span {
   color: var(--color-action);
   font-size: 1.15rem;
   transition: transform var(--primitive-duration-fast) var(--primitive-ease-out);
 }
 
-.projectIndex a:hover > span:last-child,
-.projectIndex a:focus-visible > span:last-child {
+.projectIndex a:hover .projectIndexAction > span,
+.projectIndex a:focus-visible .projectIndexAction > span {
   transform: translate(0.15rem, -0.15rem);
+}
+
+@media (max-width: 55rem) {
+  .projectIndex a {
+    grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+    gap: 0.6rem;
+    padding-block: 1rem;
+  }
+
+  .projectIndexDomain,
+  .projectIndexOwnership,
+  .projectIndexStatus {
+    grid-column: 2;
+  }
+
+  .projectIndexAction {
+    grid-column: 3;
+    grid-row: 1 / span 4;
+  }
 }
 
 .closingSequence {
@@ -1106,6 +1189,50 @@
 
 .aboutInner > div p + p {
   margin-block-start: 1.25rem;
+}
+
+.aboutInner > div .aboutEvidence {
+  margin-block-end: 1.25rem;
+  color: var(--color-action);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :global([data-motion-section]) {
+      animation: section-arrival linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 24%;
+    }
+
+    .capabilityHeading::after {
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: bridge-line linear both;
+      animation-timeline: view();
+      animation-range: entry 8% entry 34%;
+    }
+  }
+}
+
+@keyframes section-arrival {
+  from {
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes bridge-line {
+  to {
+    transform: scaleX(1);
+  }
 }
 
 .contact {
@@ -1445,13 +1572,14 @@
   }
 
   .projectIndexDomain,
+  .projectIndexOwnership,
   .projectIndexStatus {
     grid-column: 2;
   }
 
-  .projectIndex a > span:last-child {
+  .projectIndexAction {
     grid-column: 3;
-    grid-row: 1 / span 3;
+    grid-row: 1 / span 4;
   }
 
   .resumeInner,
@@ -1535,8 +1663,8 @@
 @media (prefers-reduced-motion: reduce) {
   .chapterMedia:hover .projectVisual[data-visual="1"] img,
   .caseStudyLink:hover span,
-  .projectIndex a:hover > span:last-child,
-  .projectIndex a:focus-visible > span:last-child,
+  .projectIndex a:hover .projectIndexAction > span,
+  .projectIndex a:focus-visible .projectIndexAction > span,
   .contactActions :global(.social-link:hover),
   .contactActions :global(.social-link:focus-visible) {
     transform: none;

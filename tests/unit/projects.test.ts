@@ -69,9 +69,26 @@ test("team builds require ownership evidence", () => {
   assert.throws(() => validatePortfolioManifest(invalid), /require ownershipEvidence/);
 });
 
-test("Jood is the only authored deep case study in Milestone 2C", () => {
-  assert.equal(getCaseStudy("jood")?.projectSlug, "jood");
-  assert.equal(getCaseStudy("eureeca"), undefined);
+test("Milestone 4B deep case studies are authored and connected", () => {
+  const expected = ["jood", "sezon-store", "eureeca", "aura-fit", "aid-for-palestine"];
+  for (const slug of expected) assert.equal(getCaseStudy(slug)?.projectSlug, slug);
+
+  assert.equal(getCaseStudy("jood")?.nextProjectSlug, "eureeca");
+  assert.equal(getCaseStudy("eureeca")?.nextProjectSlug, "aura-fit");
+  assert.equal(getCaseStudy("aura-fit")?.nextProjectSlug, "sezon-store");
+  assert.equal(getCaseStudy("sezon-store")?.nextProjectSlug, "aid-for-palestine");
+  assert.equal(getCaseStudy("aid-for-palestine")?.nextProjectSlug, undefined);
+});
+
+test("AFP public evidence remains curated and project-bound", () => {
+  const afp = portfolioManifest.projects.find((project) => project.slug === "aid-for-palestine");
+  assert.ok(afp);
+  assert.equal(afp.clientPrivacy, "private-client-demo");
+  assert.equal(afp.visibility, "demo-approved");
+  assert.equal(afp.productionAssets.length, 7);
+  assert.ok(
+    afp.productionAssets.every((asset) => asset.startsWith("/projects/aid-for-palestine/")),
+  );
 });
 
 test("case-study sections are optional without weakening the required narrative", () => {

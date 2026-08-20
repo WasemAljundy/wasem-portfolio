@@ -128,11 +128,15 @@ export function EngineeringApproach({
 
 export function ProductFlow({ flow }: { flow: NonNullable<CaseStudyContent["flow"]> }) {
   return (
-    <section className={styles.productFlow} aria-labelledby="flow-title" id="transaction-flow">
+    <section
+      className={styles.productFlow}
+      aria-labelledby={`${flow.id ?? "transaction-flow"}-title`}
+      id={flow.id ?? "transaction-flow"}
+    >
       <div className="container">
         <header className={styles.flowHeading}>
           <p className={styles.eyebrow}>{flow.eyebrow}</p>
-          <h2 id="flow-title">{flow.title}</h2>
+          <h2 id={`${flow.id ?? "transaction-flow"}-title`}>{flow.title}</h2>
           <p>{flow.introduction}</p>
         </header>
         <ol className={styles.flowList}>
@@ -166,9 +170,18 @@ export function ProductFlow({ flow }: { flow: NonNullable<CaseStudyContent["flow
 
 export function EngineeringDecisions({
   decisions,
+  introduction,
 }: {
   decisions: NonNullable<CaseStudyContent["decisions"]>;
+  introduction?: CaseStudyContent["decisionsIntroduction"];
 }) {
+  const heading = introduction ?? {
+    eyebrow: "Engineering decisions",
+    title: "Small decisions that protect the whole journey.",
+    description:
+      "Each decision is tied to visible product behavior. No undocumented framework or backend choice is presented as evidence.",
+  };
+
   return (
     <section
       className={styles.decisions}
@@ -177,12 +190,9 @@ export function EngineeringDecisions({
     >
       <div className="container">
         <header className={styles.sectionHeading}>
-          <p className={styles.eyebrow}>Engineering decisions</p>
-          <h2 id="decisions-title">Small decisions that protect the whole journey.</h2>
-          <p>
-            Each decision is tied to visible product behavior. No undocumented framework or backend
-            choice is presented as evidence.
-          </p>
+          <p className={styles.eyebrow}>{heading.eyebrow}</p>
+          <h2 id="decisions-title">{heading.title}</h2>
+          <p>{heading.description}</p>
         </header>
         <ol className={styles.decisionList}>
           {decisions.map((decision, index) => (
@@ -350,22 +360,37 @@ export function ReleaseAndOutcome({
   );
 }
 
-export function NextProject({ nextProject }: { nextProject: Project }) {
+export function NextProject({ nextProject }: { nextProject?: Project }) {
   return (
     <section className={styles.nextProject} aria-labelledby="next-project-title" id="next-project">
       <div className={`${styles.nextProjectInner} container`}>
         <div>
-          <p className={styles.eyebrow}>Continue the evidence</p>
-          <h2 id="next-project-title">Next: {nextProject.title}</h2>
-          <p>{nextProject.shortDescription}</p>
+          <p className={styles.eyebrow}>
+            {nextProject ? "Continue the evidence" : "Continue from here"}
+          </p>
+          <h2 id="next-project-title">
+            {nextProject
+              ? `Next: ${nextProject.title}`
+              : "Explore the work or start a conversation."}
+          </h2>
+          <p>
+            {nextProject
+              ? nextProject.shortDescription
+              : "The deep-story sequence ends here. The full project index and direct contact path remain one step away."}
+          </p>
         </div>
         <div className={styles.nextActions}>
-          <ActionLink href={`/work/${nextProject.slug}` as Route}>
-            View {nextProject.title}
-          </ActionLink>
+          {nextProject ? (
+            <ActionLink href={`/work/${nextProject.slug}` as Route}>
+              View {nextProject.title}
+            </ActionLink>
+          ) : (
+            <ActionLink href="/#contact">Start a conversation</ActionLink>
+          )}
           <Link href="/#selected-work">Back to selected work</Link>
+          <Link href="/work">Explore all work</Link>
           <Link href="/resume">View résumé</Link>
-          <Link href="/#contact">Start a conversation</Link>
+          {nextProject ? <Link href="/#contact">Start a conversation</Link> : null}
         </div>
       </div>
     </section>

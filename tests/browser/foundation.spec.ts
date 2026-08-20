@@ -6,7 +6,7 @@ test("primary visitor journey and direct project route work", async ({ page }) =
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Engineering mobile products from architecture to release.",
   );
-  await expect(page.getByText("20+")).toBeVisible();
+  await expect(page.getByText("20+", { exact: true })).toBeVisible();
   await page.getByRole("link", { name: "View Work" }).first().click();
   await expect(page).toHaveURL(/\/#selected-work$/);
   await expect(page.getByRole("heading", { level: 3, name: "Jood" })).toBeVisible();
@@ -87,6 +87,9 @@ test("Milestone 2B.1 focused visual review surfaces render with decoded imagery"
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
+  await page.addStyleTag({
+    content: ".site-header, .skip-link, nextjs-portal { display: none !important; }",
+  });
 
   await page
     .locator('section[aria-labelledby="hero-title"]')
@@ -121,9 +124,40 @@ test("Milestone 2B.1 focused visual review surfaces render with decoded imagery"
 
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto("/");
+  await page.addStyleTag({
+    content: ".site-header, .skip-link, nextjs-portal { display: none !important; }",
+  });
   await page
     .locator('section[aria-labelledby="hero-title"]')
     .screenshot({ path: "test-results/milestone-2b1-hero-mobile.png" });
+});
+
+test("Milestone 4B homepage ending has focused desktop and mobile evidence", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await page.addStyleTag({
+    content: ".site-header, .skip-link, nextjs-portal { display: none !important; }",
+  });
+  const moreWork = page.locator('section[aria-labelledby="more-work-title"]');
+  await moreWork.scrollIntoViewIfNeeded();
+  await moreWork.screenshot({ path: "test-results/milestone-4b-more-work-desktop.png" });
+  await page
+    .locator('section[aria-labelledby="resume-title"]')
+    .locator("..")
+    .screenshot({ path: "test-results/milestone-4b-closing-desktop.png" });
+
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/");
+  await page.addStyleTag({
+    content: ".site-header, .skip-link, nextjs-portal { display: none !important; }",
+  });
+  await page
+    .locator('section[aria-labelledby="more-work-title"]')
+    .screenshot({ path: "test-results/milestone-4b-more-work-mobile.png" });
+  await page
+    .locator('section[aria-labelledby="resume-title"]')
+    .locator("..")
+    .screenshot({ path: "test-results/milestone-4b-closing-mobile.png" });
 });
 
 test("reduced motion removes smooth spatial behavior", async ({ page }) => {

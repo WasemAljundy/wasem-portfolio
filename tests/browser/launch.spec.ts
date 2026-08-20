@@ -6,6 +6,8 @@ const publicRoutes = [
   "/work/jood",
   "/work/eureeca",
   "/work/aura-fit",
+  "/work/sezon-store",
+  "/work/aid-for-palestine",
   "/resume",
   "/robots.txt",
   "/sitemap.xml",

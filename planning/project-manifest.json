@@ -166,7 +166,10 @@
       "productionAssets": [
         "/projects/aura-fit/daily-dashboard.webp",
         "/projects/aura-fit/food-analysis.webp",
-        "/projects/aura-fit/workout-library.webp"
+        "/projects/aura-fit/workout-library.webp",
+        "/projects/aura-fit/training-types.webp",
+        "/projects/aura-fit/exercise-detail.webp",
+        "/projects/aura-fit/workout-complete.webp"
       ]
     },
     {
@@ -254,6 +257,15 @@
       "assetCount": 21,
       "recommendedAssets": [
         "Curate intentionally from all 21 supplied demo/test screenshots; create renamed and optimized production derivatives under public/projects/aid-for-palestine/."
+      ],
+      "productionAssets": [
+        "/projects/aid-for-palestine/fundraiser-discovery.webp",
+        "/projects/aid-for-palestine/story-creation.webp",
+        "/projects/aid-for-palestine/story-detail.webp",
+        "/projects/aid-for-palestine/identity-verification.webp",
+        "/projects/aid-for-palestine/beneficiary-wallet.webp",
+        "/projects/aid-for-palestine/withdrawal-review.webp",
+        "/projects/aid-for-palestine/support-messages.webp"
       ],
       "privacy": {
         "publication": "curated-demo-derivatives",
@@ -356,6 +368,14 @@
         "source-assets/MyWorks/Sezon Store/1.png",
         "source-assets/MyWorks/Sezon Store/2.png",
         "source-assets/MyWorks/Sezon Store/3.png"
+      ],
+      "productionAssets": [
+        "/projects/sezon-store/catalog-discovery.webp",
+        "/projects/sezon-store/product-detail.webp",
+        "/projects/sezon-store/checkout-summary.webp",
+        "/projects/sezon-store/payment-methods.webp",
+        "/projects/sezon-store/order-management.webp",
+        "/projects/sezon-store/product-creation.webp"
       ]
     },
     {

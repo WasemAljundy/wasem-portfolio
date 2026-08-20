@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Locator, type Page } from "@playwright/test";
+import { devices, expect, test, type Locator, type Page } from "@playwright/test";
 
 async function expectDecodedImages(scope: Locator) {
   const images = scope.locator("img:visible");
@@ -34,8 +34,116 @@ test("homepage to Jood to next-project journey remains coherent", async ({ page 
 
   await expect(page).toHaveURL(/\/work\/eureeca$/);
   await expect(page.getByRole("heading", { level: 1, name: "Eureeca" })).toBeVisible();
-  await expect(page.locator("#transaction-flow")).toHaveCount(0);
-  await expect(page.locator("#engineering-decisions")).toHaveCount(0);
+  await expect(page.locator("#engineering-decisions")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "A team contribution, framed at its actual scale." }),
+  ).toBeVisible();
+});
+
+const milestone4BStudies = [
+  { slug: "sezon-store", heading: "Sezon Store", flow: "#commerce-flow" },
+  { slug: "eureeca", heading: "Eureeca", flow: null },
+  { slug: "aura-fit", heading: "Aura Fit", flow: "#personalization-flow" },
+  { slug: "aid-for-palestine", heading: "Aid for Palestine", flow: "#aid-system-flow" },
+] as const;
+
+for (const study of milestone4BStudies) {
+  test(`${study.heading} renders its authored deep narrative`, async ({ page }) => {
+    await page.goto(`/work/${study.slug}`);
+    await expect(page.getByRole("heading", { level: 1, name: study.heading })).toBeVisible();
+    await expect(page.locator("#product-challenge")).toBeVisible();
+    await expect(page.locator("#engineering-decisions")).toBeVisible();
+    await expect(page.locator("#case-study-outcome")).toBeVisible();
+    if (study.flow) await expect(page.locator(study.flow)).toBeVisible();
+    await expectDecodedImages(page.locator("main"));
+  });
+}
+
+for (const width of [375, 768, 1024, 1440]) {
+  test(`Milestone 4B case studies have no overflow at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: width === 375 ? 812 : 900 });
+    for (const study of milestone4BStudies) {
+      await page.goto(`/work/${study.slug}`);
+      await expectDecodedImages(page.locator("main"));
+      await expectNoHorizontalOverflow(page);
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.screenshot({
+        path: `test-results/milestone-4b-${study.slug}-${width}.png`,
+        fullPage: true,
+      });
+    }
+  });
+}
+
+test("contextual cursor activates only for fine-pointer hover regions", async ({ page }) => {
+  await page.goto("/");
+  const cursor = page.getByTestId("contextual-cursor");
+  await expect(cursor).toHaveAttribute("data-active", "false");
+  await page.locator('[data-cursor-label="Read case study"]').first().hover();
+  await expect(cursor).toHaveAttribute("data-active", "true");
+  await expect(cursor).toHaveText("Read case study");
+
+  await page.mouse.move(0, 0);
+  await expect(cursor).toHaveAttribute("data-active", "false");
+  await page.keyboard.press("Tab");
+  await expect(cursor).toHaveAttribute("data-active", "false");
+});
+
+test("contextual cursor remains disabled for reduced motion", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const cursor = page.getByTestId("contextual-cursor");
+  await page.locator('[data-cursor-label="Read case study"]').first().hover();
+  await expect(cursor).toHaveAttribute("data-active", "false");
+  await expect(cursor).toHaveCSS("display", "none");
+});
+
+test("contextual cursor is not loaded as an interaction on coarse pointers", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    ...devices["Pixel 5"],
+    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:3000",
+  });
+  const page = await context.newPage();
+  await page.goto("/");
+  const cursor = page.getByTestId("contextual-cursor");
+  await expect(cursor).toHaveCSS("display", "none");
+  await expect(cursor).toHaveAttribute("data-active", "false");
+  await context.close();
+});
+
+test("Milestone 4B deep studies have no serious automated accessibility violations", async ({
+  page,
+}) => {
+  for (const study of milestone4BStudies) {
+    await page.goto(`/work/${study.slug}`);
+    const results = await new AxeBuilder({ page }).analyze();
+    const serious = results.violations.filter((violation) =>
+      ["serious", "critical"].includes(violation.impact ?? ""),
+    );
+    expect(serious, study.slug).toEqual([]);
+  }
+});
+
+test("Milestone 4B case-study hero and flow surfaces have focused visual evidence", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  for (const study of milestone4BStudies) {
+    await page.goto(`/work/${study.slug}`);
+    await page.addStyleTag({
+      content: ".site-header, .skip-link, nextjs-portal { display: none !important; }",
+    });
+    const hero = page.locator("#case-study-hero");
+    await expectDecodedImages(hero);
+    await hero.screenshot({ path: `test-results/milestone-4b-${study.slug}-hero.png` });
+    if (study.flow) {
+      const flow = page.locator(study.flow);
+      await expectDecodedImages(flow);
+      await flow.screenshot({ path: `test-results/milestone-4b-${study.slug}-flow.png` });
+    }
+  }
 });
 
 test("Jood exposes project metadata, truthful structured data, and safe store links", async ({

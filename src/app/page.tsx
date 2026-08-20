@@ -4,17 +4,20 @@ import Link from "next/link";
 
 import { ContactLinks } from "@/components/layout/contact-links";
 import { ActionLink } from "@/components/ui/action-link";
+import { ContextualCursor } from "@/components/ui/contextual-cursor";
+import { getCaseStudy } from "@/content/case-studies";
 import { featuredProjects, getProject } from "@/content/projects";
 import { resume } from "@/content/resume";
 import { FeaturedChapter } from "@/features/home/components/featured-chapter";
-import { capabilityBridge, getStatusLabel } from "@/features/home/content";
+import { capabilityBridge, getStatusLabel, ownershipLabels } from "@/features/home/content";
 
 import styles from "../features/home/home.module.css";
 
 const moreWorkSlugs = [
+  "sezon-store",
+  "aid-for-palestine",
   "naseeb",
   "haraj-aden",
-  "sezon-store",
   "talabati",
   "famous-steam",
   "pureness",
@@ -32,6 +35,7 @@ export default function HomePage() {
 
   return (
     <>
+      <ContextualCursor />
       <section className={styles.hero} aria-labelledby="hero-title">
         <div className={`${styles.heroGrid} container`}>
           <div className={styles.heroCopy}>
@@ -83,7 +87,7 @@ export default function HomePage() {
       </section>
 
       <section className={styles.selectedWork} id="selected-work" aria-labelledby="work-title">
-        <header className={`${styles.workIntroduction} container`}>
+        <header className={`${styles.workIntroduction} container`} data-motion-section>
           <p className={styles.sectionNumber}>Selected production work · 01—06</p>
           <h2 id="work-title">Products are the proof.</h2>
           <p>
@@ -96,7 +100,11 @@ export default function HomePage() {
           <FeaturedChapter key={project.slug} project={project} />
         ))}
 
-        <section className={styles.capabilityBridge} aria-labelledby="capability-title">
+        <section
+          className={styles.capabilityBridge}
+          aria-labelledby="capability-title"
+          data-motion-section
+        >
           <div className={`${styles.capabilityInner} container`}>
             <div className={styles.capabilityHeading}>
               <p>Engineering bridge</p>
@@ -126,7 +134,7 @@ export default function HomePage() {
         ))}
       </section>
 
-      <section className={styles.experience} aria-labelledby="experience-title">
+      <section className={styles.experience} aria-labelledby="experience-title" data-motion-section>
         <div className={`${styles.narrativeGrid} container`}>
           <header>
             <p className={styles.sectionNumber}>Experience</p>
@@ -154,7 +162,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.moreWork} aria-labelledby="more-work-title">
+      <section className={styles.moreWork} aria-labelledby="more-work-title" data-motion-section>
         <div className="container">
           <header className={styles.compactHeading}>
             <div>
@@ -166,6 +174,7 @@ export default function HomePage() {
           <ol className={styles.projectIndex}>
             {moreWork.map((project, index) => {
               const externalDestination = project.links[0]?.href;
+              const hasDeepCaseStudy = Boolean(getCaseStudy(project.slug));
               const rowContent = (
                 <>
                   <span className={styles.projectIndexNumber}>
@@ -173,19 +182,35 @@ export default function HomePage() {
                   </span>
                   <span className={styles.projectIndexTitle}>{project.title}</span>
                   <span className={styles.projectIndexDomain}>{project.domains[0]}</span>
+                  <span className={styles.projectIndexOwnership}>
+                    {ownershipLabels[project.ownership]}
+                  </span>
                   <span className={styles.projectIndexStatus}>
                     {getStatusLabel(project.status)}
                   </span>
-                  <span aria-hidden="true">↗</span>
+                  <span className={styles.projectIndexAction}>
+                    {hasDeepCaseStudy ? "Read case study" : "View project"}
+                    <span aria-hidden="true">↗</span>
+                  </span>
                 </>
               );
 
               return (
                 <li key={project.slug}>
                   {project.caseStudyEligible ? (
-                    <Link href={`/work/${project.slug}` as Route}>{rowContent}</Link>
+                    <Link
+                      data-cursor-label={hasDeepCaseStudy ? "Read case study" : "View project"}
+                      href={`/work/${project.slug}` as Route}
+                    >
+                      {rowContent}
+                    </Link>
                   ) : externalDestination ? (
-                    <a href={externalDestination} rel="noreferrer" target="_blank">
+                    <a
+                      data-cursor-label="Open"
+                      href={externalDestination}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
                       {rowContent}
                     </a>
                   ) : (
@@ -199,7 +224,7 @@ export default function HomePage() {
       </section>
 
       <div className={styles.closingSequence}>
-        <section className={styles.resumeBand} aria-labelledby="resume-title">
+        <section className={styles.resumeBand} aria-labelledby="resume-title" data-motion-section>
           <div className={`${styles.resumeInner} container`}>
             <div>
               <p className={styles.sectionNumber}>Résumé</p>
@@ -224,11 +249,12 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className={styles.about} aria-labelledby="about-title">
+        <section className={styles.about} aria-labelledby="about-title" data-motion-section>
           <div className={`${styles.aboutInner} container`}>
             <p className={styles.sectionNumber}>About</p>
             <h2 id="about-title">A mobile engineer who stays close to the product.</h2>
             <div>
+              <p className={styles.aboutEvidence}>4+ years · 20+ production applications</p>
               <p>
                 I work from the architecture outward: understanding the journey, shaping dependable
                 foundations, implementing the details, and staying accountable through release.
@@ -241,7 +267,12 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className={styles.contact} id="contact" aria-labelledby="contact-title">
+        <section
+          className={styles.contact}
+          id="contact"
+          aria-labelledby="contact-title"
+          data-motion-section
+        >
           <div className={`${styles.contactInner} container`}>
             <div>
               <p className={styles.sectionNumber}>Contact</p>

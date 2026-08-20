@@ -24,10 +24,10 @@ export function CaseStudyPage({
 }: {
   project: Project;
   content: CaseStudyContent;
-  nextProject: Project;
+  nextProject?: Project;
 }) {
   return (
-    <article>
+    <article data-case-study={content.presentation}>
       <ProjectStructuredData project={project} />
       <CaseStudyHero content={content} project={project} />
       <ProjectSnapshot project={project} snapshot={content.snapshot} />
@@ -35,7 +35,12 @@ export function CaseStudyPage({
       <OwnershipSection ownership={content.ownership} />
       {content.approach ? <EngineeringApproach approach={content.approach} /> : null}
       {content.flow ? <ProductFlow flow={content.flow} /> : null}
-      {content.decisions ? <EngineeringDecisions decisions={content.decisions} /> : null}
+      {content.decisions ? (
+        <EngineeringDecisions
+          decisions={content.decisions}
+          introduction={content.decisionsIntroduction}
+        />
+      ) : null}
       {content.resilience ? <ResilienceSection resilience={content.resilience} /> : null}
       {content.technologies ? <TechnologySummary technologies={content.technologies} /> : null}
       {content.gallery ? <ProductGallery gallery={content.gallery} /> : null}

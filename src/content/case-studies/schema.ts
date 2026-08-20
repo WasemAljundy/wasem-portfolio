@@ -14,6 +14,7 @@ export type CaseStudyNarrative = {
 
 export type CaseStudyContent = {
   projectSlug: string;
+  presentation: "jood" | "sezon" | "eureeca" | "aura" | "afp";
   seo: {
     title: string;
     description: string;
@@ -43,6 +44,7 @@ export type CaseStudyContent = {
     evidenceBoundary: string;
   };
   flow?: {
+    id?: string;
     eyebrow: string;
     title: string;
     introduction: string;
@@ -60,6 +62,11 @@ export type CaseStudyContent = {
     why: string;
     tradeoff?: string;
   }[];
+  decisionsIntroduction?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
   resilience?: {
     eyebrow: string;
     title: string;
@@ -81,7 +88,7 @@ export type CaseStudyContent = {
     summary: string;
     evidence: readonly string[];
   };
-  nextProjectSlug: string;
+  nextProjectSlug?: string;
 };
 
 export class CaseStudyValidationError extends Error {
