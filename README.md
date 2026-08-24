@@ -1,81 +1,94 @@
-# Wasem Aljundy Portfolio
+# Wasem Aljundy — Engineering Portfolio
 
-Production-oriented foundation for Wasem Aljundy's engineering portfolio. The site uses Next.js App Router, strict TypeScript, Tailwind CSS, server-rendered content, and a validated canonical project manifest.
+[View the production portfolio](https://wasem-portfolio.vercel.app)
 
-Production: [wasem-portfolio.vercel.app](https://wasem-portfolio.vercel.app)
+A recruiter-focused engineering portfolio for Wasem Aljundy, a Senior Flutter Engineer and mobile product engineer. The site presents real product work through authored case studies, truthful ownership/status labels, an accessible résumé, and a complete curated work index.
 
-## Requirements
+## What this repository demonstrates
 
-- Node.js 24.19.0 (pinned in `.node-version` and `.nvmrc`)
-- npm 10 or newer
+- Product proof organized for two reading depths: a fast recruiter scan and detailed engineering narratives.
+- Five authored case studies covering architecture, integrations, commerce, financial-product contribution, fitness/health data, and humanitarian workflows.
+- A manifest-driven index of 24 public portfolio records, clearly separating production/private-client work from portfolio-only archive entries.
+- Privacy-safe publication rules for private-client material, including demo-only Aid for Palestine derivatives.
+- Semantic, keyboard-accessible, responsive pages with reduced-motion and no-JavaScript fallbacks.
+- Static/server-first rendering with one isolated Client Component for an optional fine-pointer cursor companion.
+- Production SEO, structured data, social images, sitemap, robots controls, security headers, and automated release checks.
+
+The CV-supported “20+ production applications” claim describes Wasem’s broader professional record. Archive entries in this repository are explicitly labelled portfolio-only and are not counted as production releases.
+
+## Stack
+
+- Next.js App Router 16
+- React 19
+- TypeScript 5 in strict mode
+- CSS Modules and semantic design tokens
+- `next/image` with curated WebP derivatives
+- Node test runner, Playwright, and axe-core
+- Vercel deployment
+
+The content-heavy routes are Server Components by default. Client-side JavaScript is limited to interaction that genuinely requires browser APIs.
+
+## Project structure
+
+```text
+src/app/                         Routes, metadata, sitemap, robots, and OG image
+src/content/                     Validated project and case-study content
+src/features/                    Homepage, work index, case studies, and résumé UI
+src/components/                  Shared layout and small UI primitives
+planning/project-manifest.json   Canonical factual project source
+public/projects/                 Approved optimized project derivatives only
+tests/                           Unit, browser, accessibility, and launch checks
+docs/                            Asset, authoring, and release documentation
+```
+
+The canonical manifest controls project status, ownership, visibility, links, publication tier, and work-index grouping. Archive records intentionally receive no route or external link unless a real destination is approved.
 
 ## Local development
+
+Requirements: Node.js 24.x and npm 10 or newer.
 
 ```bash
 npm install
 npm run dev
 ```
 
-The pre-development asset step creates an optimized portrait, copies the canonical CV, and rebuilds project derivatives when private source material is available. A clean deployment without `source-assets/` verifies and uses the committed production derivatives.
+The asset pre-step can rebuild approved derivatives when private originals are present locally. A clean clone remains buildable from committed public derivatives; `source-assets/`, local staging, environment files, and Vercel state are intentionally excluded from Git and deployment uploads.
 
-## Deployment
-
-Vercel detects Next.js and `package-lock.json` without custom build settings. The supported runtime is Node 24.x. Deploy with:
+## Quality gates
 
 ```bash
-vercel link
-vercel deploy --target=preview
-# Validate the immutable preview URL, then:
-vercel promote <validated-preview-url>
-```
-
-`NEXT_PUBLIC_SITE_URL` is the only optional project variable. When it is blank on Vercel, canonical URLs, sitemap entries, structured-data URLs, and social images use Vercel's stable `VERCEL_PROJECT_PRODUCTION_URL`. Preview deployments remain non-indexable.
-
-To move to a custom domain, add the domain in Vercel, verify DNS/HTTPS, set `NEXT_PUBLIC_SITE_URL` to that confirmed HTTPS origin for Production, redeploy, and recheck canonical, sitemap, robots, and social-image URLs. Never commit `.env.local` or `.vercel/`.
-
-## Quality commands
-
-```bash
-npm run format:check
-npm run lint
-npm run typecheck
-npm run test
-npm run build
-npm run audit:repository
-npm run audit:public
+npm run verify
 npm run test:browser
 npm run measure:performance
 ```
 
-`npm run verify` runs the non-browser quality sequence. Set `PLAYWRIGHT_BASE_URL` and `PERFORMANCE_ORIGIN` to run browser and performance checks against a deployment. Protected previews also accept `VERCEL_AUTOMATION_BYPASS_SECRET` from the environment; never commit its value.
+`npm run verify` checks formatting, lint, TypeScript, unit/content contracts, repository safety, the production build, and public assets. Browser tests cover critical routes, responsive overflow, image decoding, keyboard focus, reduced motion, accessibility, SEO/security behavior, and the contextual-cursor fallback.
 
-## Architecture
+To test a deployed URL:
 
-- `src/app/`: routes, global layout, metadata routes, robots, sitemap, and social image.
-- `src/components/`: small shared UI and global layout primitives.
-- `src/features/`: project- and resume-specific compositions.
-- `src/content/`: typed project and case-study content boundaries; `planning/project-manifest.json` remains factual truth.
-- `src/config/`: centralized owner, navigation, contact, resume, and optional domain configuration.
-- `src/lib/seo/`: metadata and truthful structured-data helpers.
-- `src/styles/`: primitive → semantic → component design tokens.
-- `scripts/`: allow-listed production asset build and public secret/archive audit.
-- `tests/`: unit/content validation and Playwright browser journeys.
+```bash
+PLAYWRIGHT_BASE_URL=https://example.vercel.app npm run test:browser
+PERFORMANCE_ORIGIN=https://example.vercel.app npm run measure:performance
+```
 
-Server Components are the default. The homepage and Jood case study add no Client Components, CMS, analytics vendor, contact form, animation library, or global state. See `docs/case-study-authoring.md` for the incremental deep-story workflow.
+## Deployment
 
-## Asset policy
+The existing Vercel project uses Node 24.x and requires no custom build command.
 
-`source-assets/` is immutable. `normalized-assets/` is optional staging. Production pages use only intentionally selected, renamed, resized, and optimized derivatives under `public/`. `.vercelignore` prevents canonical originals and local tooling output from entering CLI deployment uploads. Supplied screenshots contain demo/test data and do not require automatic PII redaction; genuine secrets and development archives remain prohibited. See `docs/asset-pipeline.md`.
+```bash
+vercel deploy
+# Validate the immutable preview URL, then:
+vercel promote <validated-preview-url>
+```
 
-## Content updates
+`NEXT_PUBLIC_SITE_URL` is optional. When absent on Vercel, canonical and social URLs use the stable project production domain. Preview deployments remain non-indexable.
 
-- Projects, statuses, ownership, and store links: edit `planning/project-manifest.json`, then update its Markdown companion.
-- Deep case studies: follow `docs/case-study-authoring.md`.
-- Portrait and résumé: replace the canonical root sources and run `npm run assets:build`.
-- Project imagery: keep originals private, add an explicit derivative recipe, and commit only approved outputs below `public/projects/<slug>/`.
+## Content and privacy
 
-Use `docs/launch-checklist.md` for release and domain verification.
+- Edit project facts and grouping in `planning/project-manifest.json`; keep its Markdown companion aligned.
+- Follow `docs/case-study-authoring.md` for deep narratives.
+- Treat original project material as immutable and private.
+- Publish only intentionally selected, renamed, resized, and optimized derivatives below `public/projects/<slug>/`.
+- Never publish secrets, signing material, development archives, or unsanitized private-client sources.
 
-## Milestone boundary
-
-This repository contains the approved homepage, six featured product chapters, the flagship Jood case study, and the completed Milestone 3 production launch. Additional case studies, analytics, CMS work, and speculative features remain outside the current scope.
+See `docs/asset-pipeline.md` and `docs/launch-checklist.md` for the maintained release process.

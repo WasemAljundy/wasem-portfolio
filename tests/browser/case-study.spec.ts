@@ -79,9 +79,9 @@ test("contextual cursor activates only for fine-pointer hover regions", async ({
   await page.goto("/");
   const cursor = page.getByTestId("contextual-cursor");
   await expect(cursor).toHaveAttribute("data-active", "false");
-  await page.locator('[data-cursor-label="Read case study"]').first().hover();
+  await page.locator('[data-cursor-label="READ CASE STUDY"]').first().hover();
   await expect(cursor).toHaveAttribute("data-active", "true");
-  await expect(cursor).toHaveText("Read case study");
+  await expect(cursor).toHaveText("READ CASE STUDY");
 
   await page.mouse.move(0, 0);
   await expect(cursor).toHaveAttribute("data-active", "false");
@@ -93,9 +93,35 @@ test("contextual cursor remains disabled for reduced motion", async ({ page }) =
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   const cursor = page.getByTestId("contextual-cursor");
-  await page.locator('[data-cursor-label="Read case study"]').first().hover();
+  await page.locator('[data-cursor-label="READ CASE STUDY"]').first().hover();
   await expect(cursor).toHaveAttribute("data-active", "false");
   await expect(cursor).toHaveCSS("display", "none");
+});
+
+test("contextual cursor flips inside the viewport at a right-edge project target", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  const target = page
+    .locator('section[aria-labelledby="more-work-title"] [data-cursor-label="READ CASE STUDY"]')
+    .first();
+  await target.scrollIntoViewIfNeeded();
+  const targetBox = await target.boundingBox();
+  expect(targetBox).not.toBeNull();
+  await page.mouse.move(
+    Math.min(1439, targetBox!.x + targetBox!.width - 2),
+    Math.min(899, targetBox!.y + targetBox!.height / 2),
+  );
+
+  const cursor = page.getByTestId("contextual-cursor");
+  await expect(cursor).toHaveAttribute("data-active", "true");
+  const cursorBox = await cursor.boundingBox();
+  expect(cursorBox).not.toBeNull();
+  expect(cursorBox!.x).toBeGreaterThanOrEqual(8);
+  expect(cursorBox!.y).toBeGreaterThanOrEqual(8);
+  expect(cursorBox!.x + cursorBox!.width).toBeLessThanOrEqual(1432);
+  expect(cursorBox!.y + cursorBox!.height).toBeLessThanOrEqual(892);
 });
 
 test("contextual cursor is not loaded as an interaction on coarse pointers", async ({

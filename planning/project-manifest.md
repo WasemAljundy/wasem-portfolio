@@ -1,4 +1,4 @@
-# Wasem Portfolio Project Manifest v1.1
+# Wasem Portfolio Project Manifest v1.3
 
 ## Positioning
 
@@ -13,7 +13,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Phone: `+972 59 246 3727`
 - LinkedIn: https://www.linkedin.com/in/wasem-aljundy-983ab73a6/
 - GitHub: https://github.com/WasemAljundy
-- Portfolio hub: https://linktr.ee/wasem.aljundy
+- Portfolio: https://wasem-portfolio.vercel.app
 - WhatsApp: https://wa.me/972592463727
 - Source: `Wasem Aljundy CV.pdf`, visually inspected across all three pages on 2026-08-16
 
@@ -26,6 +26,13 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 5. Eisal
 6. Gader – جدير
 
+## Work index curation
+
+- Featured / Deep Stories: Jood, Eureeca, Aura Fit, Sezon Store, Aid for Palestine
+- Selected Production Work: Taseese, Eisal, Gader, Naseeb, Haraj Aden, Otlob Ecosystem, Talabati, Famous Steam, Pureness, Yalla Call
+- Additional Work / Archive: Service Mate, Betweener, Chat Pulse, Learn Sphere, Watchly, Mysterious Questions, Secret Number, Waslak, Sanayie
+- Publication rule: every publishable manifest project appears exactly once. Portfolio-only archive records are never counted as production releases and receive no invented route or external destination.
+
 ## Project inventory
 
 ### Jood
@@ -37,6 +44,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Platforms: iOS, Android
 - Technologies: Flutter, Dart, Firebase, REST API
 - Case study: Yes
+- Deep case study: Yes
 - Summary: A production mobile platform for discovering service and food offers through structured browsing, offer details, ordering/booking flows, payments, QR interactions, and account management.
 - Asset source: `source-assets/MyWorks/Jood App Images` (10 source files; all visual candidates)
 - Proof points: Production mobile product; End-to-end Flutter ownership; Cross-platform release; Rich transactional user flows
@@ -59,6 +67,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Domains: FinTech, Private Markets, Investment
 - Platforms: Android, iOS
 - Case study: Yes
+- Deep case study: Yes
 - Summary: A regulated investment experience for discovering and evaluating private equity deals and selected IPO opportunities, with portfolio tracking and rich deal information.
 - Asset source: `Store listing` (0 local files)
 - Proof points: Collaborative production engineering; CV-supported Flutter bug and performance contributions; FinTech domain; Production release; High-trust financial UX
@@ -91,6 +100,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Domains: AI, Fitness, HealthTech
 - Platforms: iOS, Android
 - Case study: Yes
+- Deep case study: Yes
 - Summary: An AI-assisted fitness product with personalized onboarding, workout and meal planning, calorie intelligence, health-data integration, and progress tracking.
 - Asset source: `source-assets/MyWorks/AuraFit` (44 source files; 42 visual candidates; APK and ZIP are non-public source artifacts)
 - Proof points: AI/ML product experience; Google Fit / Apple Health integration; Complex onboarding and personalization; Large polished visual asset set
@@ -146,6 +156,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Domains: Humanitarian Aid, Fundraising, Beneficiary Management, FinTech-like Payments
 - Platforms: iOS, Android
 - Case study: Yes
+- Deep case study: Yes
 - Summary: A humanitarian aid platform supporting beneficiary stories, donor journeys, donations, identity verification, wallet and withdrawal flows, bank-account management, QR-based fundraising, messaging, updates, and technical support.
 - Asset source: `source-assets/AFP` (21 original PNG files; byte-identical renamed staging copies exist under `normalized-assets/AFP`)
 - Proof points: End-to-end Flutter product ownership; Humanitarian and social-impact domain; Donation and withdrawal workflows; Identity verification and beneficiary onboarding; Wallet, bank-account and QR fundraising experiences; Messaging, story updates and technical support flows
@@ -199,6 +210,7 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 - Domains: E-commerce, Multi-vendor, Payments
 - Platforms: Android
 - Case study: Yes
+- Deep case study: Yes
 - Summary: A multi-vendor commerce application covering catalog discovery, product creation, checkout, shipping and multiple payment methods.
 - Asset source: `source-assets/MyWorks/Sezon Store` (18 source files; 17 visual candidates; debug APK is non-public)
 - Proof points: End-to-end individual mobile application build; Multi-vendor workflows; Stripe/payment experience; Catalog and checkout flows; Firebase-backed product

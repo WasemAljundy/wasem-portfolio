@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = process.cwd();
@@ -19,6 +19,18 @@ const git = spawnSync(
 if (git.status !== 0) throw new Error(git.stderr || "Unable to inspect tracked files.");
 
 const trackedFiles = git.stdout.split("\0").filter(Boolean);
+const existingFiles = [];
+for (const file of trackedFiles) {
+  try {
+    await access(path.join(root, file));
+    existingFiles.push(file);
+  } catch (error) {
+    if (error && typeof error === "object" && "code" in error && error.code === "ENOENT") {
+      continue;
+    }
+    throw error;
+  }
+}
 const forbiddenPrefixes = [
   ".next/",
   ".vercel/",
@@ -66,7 +78,7 @@ const secretPatterns = [
 ];
 
 const findings = [];
-for (const file of trackedFiles) {
+for (const file of existingFiles) {
   const normalized = file.replaceAll("\\", "/");
   const extension = path.extname(file).toLowerCase();
   if (forbiddenPrefixes.some((prefix) => normalized.startsWith(prefix))) {
@@ -91,4 +103,6 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log(`Repository audit passed (${trackedFiles.length} versioned or pending files checked).`);
+console.log(
+  `Repository audit passed (${existingFiles.length} versioned or pending files checked).`,
+);

@@ -44,6 +44,7 @@ export type Project = {
   tier: ProjectTier;
   homepageFeaturePriority: number | null;
   caseStudyEligible: boolean;
+  deepCaseStudyPositioning: boolean;
   caseStudyContent?: ProjectCaseStudyContent;
   links: readonly ProjectLink[];
   assetSource: string;
@@ -63,14 +64,22 @@ export type PortfolioOwner = {
     email: string;
     linkedin: string;
     github: string;
+    portfolio: string;
     whatsapp: string;
   };
+};
+
+export type WorkIndexCuration = {
+  deepCaseStudyOrder: readonly string[];
+  selectedProductionOrder: readonly string[];
+  archiveOrder: readonly string[];
 };
 
 export type PortfolioManifest = {
   version: string;
   owner: PortfolioOwner;
   featuredOrder: readonly string[];
+  workIndex: WorkIndexCuration;
   projects: readonly Project[];
 };
 
@@ -255,6 +264,7 @@ function parseProject(value: unknown, index: number, featuredOrder: readonly str
     tier: enumValue(value.tier, projectTiers, `${path}.tier`),
     homepageFeaturePriority: priorityIndex === -1 ? null : priorityIndex + 1,
     caseStudyEligible,
+    deepCaseStudyPositioning: deepCaseStudy,
     links: parseLinks(value.links, `${path}.links`),
     assetSource: requiredString(value.assetSource, `${path}.assetSource`),
     sourceAssets,
@@ -270,6 +280,7 @@ export function validatePortfolioManifest(input: unknown): PortfolioManifest {
   assertRecord(input.owner, "manifest.owner");
   assertRecord(input.owner.contact, "manifest.owner.contact");
   assertRecord(input.portfolioStrategy, "manifest.portfolioStrategy");
+  assertRecord(input.portfolioStrategy.workIndex, "manifest.portfolioStrategy.workIndex");
 
   const featuredOrder = stringArray(
     input.portfolioStrategy.featuredOrder,
@@ -303,6 +314,70 @@ export function validatePortfolioManifest(input: unknown): PortfolioManifest {
     }
   }
 
+  const workIndexSource = input.portfolioStrategy.workIndex;
+  const workIndex: WorkIndexCuration = {
+    deepCaseStudyOrder: stringArray(
+      workIndexSource.deepCaseStudyOrder,
+      "manifest.portfolioStrategy.workIndex.deepCaseStudyOrder",
+    ),
+    selectedProductionOrder: stringArray(
+      workIndexSource.selectedProductionOrder,
+      "manifest.portfolioStrategy.workIndex.selectedProductionOrder",
+    ),
+    archiveOrder: stringArray(
+      workIndexSource.archiveOrder,
+      "manifest.portfolioStrategy.workIndex.archiveOrder",
+    ),
+  };
+  const curatedSlugs = [
+    ...workIndex.deepCaseStudyOrder,
+    ...workIndex.selectedProductionOrder,
+    ...workIndex.archiveOrder,
+  ];
+  if (new Set(curatedSlugs).size !== curatedSlugs.length) {
+    throw new ContentValidationError(
+      "manifest.portfolioStrategy.workIndex contains duplicate project slugs.",
+    );
+  }
+  for (const slug of curatedSlugs) {
+    if (!projects.some((project) => project.slug === slug)) {
+      throw new ContentValidationError(`Work index project ${slug} does not exist.`);
+    }
+  }
+  for (const slug of workIndex.deepCaseStudyOrder) {
+    const project = projects.find((candidate) => candidate.slug === slug)!;
+    if (!project.caseStudyEligible || !project.deepCaseStudyPositioning) {
+      throw new ContentValidationError(
+        `Deep work index project ${slug} must be case-study eligible and explicitly positioned as deep.`,
+      );
+    }
+  }
+  for (const slug of workIndex.selectedProductionOrder) {
+    const project = projects.find((candidate) => candidate.slug === slug)!;
+    if (project.status === "portfolio-only" || project.deepCaseStudyPositioning) {
+      throw new ContentValidationError(
+        `Selected production project ${slug} must be production/private-client work outside the deep group.`,
+      );
+    }
+  }
+  for (const slug of workIndex.archiveOrder) {
+    const project = projects.find((candidate) => candidate.slug === slug)!;
+    if (project.tier !== "archive" || project.status !== "portfolio-only") {
+      throw new ContentValidationError(
+        `Archive work index project ${slug} must be an archive-tier portfolio-only record.`,
+      );
+    }
+  }
+  const publishableSlugs = projects
+    .filter((project) => project.visibility !== "withheld")
+    .map((project) => project.slug);
+  const missingFromIndex = publishableSlugs.filter((slug) => !curatedSlugs.includes(slug));
+  if (missingFromIndex.length > 0 || curatedSlugs.length !== publishableSlugs.length) {
+    throw new ContentValidationError(
+      `Work index must include every publishable project exactly once. Missing: ${missingFromIndex.join(", ") || "none"}.`,
+    );
+  }
+
   const contact = input.owner.contact;
   return {
     version: requiredString(input.version, "manifest.version"),
@@ -315,10 +390,12 @@ export function validatePortfolioManifest(input: unknown): PortfolioManifest {
         email: requiredString(contact.email, "manifest.owner.contact.email"),
         linkedin: parseUrl(contact.linkedin, "manifest.owner.contact.linkedin"),
         github: parseUrl(contact.github, "manifest.owner.contact.github"),
+        portfolio: parseUrl(contact.portfolio, "manifest.owner.contact.portfolio"),
         whatsapp: parseUrl(contact.whatsapp, "manifest.owner.contact.whatsapp"),
       },
     },
     featuredOrder,
+    workIndex,
     projects,
   };
 }

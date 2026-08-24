@@ -5,11 +5,11 @@ import Link from "next/link";
 import { ContactLinks } from "@/components/layout/contact-links";
 import { ActionLink } from "@/components/ui/action-link";
 import { ContextualCursor } from "@/components/ui/contextual-cursor";
-import { getCaseStudy } from "@/content/case-studies";
 import { featuredProjects, getProject } from "@/content/projects";
 import { resume } from "@/content/resume";
 import { FeaturedChapter } from "@/features/home/components/featured-chapter";
 import { capabilityBridge, getStatusLabel, ownershipLabels } from "@/features/home/content";
+import { getProjectAction } from "@/features/projects/project-action";
 
 import styles from "../features/home/home.module.css";
 
@@ -173,8 +173,7 @@ export default function HomePage() {
           </header>
           <ol className={styles.projectIndex}>
             {moreWork.map((project, index) => {
-              const externalDestination = project.links[0]?.href;
-              const hasDeepCaseStudy = Boolean(getCaseStudy(project.slug));
+              const action = getProjectAction(project);
               const rowContent = (
                 <>
                   <span className={styles.projectIndexNumber}>
@@ -189,7 +188,7 @@ export default function HomePage() {
                     {getStatusLabel(project.status)}
                   </span>
                   <span className={styles.projectIndexAction}>
-                    {hasDeepCaseStudy ? "Read case study" : "View project"}
+                    {action?.label}
                     <span aria-hidden="true">↗</span>
                   </span>
                 </>
@@ -197,18 +196,15 @@ export default function HomePage() {
 
               return (
                 <li key={project.slug}>
-                  {project.caseStudyEligible ? (
-                    <Link
-                      data-cursor-label={hasDeepCaseStudy ? "Read case study" : "View project"}
-                      href={`/work/${project.slug}` as Route}
-                    >
+                  {action?.kind === "internal" ? (
+                    <Link data-cursor-label={action.cursorLabel} href={action.href as Route}>
                       {rowContent}
                     </Link>
-                  ) : externalDestination ? (
+                  ) : action?.kind === "external" ? (
                     <a
-                      data-cursor-label="Open"
-                      href={externalDestination}
-                      rel="noreferrer"
+                      data-cursor-label={action.cursorLabel}
+                      href={action.href}
+                      rel="noopener noreferrer"
                       target="_blank"
                     >
                       {rowContent}

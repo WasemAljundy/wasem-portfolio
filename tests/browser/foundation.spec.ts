@@ -28,6 +28,66 @@ test("featured work keeps ownership and status labels manifest-driven", async ({
   await expect(auraFit.getByText("Google Fit / Apple Health integration")).toBeVisible();
 });
 
+test("work index separates deep stories, production breadth, and archive records", async ({
+  page,
+}) => {
+  await page.goto("/work");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Product proof, organized by depth.",
+  );
+  await expect(page.locator("#deep-stories article")).toHaveCount(5);
+  await expect(page.locator("#production-work article")).toHaveCount(10);
+  await expect(page.locator("#archive article")).toHaveCount(9);
+  await expect(page.locator("#archive a")).toHaveCount(0);
+  await expect(
+    page.locator("#deep-stories").getByRole("link", { name: /Read case study: Jood/ }),
+  ).toHaveAttribute("href", "/work/jood");
+  await expect(
+    page.locator("#production-work").getByRole("link", { name: /View project: Taseese/ }),
+  ).toHaveAttribute("href", "/work/taseese");
+  await expect(
+    page.locator("#production-work").getByRole("link", { name: /View on App Store: Talabati/ }),
+  ).toHaveAttribute("target", "_blank");
+  await expect(page.locator("#production-work").getByText("Private summary only")).toHaveCount(1);
+});
+
+test("work index remains complete without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:3000",
+  });
+  const page = await context.newPage();
+  await page.goto("/work");
+  await expect(page.locator("main article")).toHaveCount(24);
+  await expect(page.getByRole("link", { name: /Read case study: Jood/ })).toBeVisible();
+  await context.close();
+});
+
+for (const width of [375, 768, 1024, 1440]) {
+  test(`work index has no horizontal overflow at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: width === 375 ? 812 : 900 });
+    await page.goto("/work");
+    const dimensions = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      clientWidth: document.documentElement.clientWidth,
+    }));
+    expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth);
+    await page.screenshot({
+      path: `test-results/milestone-4c-work-${width}.png`,
+      fullPage: true,
+    });
+  });
+}
+
+test("work index has no serious automated accessibility violations", async ({ page }) => {
+  await page.goto("/work");
+  const results = await new AxeBuilder({ page }).analyze();
+  const serious = results.violations.filter((violation) =>
+    ["serious", "critical"].includes(violation.impact ?? ""),
+  );
+  expect(serious).toEqual([]);
+});
+
 test("resume has preferred HTML content and a working canonical PDF", async ({ page, request }) => {
   await page.goto("/resume");
   await expect(page.getByRole("heading", { level: 1, name: "Wasem Aljundy" })).toBeVisible();

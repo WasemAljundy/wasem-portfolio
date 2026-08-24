@@ -25,6 +25,8 @@ Thumbs.db
 # immutable/private source material and optional staging
 /source-assets/
 /normalized-assets/
+/portrait.jpg
+/Wasem Aljundy CV.pdf
 /tmp/
 
 # logs

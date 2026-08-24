@@ -4,11 +4,16 @@ import Link from "next/link";
 
 import type { Project } from "@/content/projects";
 import { getChapterPresentation, getStatusLabel, ownershipLabels } from "@/features/home/content";
+import { getProjectAction } from "@/features/projects/project-action";
 
 import styles from "../home.module.css";
 
 export function FeaturedChapter({ project }: { project: Project }) {
   const presentation = getChapterPresentation(project);
+  const action = getProjectAction(project);
+  if (!action || action.kind !== "internal") {
+    throw new Error(`Featured project ${project.slug} requires an internal project route.`);
+  }
 
   return (
     <article
@@ -55,11 +60,11 @@ export function FeaturedChapter({ project }: { project: Project }) {
 
         <div className={styles.chapterBody}>
           <Link
-            aria-label={`Read the ${project.title} case study`}
+            aria-label={`${action.label}: ${project.title}`}
             className={styles.chapterMedia}
             data-count={presentation.visuals.length}
-            data-cursor-label="Read case study"
-            href={`/work/${project.slug}` as Route}
+            data-cursor-label={action.cursorLabel}
+            href={action.href as Route}
           >
             {presentation.visuals.map((visual, index) => (
               <figure className={styles.projectVisual} data-visual={index + 1} key={visual.src}>
@@ -92,8 +97,8 @@ export function FeaturedChapter({ project }: { project: Project }) {
         <footer className={styles.chapterActions}>
           <Link
             className={styles.caseStudyLink}
-            data-cursor-label="Read"
-            href={`/work/${project.slug}` as Route}
+            data-cursor-label={action.cursorLabel}
+            href={action.href as Route}
           >
             {presentation.caseStudyLabel}
             <span aria-hidden="true">↗</span>

@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "owner": {
     "name": "Wasem Aljundy",
     "positioning": "Senior Flutter Engineer / Senior Mobile Engineer",
@@ -10,7 +10,7 @@
       "phone": "+972 59 246 3727",
       "linkedin": "https://www.linkedin.com/in/wasem-aljundy-983ab73a6/",
       "github": "https://github.com/WasemAljundy",
-      "portfolio": "https://linktr.ee/wasem.aljundy",
+      "portfolio": "https://wasem-portfolio.vercel.app",
       "whatsapp": "https://wa.me/972592463727"
     },
     "cvClaims": {
@@ -30,7 +30,33 @@
   "portfolioStrategy": {
     "featuredOrder": ["jood", "eureeca", "taseese", "aura-fit", "eisal", "gader"],
     "homepagePrimaryCount": 6,
-    "principle": "Show depth before volume. Featured work demonstrates product ownership, architecture, production delivery and domain breadth; the rest supports credibility without diluting the first impression."
+    "principle": "Show depth before volume. Featured work demonstrates product ownership, architecture, production delivery and domain breadth; the rest supports credibility without diluting the first impression.",
+    "workIndex": {
+      "deepCaseStudyOrder": ["jood", "eureeca", "aura-fit", "sezon-store", "aid-for-palestine"],
+      "selectedProductionOrder": [
+        "taseese",
+        "eisal",
+        "gader",
+        "naseeb",
+        "haraj-aden",
+        "otlob-ecosystem",
+        "talabati",
+        "famous-steam",
+        "pureness",
+        "yalla-call"
+      ],
+      "archiveOrder": [
+        "service-mate",
+        "betweener",
+        "chat-pulse",
+        "learn-sphere",
+        "watchly",
+        "mysterious-questions",
+        "secret-number",
+        "waslak",
+        "sanayie"
+      ]
+    }
   },
   "projects": [
     {
@@ -43,6 +69,7 @@
       "platforms": ["iOS", "Android"],
       "technologies": ["Flutter", "Dart", "Firebase", "REST API"],
       "caseStudy": true,
+      "deepCaseStudyPositioning": true,
       "summary": "A production mobile platform for discovering service and food offers through structured browsing, offer details, ordering/booking flows, payments, QR interactions, and account management.",
       "proofPoints": [
         "Production mobile product",
@@ -88,6 +115,7 @@
       },
       "platforms": ["Android", "iOS"],
       "caseStudy": true,
+      "deepCaseStudyPositioning": true,
       "summary": "A regulated investment experience for discovering and evaluating private equity deals and selected IPO opportunities, with portfolio tracking and rich deal information.",
       "proofPoints": [
         "Collaborative production engineering",
@@ -145,6 +173,7 @@
       "ownership": "full-build",
       "platforms": ["iOS", "Android"],
       "caseStudy": true,
+      "deepCaseStudyPositioning": true,
       "summary": "An AI-assisted fitness product with personalized onboarding, workout and meal planning, calorie intelligence, health-data integration, and progress tracking.",
       "proofPoints": [
         "AI/ML product experience",
@@ -349,6 +378,7 @@
       },
       "platforms": ["Android"],
       "caseStudy": true,
+      "deepCaseStudyPositioning": true,
       "summary": "A multi-vendor commerce application covering catalog discovery, product creation, checkout, shipping and multiple payment methods.",
       "proofPoints": [
         "End-to-end individual mobile application build",

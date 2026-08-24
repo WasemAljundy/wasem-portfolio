@@ -21,12 +21,30 @@ export const featuredProjects = portfolioManifest.featuredOrder.map((slug) => {
   return project;
 });
 
+function resolveProjectOrder(slugs: readonly string[]) {
+  return slugs.map((slug) => {
+    const project = getProject(slug);
+    if (!project) throw new Error(`Validated work index project ${slug} was not found.`);
+    return project;
+  });
+}
+
+export const deepCaseStudyProjects = resolveProjectOrder(
+  portfolioManifest.workIndex.deepCaseStudyOrder,
+);
+export const selectedProductionProjects = resolveProjectOrder(
+  portfolioManifest.workIndex.selectedProductionOrder,
+);
+export const archiveProjects = resolveProjectOrder(portfolioManifest.workIndex.archiveOrder);
+
 export type {
   ClientPrivacy,
   OwnershipType,
   PortfolioManifest,
   Project,
   ProjectLink,
+  ProjectLinkType,
   ProjectStatus,
   ProjectVisibility,
+  WorkIndexCuration,
 } from "./schema";
