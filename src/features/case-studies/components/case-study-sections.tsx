@@ -6,6 +6,7 @@ import { ActionLink } from "@/components/ui/action-link";
 import type { CaseStudyContent, CaseStudyNarrative } from "@/content/case-studies";
 import type { Project, ProjectStatus } from "@/content/projects";
 import { ProjectLinks } from "@/features/projects/components/project-links";
+import { siteConfig } from "@/config/site";
 
 import styles from "../case-study.module.css";
 
@@ -31,11 +32,18 @@ export function ProjectSnapshot({
     ["Platforms / status", `${project.platforms.join(" + ")} · ${statusLabels[project.status]}`],
     ["Primary responsibility", snapshot.responsibilities],
     ["Engineering areas", snapshot.engineeringAreas],
-    ["Verified technology", project.technologies.join(" · ")],
+    ...(project.technologies.length > 0
+      ? [["Verified technology", project.technologies.join(" · ")] as const]
+      : []),
   ] as const;
 
   return (
-    <section className={styles.snapshot} aria-labelledby="snapshot-title">
+    <section
+      className={styles.snapshot}
+      aria-labelledby="snapshot-title"
+      data-case-section
+      id="project-overview"
+    >
       <div className={`${styles.snapshotInner} container`}>
         <header>
           <p className={styles.eyebrow}>Project snapshot</p>
@@ -57,7 +65,7 @@ export function ProjectSnapshot({
 
 export function NarrativeSection({ narrative, id }: { narrative: CaseStudyNarrative; id: string }) {
   return (
-    <section className={styles.narrative} aria-labelledby={`${id}-title`} id={id}>
+    <section className={styles.narrative} aria-labelledby={`${id}-title`} data-case-section id={id}>
       <div className={`${styles.narrativeInner} container`}>
         <header>
           <p className={styles.eyebrow}>{narrative.eyebrow}</p>
@@ -75,7 +83,12 @@ export function NarrativeSection({ narrative, id }: { narrative: CaseStudyNarrat
 
 export function OwnershipSection({ ownership }: { ownership: CaseStudyContent["ownership"] }) {
   return (
-    <section className={styles.ownership} aria-labelledby="ownership-title">
+    <section
+      className={styles.ownership}
+      aria-labelledby="ownership-title"
+      data-case-section
+      id="project-ownership"
+    >
       <div className="container">
         <header className={styles.sectionHeading}>
           <p className={styles.eyebrow}>{ownership.eyebrow}</p>
@@ -102,7 +115,12 @@ export function EngineeringApproach({
   approach: NonNullable<CaseStudyContent["approach"]>;
 }) {
   return (
-    <section className={styles.approach} aria-labelledby="approach-title" id="engineering-approach">
+    <section
+      className={styles.approach}
+      aria-labelledby="approach-title"
+      data-case-section
+      id="engineering-approach"
+    >
       <div className={`${styles.approachInner} container`}>
         <header>
           <p className={styles.eyebrow}>{approach.eyebrow}</p>
@@ -131,6 +149,7 @@ export function ProductFlow({ flow }: { flow: NonNullable<CaseStudyContent["flow
     <section
       className={styles.productFlow}
       aria-labelledby={`${flow.id ?? "transaction-flow"}-title`}
+      data-case-section
       id={flow.id ?? "transaction-flow"}
     >
       <div className="container">
@@ -186,6 +205,7 @@ export function EngineeringDecisions({
     <section
       className={styles.decisions}
       aria-labelledby="decisions-title"
+      data-case-section
       id="engineering-decisions"
     >
       <div className="container">
@@ -235,7 +255,12 @@ export function ResilienceSection({
   resilience: NonNullable<CaseStudyContent["resilience"]>;
 }) {
   return (
-    <section className={styles.resilience} aria-labelledby="resilience-title">
+    <section
+      className={styles.resilience}
+      aria-labelledby="resilience-title"
+      data-case-section
+      id="product-states"
+    >
       <div className={`${styles.resilienceInner} container`}>
         <header>
           <p className={styles.eyebrow}>{resilience.eyebrow}</p>
@@ -266,7 +291,12 @@ export function TechnologySummary({
   technologies: NonNullable<CaseStudyContent["technologies"]>;
 }) {
   return (
-    <section className={styles.technology} aria-labelledby="technology-title">
+    <section
+      className={styles.technology}
+      aria-labelledby="technology-title"
+      data-case-section
+      id="technology"
+    >
       <div className={`${styles.technologyInner} container`}>
         <header>
           <p className={styles.eyebrow}>Verified technology</p>
@@ -287,7 +317,12 @@ export function TechnologySummary({
 
 export function ProductGallery({ gallery }: { gallery: NonNullable<CaseStudyContent["gallery"]> }) {
   return (
-    <section className={styles.gallery} aria-labelledby="gallery-title" id="product-gallery">
+    <section
+      className={styles.gallery}
+      aria-labelledby="gallery-title"
+      data-case-section
+      id="product-gallery"
+    >
       <div className="container">
         <header className={styles.galleryHeading}>
           <p className={styles.eyebrow}>{gallery.eyebrow}</p>
@@ -325,7 +360,12 @@ export function ReleaseAndOutcome({
 }) {
   return (
     <>
-      <section className={styles.release} aria-labelledby="release-title">
+      <section
+        className={styles.release}
+        aria-labelledby="release-title"
+        data-case-section
+        id="release-context"
+      >
         <div className={`${styles.releaseInner} container`}>
           <header>
             <p className={styles.eyebrow}>{release.eyebrow}</p>
@@ -339,7 +379,12 @@ export function ReleaseAndOutcome({
           </div>
         </div>
       </section>
-      <section className={styles.outcome} aria-labelledby="outcome-title" id="case-study-outcome">
+      <section
+        className={styles.outcome}
+        aria-labelledby="outcome-title"
+        data-case-section
+        id="case-study-outcome"
+      >
         <div className={`${styles.outcomeInner} container`}>
           <div>
             <p className={styles.eyebrow}>{outcome.eyebrow}</p>
@@ -361,10 +406,15 @@ export function ReleaseAndOutcome({
 }
 
 export function NextProject({ nextProject }: { nextProject?: Project }) {
+  const preview = nextProject?.productionAssets[0];
+
   return (
     <section className={styles.nextProject} aria-labelledby="next-project-title" id="next-project">
-      <div className={`${styles.nextProjectInner} container`}>
-        <div>
+      <div
+        className={`${styles.nextProjectInner} container`}
+        data-has-preview={Boolean(nextProject && preview)}
+      >
+        <div className={styles.nextProjectCopy}>
           <p className={styles.eyebrow}>
             {nextProject ? "Continue the evidence" : "Continue from here"}
           </p>
@@ -378,19 +428,42 @@ export function NextProject({ nextProject }: { nextProject?: Project }) {
               ? nextProject.shortDescription
               : "The deep-story sequence ends here. The full project index and direct contact path remain one step away."}
           </p>
+          {nextProject ? (
+            <p className={styles.nextProjectMeta}>
+              {nextProject.domains[0]} ·{" "}
+              {nextProject.ownership === "full-build" ? "Full build" : "Team contribution"}
+            </p>
+          ) : null}
         </div>
+        {nextProject && preview ? (
+          <Link
+            aria-label={`Continue to ${nextProject.title}`}
+            className={styles.nextProjectPreview}
+            href={`/work/${nextProject.slug}` as Route}
+          >
+            <Image
+              alt=""
+              fill
+              loading="lazy"
+              sizes="(max-width: 63.99rem) 100vw, 34vw"
+              src={preview}
+            />
+          </Link>
+        ) : null}
         <div className={styles.nextActions}>
           {nextProject ? (
             <ActionLink href={`/work/${nextProject.slug}` as Route}>
               View {nextProject.title}
             </ActionLink>
           ) : (
-            <ActionLink href="/#contact">Start a conversation</ActionLink>
+            <ActionLink href="/work">Explore all work</ActionLink>
           )}
-          <Link href="/#selected-work">Back to selected work</Link>
-          <Link href="/work">Explore all work</Link>
+          {nextProject ? <Link href="/work">Explore all work</Link> : null}
           <Link href="/resume">View résumé</Link>
-          {nextProject ? <Link href="/#contact">Start a conversation</Link> : null}
+          <a href={`mailto:${siteConfig.email}`}>Contact</a>
+          <a href={siteConfig.social.linkedin} rel="noopener noreferrer" target="_blank">
+            LinkedIn
+          </a>
         </div>
       </div>
     </section>

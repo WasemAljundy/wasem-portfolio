@@ -165,5 +165,5 @@ export const eureecaCaseStudy = {
       "Live Google Play destination",
     ],
   },
-  nextProjectSlug: "aura-fit",
+  nextProjectSlug: "taseese",
 } as const satisfies CaseStudyContent;

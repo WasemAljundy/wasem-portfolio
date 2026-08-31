@@ -47,6 +47,138 @@ const milestone4BStudies = [
   { slug: "aid-for-palestine", heading: "Aid for Palestine", flow: "#aid-system-flow" },
 ] as const;
 
+const milestone5Studies = [
+  { slug: "taseese", heading: "Taseese – تأسيس", flow: "#learning-journey" },
+  { slug: "eisal", heading: "Eisal", flow: "#document-journey" },
+  { slug: "gader", heading: "Gader – جدير", flow: "#consultation-journey" },
+] as const;
+
+for (const study of milestone5Studies) {
+  test(`${study.heading} renders an evidence-bounded authored narrative`, async ({ page }) => {
+    await page.goto(`/work/${study.slug}`);
+    await expect(page.getByRole("heading", { level: 1, name: study.heading })).toBeVisible();
+    await expect(page.locator("#product-challenge")).toBeVisible();
+    await expect(page.locator("#project-ownership")).toBeVisible();
+    await expect(page.locator(study.flow)).toBeVisible();
+    await expect(page.locator("#engineering-decisions")).toBeVisible();
+    await expect(page.locator("#product-states")).toBeVisible();
+    await expect(page.locator("#case-study-outcome")).toBeVisible();
+    await expectDecodedImages(page.locator("main"));
+  });
+}
+
+test("case-study navigator derives present sections and enhances native anchors", async ({
+  page,
+}) => {
+  await page.goto("/work/taseese");
+  const navigator = page.getByRole("navigation", { name: "Case study sections" });
+  await expect(navigator.getByRole("link", { name: "Overview" })).toHaveAttribute(
+    "href",
+    "#project-overview",
+  );
+  await expect(navigator.getByRole("link", { name: "Product flow" })).toHaveAttribute(
+    "href",
+    "#learning-journey",
+  );
+  await expect(navigator.getByRole("link", { name: "Technology" })).toHaveCount(0);
+
+  await navigator.getByRole("link", { name: "Ownership" }).click();
+  await expect(page).toHaveURL(/#project-ownership$/);
+  const heading = page.getByRole("heading", {
+    name: "One product surface, carried from structure to release.",
+  });
+  await expect(heading).toBeVisible();
+  const box = await heading.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.y).toBeGreaterThan(0);
+
+  await navigator.getByRole("link", { name: "Outcome" }).click();
+  await expect(page).toHaveURL(/#case-study-outcome$/);
+  await expect(navigator.getByRole("link", { name: "Outcome" })).toHaveAttribute(
+    "aria-current",
+    "location",
+  );
+});
+
+test("Featured next-project sequence ends at Gader with recruiter continuation", async ({
+  page,
+}) => {
+  for (const [slug, next] of [
+    ["jood", "Eureeca"],
+    ["eureeca", "Taseese – تأسيس"],
+    ["taseese", "Aura Fit"],
+    ["aura-fit", "Eisal"],
+    ["eisal", "Gader – جدير"],
+  ] as const) {
+    await page.goto(`/work/${slug}`);
+    await expect(page.getByRole("link", { name: `View ${next}` })).toHaveAttribute(
+      "href",
+      `/work/${next === "Taseese – تأسيس" ? "taseese" : next === "Aura Fit" ? "aura-fit" : next === "Gader – جدير" ? "gader" : next.toLowerCase()}`,
+    );
+  }
+
+  await page.goto("/work/gader");
+  await expect(
+    page.getByRole("heading", { name: "Explore the work or start a conversation." }),
+  ).toBeVisible();
+  await expect(page.getByRole("link", { name: "Explore all work" })).toHaveAttribute(
+    "href",
+    "/work",
+  );
+  await expect(page.getByRole("link", { name: "View résumé" })).toHaveAttribute("href", "/resume");
+  const ending = page.locator("#next-project");
+  await expect(ending.getByRole("link", { name: "Contact" })).toHaveAttribute("href", /^mailto:/);
+  await expect(ending.getByRole("link", { name: "LinkedIn" })).toHaveAttribute("target", "_blank");
+});
+
+for (const width of [375, 768, 1024, 1440]) {
+  test(`Milestone 5 case studies remain readable at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: width === 375 ? 812 : 900 });
+    for (const study of milestone5Studies) {
+      await page.goto(`/work/${study.slug}`);
+      await expectNoHorizontalOverflow(page);
+      await expectDecodedImages(page.locator("main"));
+      await page.screenshot({
+        path: `test-results/milestone-5-${study.slug}-${width}.png`,
+        fullPage: true,
+      });
+    }
+  });
+}
+
+test("Milestone 5 case studies have no serious automated accessibility violations", async ({
+  page,
+}) => {
+  for (const study of milestone5Studies) {
+    await page.goto(`/work/${study.slug}`);
+    const results = await new AxeBuilder({ page }).analyze();
+    const serious = results.violations.filter((violation) =>
+      ["serious", "critical"].includes(violation.impact ?? ""),
+    );
+    expect(serious, study.slug).toEqual([]);
+  }
+});
+
+test("case-study navigator and preview motion are disabled for reduced motion", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/work/taseese");
+  const navigatorLink = page
+    .getByRole("navigation", { name: "Case study sections" })
+    .getByRole("link", { name: "Overview" });
+  const navigatorDuration = await navigatorLink.evaluate((link) =>
+    Number.parseFloat(getComputedStyle(link).transitionDuration),
+  );
+  expect(navigatorDuration).toBeLessThanOrEqual(0.001);
+  const previewImage = page.locator("#next-project img");
+  await previewImage.scrollIntoViewIfNeeded();
+  const previewDuration = await previewImage.evaluate((image) =>
+    Number.parseFloat(getComputedStyle(image).transitionDuration),
+  );
+  expect(previewDuration).toBeLessThanOrEqual(0.001);
+});
+
 for (const study of milestone4BStudies) {
   test(`${study.heading} renders its authored deep narrative`, async ({ page }) => {
     await page.goto(`/work/${study.slug}`);

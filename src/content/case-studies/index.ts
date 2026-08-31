@@ -4,14 +4,20 @@ import { joodCaseStudy } from "./jood";
 import { aidForPalestineCaseStudy } from "./aid-for-palestine";
 import { auraFitCaseStudy } from "./aura-fit";
 import { eureecaCaseStudy } from "./eureeca";
+import { eisalCaseStudy } from "./eisal";
+import { gaderCaseStudy } from "./gader";
 import { sezonStoreCaseStudy } from "./sezon-store";
+import { taseeseCaseStudy } from "./taseese";
 import { validateCaseStudyContent } from "./schema";
 
 const authoredCaseStudies = [
   joodCaseStudy,
-  sezonStoreCaseStudy,
   eureecaCaseStudy,
+  taseeseCaseStudy,
   auraFitCaseStudy,
+  eisalCaseStudy,
+  gaderCaseStudy,
+  sezonStoreCaseStudy,
   aidForPalestineCaseStudy,
 ].map(validateCaseStudyContent);
 
@@ -29,5 +35,10 @@ export function getCaseStudy(slug: string) {
   return authoredCaseStudies.find((caseStudy) => caseStudy.projectSlug === slug);
 }
 
-export { CaseStudyValidationError, validateCaseStudyContent } from "./schema";
-export type { CaseStudyContent, CaseStudyImage, CaseStudyNarrative } from "./schema";
+export { CaseStudyValidationError, getCaseStudySections, validateCaseStudyContent } from "./schema";
+export type {
+  CaseStudyContent,
+  CaseStudyImage,
+  CaseStudyNarrative,
+  CaseStudySection,
+} from "./schema";

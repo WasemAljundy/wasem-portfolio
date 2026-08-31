@@ -35,20 +35,52 @@ test("work index separates deep stories, production breadth, and archive records
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Product proof, organized by depth.",
   );
-  await expect(page.locator("#deep-stories article")).toHaveCount(5);
-  await expect(page.locator("#production-work article")).toHaveCount(10);
+  await expect(page.locator("#deep-stories article")).toHaveCount(8);
+  await expect(page.locator("#production-work article")).toHaveCount(7);
   await expect(page.locator("#archive article")).toHaveCount(9);
   await expect(page.locator("#archive a")).toHaveCount(0);
   await expect(
     page.locator("#deep-stories").getByRole("link", { name: /Read case study: Jood/ }),
   ).toHaveAttribute("href", "/work/jood");
   await expect(
-    page.locator("#production-work").getByRole("link", { name: /View project: Taseese/ }),
-  ).toHaveAttribute("href", "/work/taseese");
-  await expect(
     page.locator("#production-work").getByRole("link", { name: /View on App Store: Talabati/ }),
   ).toHaveAttribute("target", "_blank");
   await expect(page.locator("#production-work").getByText("Private summary only")).toHaveCount(1);
+});
+
+test("work explorer previews approved deep-story imagery on hover and keyboard focus", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/work");
+  const preview = page.getByTestId("work-preview");
+  await expect(preview).toBeVisible();
+  await expect(preview).toHaveAttribute("data-active-preview", "jood");
+
+  await page.locator('#deep-stories article[data-preview-slug="taseese"]').hover();
+  await expect(preview).toHaveAttribute("data-active-preview", "taseese");
+
+  await page
+    .locator("#deep-stories")
+    .getByRole("link", { name: /Read case study: Eisal/ })
+    .focus();
+  await expect(preview).toHaveAttribute("data-active-preview", "eisal");
+  await expect(preview.locator("img")).toHaveCount(1);
+});
+
+test("work explorer remains complete without preview UI on mobile and reduced motion is static", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/work");
+  await expect(page.getByTestId("work-preview")).toBeHidden();
+  await expect(page.locator("main article")).toHaveCount(24);
+  const animation = await page
+    .getByTestId("work-preview")
+    .locator("img")
+    .evaluate((image) => getComputedStyle(image).animationName);
+  expect(animation).toBe("none");
 });
 
 test("work index remains complete without JavaScript", async ({ browser }) => {

@@ -7,11 +7,11 @@ A recruiter-focused engineering portfolio for Wasem Aljundy, a Senior Flutter En
 ## What this repository demonstrates
 
 - Product proof organized for two reading depths: a fast recruiter scan and detailed engineering narratives.
-- Five authored case studies covering architecture, integrations, commerce, financial-product contribution, fitness/health data, and humanitarian workflows.
+- Eight authored case studies, including a complete six-project Featured journey plus broader commerce and humanitarian stories.
 - A manifest-driven index of 24 public portfolio records, clearly separating production/private-client work from portfolio-only archive entries.
 - Privacy-safe publication rules for private-client material, including demo-only Aid for Palestine derivatives.
 - Semantic, keyboard-accessible, responsive pages with reduced-motion and no-JavaScript fallbacks.
-- Static/server-first rendering with one isolated Client Component for an optional fine-pointer cursor companion.
+- Static/server-first rendering with three isolated Client Components for the optional fine-pointer cursor companion, derived case-study navigation, and the desktop work preview.
 - Production SEO, structured data, social images, sitemap, robots controls, security headers, and automated release checks.
 
 The CV-supported “20+ production applications” claim describes Wasem’s broader professional record. Archive entries in this repository are explicitly labelled portfolio-only and are not counted as production releases.

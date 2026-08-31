@@ -6,6 +6,8 @@ import {
   selectedProductionProjects,
 } from "@/content/projects";
 import { ProjectRow } from "@/features/projects/components/project-row";
+import { WorkPreview } from "@/features/projects/components/work-preview";
+import { getWorkPreviewItem, type WorkPreviewItem } from "@/features/projects/work-preview";
 import { createMetadata } from "@/lib/seo/metadata";
 
 import styles from "../../features/projects/work-index.module.css";
@@ -25,7 +27,7 @@ const groups = [
     eyebrow: "01 · Featured / Deep Stories",
     title: "Engineering decisions, shown in context.",
     description:
-      "Five authored studies connect product constraints to architecture, implementation, quality, and release judgment.",
+      "Eight authored studies connect product constraints to architecture, implementation, quality, and release judgment. The six homepage Featured chapters lead the sequence.",
     projects: deepCaseStudyProjects,
     variant: "deep",
   },
@@ -81,33 +83,47 @@ export default function WorkPage() {
         </dl>
       </header>
 
-      {groups.map((group) => (
-        <section
-          className={`${styles.group} container`}
-          id={group.id}
-          key={group.id}
-          aria-labelledby={`${group.id}-title`}
-        >
-          <header className={styles.groupHeader}>
-            <p>{group.eyebrow}</p>
-            <div>
-              <h2 id={`${group.id}-title`}>{group.title}</h2>
-              <p>{group.description}</p>
+      {groups.map((group) => {
+        const previews: WorkPreviewItem[] = group.projects.flatMap((project) => {
+          const preview = getWorkPreviewItem(project, group.variant);
+          return preview ? [preview] : [];
+        });
+
+        return (
+          <section
+            className={`${styles.group} container`}
+            id={group.id}
+            key={group.id}
+            aria-labelledby={`${group.id}-title`}
+          >
+            <header className={styles.groupHeader}>
+              <p>{group.eyebrow}</p>
+              <div>
+                <h2 id={`${group.id}-title`}>{group.title}</h2>
+                <p>{group.description}</p>
+              </div>
+              <span>{String(group.projects.length).padStart(2, "0")} projects</span>
+            </header>
+            <div
+              className={styles.groupExplorer}
+              data-has-preview={previews.length > 0}
+              data-work-explorer
+            >
+              <ol className={styles.list}>
+                {group.projects.map((project, index) => (
+                  <ProjectRow
+                    index={index}
+                    key={project.slug}
+                    project={project}
+                    variant={group.variant}
+                  />
+                ))}
+              </ol>
+              {previews.length > 0 ? <WorkPreview previews={previews} /> : null}
             </div>
-            <span>{String(group.projects.length).padStart(2, "0")} projects</span>
-          </header>
-          <ol className={styles.list}>
-            {group.projects.map((project, index) => (
-              <ProjectRow
-                index={index}
-                key={project.slug}
-                project={project}
-                variant={group.variant}
-              />
-            ))}
-          </ol>
-        </section>
-      ))}
+          </section>
+        );
+      })}
     </div>
   );
 }

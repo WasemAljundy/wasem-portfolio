@@ -28,8 +28,8 @@ Senior Flutter Engineer / Senior Mobile Engineer — full-cycle mobile product o
 
 ## Work index curation
 
-- Featured / Deep Stories: Jood, Eureeca, Aura Fit, Sezon Store, Aid for Palestine
-- Selected Production Work: Taseese, Eisal, Gader, Naseeb, Haraj Aden, Otlob Ecosystem, Talabati, Famous Steam, Pureness, Yalla Call
+- Featured / Deep Stories: Jood, Eureeca, Taseese, Aura Fit, Eisal, Gader, Sezon Store, Aid for Palestine
+- Selected Production Work: Naseeb, Haraj Aden, Otlob Ecosystem, Talabati, Famous Steam, Pureness, Yalla Call
 - Additional Work / Archive: Service Mate, Betweener, Chat Pulse, Learn Sphere, Watchly, Mysterious Questions, Secret Number, Waslak, Sanayie
 - Publication rule: every publishable manifest project appears exactly once. Portfolio-only archive records are never counted as production releases and receive no invented route or external destination.
 

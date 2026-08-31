@@ -1,7 +1,8 @@
-import type { CaseStudyContent } from "@/content/case-studies";
+import { getCaseStudySections, type CaseStudyContent } from "@/content/case-studies";
 import type { Project } from "@/content/projects";
 
 import { CaseStudyHero } from "./case-study-hero";
+import { CaseStudyNavigator } from "./case-study-navigator";
 import {
   EngineeringApproach,
   EngineeringDecisions,
@@ -30,6 +31,7 @@ export function CaseStudyPage({
     <article data-case-study={content.presentation}>
       <ProjectStructuredData project={project} />
       <CaseStudyHero content={content} project={project} />
+      <CaseStudyNavigator sections={getCaseStudySections(content)} />
       <ProjectSnapshot project={project} snapshot={content.snapshot} />
       <NarrativeSection id="product-challenge" narrative={content.challenge} />
       <OwnershipSection ownership={content.ownership} />

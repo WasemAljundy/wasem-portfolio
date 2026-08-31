@@ -240,5 +240,5 @@ export const auraFitCaseStudy = {
       "iOS and Android delivery scope",
     ],
   },
-  nextProjectSlug: "sezon-store",
+  nextProjectSlug: "eisal",
 } as const satisfies CaseStudyContent;

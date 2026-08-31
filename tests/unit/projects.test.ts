@@ -5,6 +5,7 @@ import manifestSource from "../../planning/project-manifest.json";
 import {
   CaseStudyValidationError,
   getCaseStudy,
+  getCaseStudySections,
   validateCaseStudyContent,
   type CaseStudyContent,
 } from "../../src/content/case-studies/index";
@@ -15,6 +16,7 @@ import {
   selectedProductionProjects,
 } from "../../src/content/projects/index";
 import { validatePortfolioManifest } from "../../src/content/projects/schema";
+import { getWorkPreviewItem } from "../../src/features/projects/work-preview";
 
 type MutableManifest = {
   projects: Array<{
@@ -35,14 +37,23 @@ test("the canonical project manifest validates as the factual source", () => {
 test("the public work index covers every project once without inflating production scope", () => {
   assert.deepEqual(
     deepCaseStudyProjects.map((project) => project.slug),
-    ["jood", "eureeca", "aura-fit", "sezon-store", "aid-for-palestine"],
+    [
+      "jood",
+      "eureeca",
+      "taseese",
+      "aura-fit",
+      "eisal",
+      "gader",
+      "sezon-store",
+      "aid-for-palestine",
+    ],
   );
   assert.deepEqual(
     selectedProductionProjects.slice(0, 3).map((project) => project.slug),
-    ["taseese", "eisal", "gader"],
+    ["naseeb", "haraj-aden", "otlob-ecosystem"],
   );
-  assert.equal(deepCaseStudyProjects.length, 5);
-  assert.equal(selectedProductionProjects.length, 10);
+  assert.equal(deepCaseStudyProjects.length, 8);
+  assert.equal(selectedProductionProjects.length, 7);
   assert.equal(archiveProjects.length, 9);
   assert.ok(archiveProjects.every((project) => project.status === "portfolio-only"));
   assert.equal(
@@ -99,13 +110,19 @@ test("team builds require ownership evidence", () => {
   assert.throws(() => validatePortfolioManifest(invalid), /require ownershipEvidence/);
 });
 
-test("Milestone 4B deep case studies are authored and connected", () => {
-  const expected = ["jood", "sezon-store", "eureeca", "aura-fit", "aid-for-palestine"];
+test("all six Featured projects have authored studies in the intended journey", () => {
+  const expected = ["jood", "eureeca", "taseese", "aura-fit", "eisal", "gader"];
   for (const slug of expected) assert.equal(getCaseStudy(slug)?.projectSlug, slug);
 
   assert.equal(getCaseStudy("jood")?.nextProjectSlug, "eureeca");
-  assert.equal(getCaseStudy("eureeca")?.nextProjectSlug, "aura-fit");
-  assert.equal(getCaseStudy("aura-fit")?.nextProjectSlug, "sezon-store");
+  assert.equal(getCaseStudy("eureeca")?.nextProjectSlug, "taseese");
+  assert.equal(getCaseStudy("taseese")?.nextProjectSlug, "aura-fit");
+  assert.equal(getCaseStudy("aura-fit")?.nextProjectSlug, "eisal");
+  assert.equal(getCaseStudy("eisal")?.nextProjectSlug, "gader");
+  assert.equal(getCaseStudy("gader")?.nextProjectSlug, undefined);
+});
+
+test("broader deep stories remain authored outside the Featured sequence", () => {
   assert.equal(getCaseStudy("sezon-store")?.nextProjectSlug, "aid-for-palestine");
   assert.equal(getCaseStudy("aid-for-palestine")?.nextProjectSlug, undefined);
 });
@@ -133,6 +150,26 @@ test("case-study sections are optional without weakening the required narrative"
   delete minimal.gallery;
 
   assert.equal(validateCaseStudyContent(minimal), minimal);
+  const sectionIds = getCaseStudySections(minimal).map((section) => section.id);
+  assert.deepEqual(sectionIds, [
+    "project-overview",
+    "product-challenge",
+    "project-ownership",
+    "release-context",
+    "case-study-outcome",
+  ]);
+  assert.ok(!sectionIds.includes("engineering-approach"));
+});
+
+test("work previews require approved imagery and never elevate archive records", () => {
+  const jood = portfolioManifest.projects.find((project) => project.slug === "jood");
+  const naseeb = portfolioManifest.projects.find((project) => project.slug === "naseeb");
+  const archive = archiveProjects[0];
+  assert.ok(jood && naseeb && archive);
+
+  assert.equal(getWorkPreviewItem(jood, "deep")?.src, jood.productionAssets[0]);
+  assert.equal(getWorkPreviewItem(naseeb, "selected"), undefined);
+  assert.equal(getWorkPreviewItem(archive, "archive"), undefined);
 });
 
 test("case-study images cannot cross project publication boundaries", () => {

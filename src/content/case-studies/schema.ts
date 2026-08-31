@@ -14,7 +14,7 @@ export type CaseStudyNarrative = {
 
 export type CaseStudyContent = {
   projectSlug: string;
-  presentation: "jood" | "sezon" | "eureeca" | "aura" | "afp";
+  presentation: "jood" | "sezon" | "eureeca" | "taseese" | "aura" | "eisal" | "gader" | "afp";
   seo: {
     title: string;
     description: string;
@@ -90,6 +90,27 @@ export type CaseStudyContent = {
   };
   nextProjectSlug?: string;
 };
+
+export type CaseStudySection = {
+  id: string;
+  label: string;
+};
+
+export function getCaseStudySections(content: CaseStudyContent): CaseStudySection[] {
+  return [
+    { id: "project-overview", label: "Overview" },
+    { id: "product-challenge", label: "Challenge" },
+    { id: "project-ownership", label: "Ownership" },
+    ...(content.approach ? [{ id: "engineering-approach", label: "Approach" }] : []),
+    ...(content.flow ? [{ id: content.flow.id ?? "transaction-flow", label: "Product flow" }] : []),
+    ...(content.decisions ? [{ id: "engineering-decisions", label: "Decisions" }] : []),
+    ...(content.resilience ? [{ id: "product-states", label: "States" }] : []),
+    ...(content.technologies ? [{ id: "technology", label: "Technology" }] : []),
+    ...(content.gallery ? [{ id: "product-gallery", label: "Gallery" }] : []),
+    { id: "release-context", label: "Release" },
+    { id: "case-study-outcome", label: "Outcome" },
+  ];
+}
 
 export class CaseStudyValidationError extends Error {
   constructor(message: string) {

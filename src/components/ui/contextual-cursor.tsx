@@ -66,6 +66,9 @@ export function ContextualCursor() {
       if (!target) return;
       activeTarget = target;
       companion.textContent = target.dataset.cursorLabel ?? "View";
+      const companionBounds = companion.getBoundingClientRect();
+      companionWidth = companionBounds.width;
+      companionHeight = companionBounds.height;
       companion.dataset.active = "true";
       queuePosition();
     };

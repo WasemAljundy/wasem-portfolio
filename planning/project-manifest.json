@@ -32,11 +32,17 @@
     "homepagePrimaryCount": 6,
     "principle": "Show depth before volume. Featured work demonstrates product ownership, architecture, production delivery and domain breadth; the rest supports credibility without diluting the first impression.",
     "workIndex": {
-      "deepCaseStudyOrder": ["jood", "eureeca", "aura-fit", "sezon-store", "aid-for-palestine"],
-      "selectedProductionOrder": [
+      "deepCaseStudyOrder": [
+        "jood",
+        "eureeca",
         "taseese",
+        "aura-fit",
         "eisal",
         "gader",
+        "sezon-store",
+        "aid-for-palestine"
+      ],
+      "selectedProductionOrder": [
         "naseeb",
         "haraj-aden",
         "otlob-ecosystem",
@@ -146,6 +152,7 @@
       "ownership": "full-build",
       "platforms": ["iOS", "iPadOS"],
       "caseStudy": true,
+      "deepCaseStudyPositioning": true,
       "summary": "An education platform organized around learning stages, classes, subjects, nested learning sections, quizzes, and learner performance progression.",
       "proofPoints": [
         "Full-build ownership confirmed by Wasem",
@@ -172,8 +179,8 @@
       "domain": ["AI", "Fitness", "HealthTech"],
       "ownership": "full-build",
       "platforms": ["iOS", "Android"],
-      "caseStudy": true,
       "deepCaseStudyPositioning": true,
+      "caseStudy": true,
       "summary": "An AI-assisted fitness product with personalized onboarding, workout and meal planning, calorie intelligence, health-data integration, and progress tracking.",
       "proofPoints": [
         "AI/ML product experience",
@@ -209,7 +216,9 @@
       "domain": ["Business", "Digital Receipts", "Invoice Management"],
       "ownership": "full-build",
       "platforms": ["iOS", "Android"],
+      "technologies": ["Flutter", "REST API", "Localization"],
       "caseStudy": true,
+      "deepCaseStudyPositioning": true,
       "summary": "A business-focused mobile product for organizing digital receipts, invoices and warranties with multilingual experiences, themes, notifications and structured document workflows.",
       "proofPoints": [
         "Business workflow depth",
@@ -241,6 +250,7 @@
       "ownership": "full-build",
       "platforms": ["Android"],
       "caseStudy": true,
+      "deepCaseStudyPositioning": true,
       "summary": "A consultation platform connecting beneficiaries with volunteer experts, supporting expert selection, consultation requests, messaging, voice calls and video calls.",
       "proofPoints": [
         "Full-build ownership confirmed by Wasem",

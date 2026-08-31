@@ -23,7 +23,12 @@ export function ProjectRow({ project, index, variant }: ProjectRowProps) {
 
   return (
     <li className={styles.row} data-variant={variant}>
-      <article className={styles.project}>
+      <article
+        className={styles.project}
+        data-preview-slug={
+          variant !== "archive" && project.productionAssets.length > 0 ? project.slug : undefined
+        }
+      >
         <p className={styles.index} aria-hidden="true">
           {String(index + 1).padStart(2, "0")}
         </p>

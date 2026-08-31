@@ -239,6 +239,84 @@
   }
 }
 
+.caseNavigator {
+  position: sticky;
+  z-index: 20;
+  top: var(--header-offset);
+  border-block: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-canvas) 96%, transparent);
+  backdrop-filter: blur(0.7rem) saturate(130%);
+}
+
+.caseNavigatorInner {
+  min-height: 3.65rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.caseNavigatorLabel {
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.caseNavigator ol {
+  min-width: 0;
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  list-style: none;
+}
+
+.caseNavigator ol::-webkit-scrollbar {
+  display: none;
+}
+
+.caseNavigator a {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.35rem;
+  padding-inline: 0.65rem;
+  color: var(--color-ink-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    color var(--primitive-duration-fast) var(--primitive-ease-out),
+    background-color var(--primitive-duration-fast) var(--primitive-ease-out);
+}
+
+.caseNavigator a:hover,
+.caseNavigator a[aria-current="location"] {
+  background: color-mix(in srgb, var(--color-action) 8%, transparent);
+  color: var(--color-action);
+}
+
+.snapshot[data-case-section],
+.narrative[data-case-section],
+.ownership[data-case-section],
+.approach[data-case-section],
+.productFlow[data-case-section],
+.decisions[data-case-section],
+.resilience[data-case-section],
+.technology[data-case-section],
+.gallery[data-case-section],
+.release[data-case-section],
+.outcome[data-case-section] {
+  scroll-margin-top: calc(var(--header-offset) + 4.5rem);
+}
+
 .snapshot,
 .narrative,
 .ownership,
@@ -299,7 +377,7 @@
 
 .snapshotList span {
   grid-area: number;
-  color: #087d6a;
+  color: #006655;
   font-family: var(--font-mono);
   font-weight: 700;
 }
@@ -830,15 +908,53 @@
 
 .nextProjectInner {
   display: grid;
-  grid-template-columns: minmax(20rem, 0.65fr) minmax(17rem, 0.35fr);
-  gap: clamp(3rem, 8vw, 8rem);
-  align-items: end;
+  grid-template-columns: minmax(20rem, 0.58fr) minmax(15rem, 0.42fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
 }
 
-.nextProjectInner > div > p:last-child {
+.nextProjectInner[data-has-preview="true"] {
+  grid-template-columns: minmax(20rem, 0.5fr) minmax(12rem, 0.22fr) minmax(15rem, 0.28fr);
+}
+
+.nextProject .nextProjectCopy > p:not(.nextProjectMeta) {
   max-width: 45rem;
   margin-block-start: 1.5rem;
   color: #b8c4dc;
+}
+
+.nextProject .nextProjectInner .nextProjectMeta {
+  margin: 1.25rem 0 0;
+  color: #82a8ff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nextProjectPreview {
+  position: relative;
+  width: min(100%, 15rem);
+  aspect-ratio: 4 / 5;
+  justify-self: center;
+  overflow: hidden;
+  border: 1px solid #354b73;
+  border-radius: 0.8rem;
+  background: #142442;
+}
+
+.nextProjectPreview img {
+  object-fit: cover;
+  object-position: top center;
+  transition:
+    transform var(--primitive-duration-medium) var(--primitive-ease-out),
+    opacity var(--primitive-duration-fast) var(--primitive-ease-out);
+}
+
+.nextProjectPreview:hover img,
+.nextProjectPreview:focus-visible img {
+  transform: translateY(-0.2rem) scale(1.015);
 }
 
 .nextActions {
@@ -925,6 +1041,43 @@
   background: #123a69;
 }
 
+:global([data-case-study="taseese"]) .hero {
+  --case-accent: #ffd36e;
+  background:
+    linear-gradient(rgb(255 211 110 / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 211 110 / 0.08) 1px, transparent 1px), #241d12;
+  background-size: 4rem 4rem;
+}
+
+:global([data-case-study="taseese"]) .heroMedia {
+  border-color: rgb(255 211 110 / 0.28);
+  background: linear-gradient(145deg, #f5ead4, #d9c6a2);
+}
+
+:global([data-case-study="taseese"]) .snapshot {
+  background: #f5efe1;
+}
+
+:global([data-case-study="taseese"]) .productFlow {
+  --case-accent: #ffd36e;
+  background: #211b12;
+}
+
+:global([data-case-study="taseese"]) .flowStepCopy > span,
+:global([data-case-study="taseese"]) .flowHeading > p:first-child {
+  color: #ffd36e;
+}
+
+:global([data-case-study="taseese"]) .flowStep figure {
+  border-color: rgb(255 211 110 / 0.25);
+  background: linear-gradient(145deg, #f5ead4, #cdb88f);
+}
+
+:global([data-case-study="taseese"]) .release {
+  --case-accent: #ffe5a8;
+  background: #72521c;
+}
+
 :global([data-case-study="aura"]) .hero {
   --case-accent: #b2a7ff;
   background:
@@ -954,6 +1107,77 @@
 :global([data-case-study="aura"]) .release {
   --case-accent: #d5ceff;
   background: #413b73;
+}
+
+:global([data-case-study="eisal"]) .hero {
+  --case-accent: #9cc8ff;
+  background:
+    radial-gradient(circle at 82% 18%, rgb(156 200 255 / 0.17), transparent 28rem), #0b1524;
+}
+
+:global([data-case-study="eisal"]) .heroMedia {
+  border-color: rgb(156 200 255 / 0.24);
+  background: linear-gradient(145deg, #eaf2fb 0 48%, #172437 48% 100%);
+}
+
+:global([data-case-study="eisal"]) .snapshot {
+  background: #eef2f6;
+}
+
+:global([data-case-study="eisal"]) .productFlow {
+  --case-accent: #9cc8ff;
+  background: #111a29;
+}
+
+:global([data-case-study="eisal"]) .flowStepCopy > span,
+:global([data-case-study="eisal"]) .flowHeading > p:first-child {
+  color: #9cc8ff;
+}
+
+:global([data-case-study="eisal"]) .flowStep figure {
+  border-color: rgb(156 200 255 / 0.24);
+  background: linear-gradient(145deg, #e9f1fa, #172437);
+}
+
+:global([data-case-study="eisal"]) .release {
+  --case-accent: #c9e2ff;
+  background: #1c456f;
+}
+
+:global([data-case-study="gader"]) .hero {
+  --case-accent: #f2bd91;
+  background:
+    radial-gradient(circle at 82% 18%, rgb(242 189 145 / 0.16), transparent 29rem), #281a17;
+}
+
+:global([data-case-study="gader"]) .heroMedia {
+  min-height: clamp(35rem, 52vw, 49rem);
+  border-color: rgb(242 189 145 / 0.23);
+  background: linear-gradient(145deg, #5a3930, #2e1d19 58%, #6b483b);
+}
+
+:global([data-case-study="gader"]) .snapshot {
+  background: #f5eee9;
+}
+
+:global([data-case-study="gader"]) .productFlow {
+  --case-accent: #f2bd91;
+  background: #2b1d19;
+}
+
+:global([data-case-study="gader"]) .flowStepCopy > span,
+:global([data-case-study="gader"]) .flowHeading > p:first-child {
+  color: #f2bd91;
+}
+
+:global([data-case-study="gader"]) .flowStep figure {
+  border-color: rgb(242 189 145 / 0.22);
+  background: linear-gradient(145deg, #654238, #251713);
+}
+
+:global([data-case-study="gader"]) .release {
+  --case-accent: #ffe0c4;
+  background: #7d4938;
 }
 
 :global([data-case-study="afp"]) .hero {
@@ -1060,9 +1284,31 @@
   .nextProjectInner {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .nextProjectInner[data-has-preview="true"] {
+    grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.32fr);
+  }
+
+  .nextProjectInner[data-has-preview="true"] .nextActions {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 47.99rem) {
+  .caseNavigatorInner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .caseNavigatorLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
   .heroHeader {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
@@ -1180,6 +1426,15 @@
   .nextActions :global(.button-link) {
     grid-column: auto;
   }
+
+  .nextProjectInner[data-has-preview="true"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nextProjectPreview {
+    width: min(70vw, 15rem);
+    justify-self: start;
+  }
 }
 
 @media (max-width: 29.99rem) {
@@ -1207,6 +1462,16 @@
   .nextActions a,
   .heroCopy :global(.project-external-link),
   .release :global(.project-external-link) {
+    transform: none;
+  }
+
+  .caseNavigator a,
+  .nextProjectPreview img {
+    transition: none;
+  }
+
+  .nextProjectPreview:hover img,
+  .nextProjectPreview:focus-visible img {
     transform: none;
   }
 }
