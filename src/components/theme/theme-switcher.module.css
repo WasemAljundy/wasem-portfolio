@@ -1,0 +1,105 @@
+.switcher {
+  position: relative;
+  min-width: 8.5rem;
+  min-height: 2.75rem;
+  display: grid;
+  grid-template-columns: repeat(3, 2.75rem);
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-border) 82%, transparent);
+  border-radius: 999px;
+  background: var(--color-surface-subtle);
+  padding: 0.125rem;
+  isolation: isolate;
+}
+
+.switcher::before {
+  position: absolute;
+  z-index: -1;
+  width: 2.5rem;
+  height: 2.5rem;
+  inset-block-start: 0.125rem;
+  inset-inline-start: 0.125rem;
+  border: 1px solid color-mix(in srgb, var(--color-border) 72%, transparent);
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: 0 0.2rem 0.75rem rgb(12 16 21 / 0.1);
+  content: "";
+  transform: translateX(2.75rem);
+  transition: transform var(--primitive-duration-standard) var(--primitive-ease-out);
+}
+
+:global(html[data-theme-preference="light"]) .switcher::before {
+  transform: translateX(0);
+}
+
+:global(html[data-theme-preference="dark"]) .switcher::before {
+  transform: translateX(5.5rem);
+}
+
+.legend,
+.label,
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.choice {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+}
+
+.option {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--color-ink-muted);
+  cursor: pointer;
+}
+
+.option svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+  transition:
+    color var(--primitive-duration-standard) var(--primitive-ease-out),
+    transform var(--primitive-duration-standard) var(--primitive-ease-out);
+}
+
+.input:checked + .option {
+  color: var(--color-action);
+}
+
+.input:checked + .option svg {
+  transform: scale(1.06);
+}
+
+.input:focus-visible + .option {
+  box-shadow: inset 0 0 0 2px var(--color-focus);
+}
+
+.option:hover {
+  color: var(--color-action);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switcher::before,
+  .option svg {
+    transition-duration: 1ms;
+  }
+
+  .input:checked + .option svg {
+    transform: none;
+  }
+}

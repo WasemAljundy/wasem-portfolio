@@ -67,12 +67,19 @@
   --color-border: var(--primitive-slate-200);
   --color-action: var(--primitive-cobalt-600);
   --color-action-hover: var(--primitive-cobalt-700);
+  --color-on-action: var(--primitive-white);
   --color-focus: var(--primitive-violet-600);
   --color-danger: var(--primitive-red-700);
   --color-dark-canvas: var(--primitive-ink-950);
   --color-dark-ink: var(--primitive-stone-50);
+  --color-supporting-neutral: #edf1f3;
+  --color-supporting-blue: #eef3fb;
+  --color-cursor-surface: rgb(12 16 21 / 0.86);
+  --color-cursor-ink: var(--primitive-white);
+  --color-cursor-border: rgb(255 255 255 / 0.32);
   --material-header: rgb(245 246 244 / 0.84);
   --material-header-solid: var(--primitive-stone-50);
+  --shadow-panel: var(--primitive-shadow-soft);
 
   /* Semantic: project accents */
   --accent-fintech: var(--primitive-teal-600);
@@ -97,6 +104,28 @@
   --panel-radius: var(--primitive-radius-lg);
   --panel-border: 1px solid var(--color-border);
   --focus-ring: 0 0 0 0.2rem var(--color-canvas), 0 0 0 0.4rem var(--color-focus);
+}
+
+html[data-theme="dark"] {
+  --color-canvas: #0d1218;
+  --color-surface: #151c24;
+  --color-surface-subtle: #1c2530;
+  --color-ink: #f3f6f8;
+  --color-ink-muted: #aab5c0;
+  --color-border: #34404d;
+  --color-action: #82adff;
+  --color-action-hover: #aac7ff;
+  --color-on-action: #07101d;
+  --color-focus: #c4b5fd;
+  --color-danger: #ff8a80;
+  --color-supporting-neutral: #121a23;
+  --color-supporting-blue: #111c2b;
+  --color-cursor-surface: rgb(242 246 250 / 0.9);
+  --color-cursor-ink: #10161d;
+  --color-cursor-border: rgb(13 18 24 / 0.28);
+  --material-header: rgb(13 18 24 / 0.86);
+  --material-header-solid: #0d1218;
+  --shadow-panel: 0 1rem 4rem rgb(0 0 0 / 0.3);
 }
 
 @theme inline {

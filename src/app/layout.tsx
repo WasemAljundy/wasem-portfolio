@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { siteConfig } from "@/config/site";
 import { createMetadata } from "@/lib/seo/metadata";
 import { PersonStructuredData } from "@/lib/seo/structured-data";
+import { themeInitializationScript } from "@/lib/theme/theme-script";
 
 import "./globals.css";
 
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "light",
+  colorScheme: "light dark",
   themeColor: "#f5f6f4",
   width: "device-width",
   initialScale: 1,
@@ -31,7 +32,19 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      data-theme="light"
+      data-theme-preference="system"
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          id="theme-initializer"
+          dangerouslySetInnerHTML={{ __html: themeInitializationScript }}
+        />
+      </head>
       <body>
         <a className="skip-link" href="#main-content">
           Skip to main content

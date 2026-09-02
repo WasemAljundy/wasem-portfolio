@@ -135,10 +135,10 @@
   justify-self: end;
   overflow: hidden;
   margin: 0;
-  border: 1px solid rgb(12 16 21 / 0.14);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
   border-radius: 0.35rem;
-  background: #dbe1dd;
-  box-shadow: 0 2.5rem 7rem rgb(12 16 21 / 0.16);
+  background: var(--color-surface-subtle);
+  box-shadow: var(--shadow-panel);
   aspect-ratio: 5 / 6;
 }
 
@@ -974,7 +974,7 @@
 
 .moreWork {
   border-block: 1px solid var(--color-border);
-  background: #edf1f3;
+  background: var(--color-supporting-neutral);
 }
 
 .compactHeading {
@@ -1000,11 +1000,11 @@
 }
 
 .projectIndex {
-  border-block-start: 1px solid #bac1c4;
+  border-block-start: 1px solid var(--color-border);
 }
 
 .projectIndex li {
-  border-block-end: 1px solid #bac1c4;
+  border-block-end: 1px solid var(--color-border);
 }
 
 .projectIndex a {
@@ -1025,7 +1025,7 @@
 
 .projectIndex a:hover,
 .projectIndex a:focus-visible {
-  background: rgb(255 255 255 / 0.72);
+  background: color-mix(in srgb, var(--color-surface) 78%, transparent);
   padding-inline: 1rem 0.5rem;
 }
 
@@ -1164,7 +1164,7 @@
 }
 
 .about {
-  background: #f7f8f6;
+  background: var(--color-surface);
 }
 
 .aboutInner {
@@ -1236,7 +1236,7 @@
 }
 
 .contact {
-  background: #eef3fb;
+  background: var(--color-supporting-blue);
 }
 
 .contactInner {
@@ -1277,8 +1277,8 @@
 .contactActions :global(.social-link) {
   min-height: 3.25rem;
   justify-content: center;
-  border: 1px solid rgb(11 87 208 / 0.24);
-  background: rgb(255 255 255 / 0.78);
+  border: 1px solid color-mix(in srgb, var(--color-action) 28%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 82%, transparent);
   padding-inline: 0.75rem;
   text-decoration: none;
   transition:
@@ -1294,7 +1294,7 @@
 .contactActions :global(.social-link:hover),
 .contactActions :global(.social-link:focus-visible) {
   border-color: var(--color-action);
-  background: #ffffff;
+  background: var(--color-surface);
   transform: translateY(-0.15rem);
 }
 

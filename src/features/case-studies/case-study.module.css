@@ -322,6 +322,20 @@
 .ownership,
 .decisions,
 .resilience,
+.gallery,
+.outcome {
+  --color-ink: #101418;
+  --color-ink-muted: #56616d;
+  --color-border: #d7dde2;
+  --color-action: #0b57d0;
+  color: var(--color-ink);
+}
+
+.snapshot,
+.narrative,
+.ownership,
+.decisions,
+.resilience,
 .technology,
 .gallery,
 .release,

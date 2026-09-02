@@ -1,0 +1,3 @@
+import { THEME_STORAGE_KEY, themeColors } from "./theme";
+
+export const themeInitializationScript = `(()=>{try{const k=${JSON.stringify(THEME_STORAGE_KEY)},r=document.documentElement,v=localStorage.getItem(k),p=v==='light'||v==='dark'||v==='system'?v:'system',d=p==='dark'||p==='system'&&matchMedia('(prefers-color-scheme: dark)').matches,t=d?'dark':'light';r.dataset.theme=t;r.dataset.themePreference=p;r.style.colorScheme=t;const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=t==='dark'?'${themeColors.dark}':'${themeColors.light}'}catch{document.documentElement.dataset.theme='light'}})();`;

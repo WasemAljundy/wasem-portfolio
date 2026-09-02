@@ -13,7 +13,7 @@
     "format:check": "prettier --check src tests scripts docs .github package.json tsconfig.json next.config.ts playwright.config.ts eslint.config.mjs postcss.config.mjs prettier.config.mjs README.md planning/project-manifest.json",
     "lint": "eslint src tests scripts *.ts *.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/unit/projects.test.ts tests/unit/site.test.ts tests/unit/social-link.test.tsx",
+    "test": "tsx --test tests/unit/projects.test.ts tests/unit/site.test.ts tests/unit/social-link.test.tsx tests/unit/theme.test.ts",
     "test:browser": "playwright test",
     "assets:build": "node scripts/build-assets.mjs",
     "audit:public": "node scripts/audit-public.mjs",
